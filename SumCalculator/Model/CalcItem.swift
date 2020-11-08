@@ -13,4 +13,9 @@ struct CalcItem {
     var unitPrice: Int = 0
     var quantity: Int = 0
     
+    var subtotal: Int {
+        get {
+            return unitPrice * quantity
+        }
+    }
 }

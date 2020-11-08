@@ -16,6 +16,7 @@
 		0947F94F2557D70C00CA3C2D /* SumCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F94E2557D70C00CA3C2D /* SumCalculatorTests.swift */; };
 		0947F95A2557D70C00CA3C2D /* SumCalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F9592557D70C00CA3C2D /* SumCalculatorUITests.swift */; };
 		0947F96E2557F1A600CA3C2D /* CalcItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F96D2557F1A600CA3C2D /* CalcItem.swift */; };
+		0947F9762558139A00CA3C2D /* CalcItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F9752558139A00CA3C2D /* CalcItemTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		0947F9592557D70C00CA3C2D /* SumCalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumCalculatorUITests.swift; sourceTree = "<group>"; };
 		0947F95B2557D70C00CA3C2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0947F96D2557F1A600CA3C2D /* CalcItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcItem.swift; sourceTree = "<group>"; };
+		0947F9752558139A00CA3C2D /* CalcItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcItemTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				0947F94E2557D70C00CA3C2D /* SumCalculatorTests.swift */,
+				0947F9752558139A00CA3C2D /* CalcItemTests.swift */,
 				0947F9502557D70C00CA3C2D /* Info.plist */,
 			);
 			path = SumCalculatorTests;
@@ -297,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0947F94F2557D70C00CA3C2D /* SumCalculatorTests.swift in Sources */,
+				0947F9762558139A00CA3C2D /* CalcItemTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
