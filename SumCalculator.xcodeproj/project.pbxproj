@@ -19,6 +19,8 @@
 		0947F9762558139A00CA3C2D /* CalcItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F9752558139A00CA3C2D /* CalcItemTests.swift */; };
 		0947F97B2558173F00CA3C2D /* CalcTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F97A2558173F00CA3C2D /* CalcTable.swift */; };
 		0947F98825581F5C00CA3C2D /* CalcTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F98725581F5C00CA3C2D /* CalcTableTests.swift */; };
+		0947F98D255836A700CA3C2D /* CalcNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F98C255836A700CA3C2D /* CalcNote.swift */; };
+		0947F9922558380D00CA3C2D /* CalcNoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F9912558380D00CA3C2D /* CalcNoteTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		0947F9752558139A00CA3C2D /* CalcItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcItemTests.swift; sourceTree = "<group>"; };
 		0947F97A2558173F00CA3C2D /* CalcTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcTable.swift; sourceTree = "<group>"; };
 		0947F98725581F5C00CA3C2D /* CalcTableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcTableTests.swift; sourceTree = "<group>"; };
+		0947F98C255836A700CA3C2D /* CalcNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcNote.swift; sourceTree = "<group>"; };
+		0947F9912558380D00CA3C2D /* CalcNoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcNoteTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,7 @@
 				0947F94E2557D70C00CA3C2D /* SumCalculatorTests.swift */,
 				0947F9752558139A00CA3C2D /* CalcItemTests.swift */,
 				0947F98725581F5C00CA3C2D /* CalcTableTests.swift */,
+				0947F9912558380D00CA3C2D /* CalcNoteTests.swift */,
 				0947F9502557D70C00CA3C2D /* Info.plist */,
 			);
 			path = SumCalculatorTests;
@@ -141,6 +146,7 @@
 			children = (
 				0947F96D2557F1A600CA3C2D /* CalcItem.swift */,
 				0947F97A2558173F00CA3C2D /* CalcTable.swift */,
+				0947F98C255836A700CA3C2D /* CalcNote.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -294,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0947F98D255836A700CA3C2D /* CalcNote.swift in Sources */,
 				0947F97B2558173F00CA3C2D /* CalcTable.swift in Sources */,
 				0947F93C2557D70A00CA3C2D /* ViewController.swift in Sources */,
 				0947F9382557D70A00CA3C2D /* AppDelegate.swift in Sources */,
@@ -308,6 +315,7 @@
 			files = (
 				0947F94F2557D70C00CA3C2D /* SumCalculatorTests.swift in Sources */,
 				0947F98825581F5C00CA3C2D /* CalcTableTests.swift in Sources */,
+				0947F9922558380D00CA3C2D /* CalcNoteTests.swift in Sources */,
 				0947F9762558139A00CA3C2D /* CalcItemTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct CalcTable {
+class CalcTable {
     let id: String = ""
     var tableName: String = ""
     var calcItems: [CalcItem] = []
     var subtotal: Int {
         get {
             var sum = 0
-            for ci in calcItems {
-                sum += ci.subtotal
+            for calcItem in calcItems {
+                sum += calcItem.subtotal
             }
             return sum
         }

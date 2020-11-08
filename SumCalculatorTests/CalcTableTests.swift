@@ -19,15 +19,15 @@ class CalcTableTests: XCTestCase {
     }
 
     func testSubtotal() throws {
-        var calcTable = CalcTable()
+        let calcTable = CalcTable()
         
-        var calcItem1 = CalcItem()
+        let calcItem1 = CalcItem()
         calcItem1.quantity = 3
         calcItem1.unitPrice = 1000
         let testResult1 = 3000
         calcTable.calcItems.append(calcItem1)
         
-        var calcItem2 = CalcItem()
+        let calcItem2 = CalcItem()
         calcItem2.quantity = 4
         calcItem2.unitPrice = 2000
         let testResult2 = 8000
@@ -35,7 +35,7 @@ class CalcTableTests: XCTestCase {
         
         XCTAssertEqual(calcTable.subtotal, testResult1 + testResult2)
         
-        var calcItem3 = CalcItem()
+        let calcItem3 = CalcItem()
         calcItem3.quantity = 2
         calcItem3.unitPrice = 4000
         calcTable.calcItems.append(calcItem3)

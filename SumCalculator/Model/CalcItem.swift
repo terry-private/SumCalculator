@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CalcItem {
+class CalcItem {
     let id: String = ""
     var name: String = ""
     var unitPrice: Int = 0
