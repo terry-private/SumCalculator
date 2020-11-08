@@ -22,9 +22,14 @@ class CalcItemTests: XCTestCase {
         var calcItem = CalcItem()
         let testPrice = 2800
         let testQuantity = 3
+        let testSum = testPrice * testQuantity
         calcItem.unitPrice = testPrice
         calcItem.quantity = testQuantity
-        XCTAssertEqual(calcItem.subtotal, testPrice * testQuantityΩ)
+        XCTAssertEqual(calcItem.subtotal, testSum)
+        
+        calcItem.unitPrice += 200
+        calcItem.quantity += 1
+        XCTAssertNotEqual(calcItem.subtotal, testSum)
     }
 
 }
