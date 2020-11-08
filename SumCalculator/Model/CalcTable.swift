@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CalcTable {
+struct CalcTable {
     let id: String = ""
     var tableName: String = ""
     var calcItems: [CalcItem] = []
