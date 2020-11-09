@@ -8,7 +8,7 @@
 import UIKit
 
 class NoteListViewController: UIViewController {
-    
+    let cellId = "cellId"
     var searchController: UISearchController!
     var indicator = UIActivityIndicatorView()
     
@@ -16,11 +16,16 @@ class NoteListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         setupSearchBar()
         setupIndicator()
-
-        // Do any additional setup after loading the view.
     }
+    
+    func setupTableView() {
+        noteListTableView.delegate = self
+        noteListTableView.dataSource = self
+    }
+    
     func setupSearchBar() {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -57,5 +62,24 @@ extension NoteListViewController: UISearchResultsUpdating, UISearchBarDelegate {
         // guard let searchWord = searchBar.text else { return }
         self.view.endEditing(true)
         indicator.startAnimating()
+    }
+}
+
+
+extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 30
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = noteListTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteListTableViewCell
+        return cell
+    }
+}
+
+
+class NoteListTableViewCell: UITableViewCell {
+    override class func awakeFromNib() {
+        super.awakeFromNib()
     }
 }
