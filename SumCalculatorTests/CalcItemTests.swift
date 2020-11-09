@@ -19,7 +19,7 @@ class CalcItemTests: XCTestCase {
     }
 
     func testSubtotal() throws {
-        var calcItem = CalcItem()
+        let calcItem = CalcItem()
         let testPrice = 2800
         let testQuantity = 3
         let testSum = testPrice * testQuantity
