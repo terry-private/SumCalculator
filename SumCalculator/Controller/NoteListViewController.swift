@@ -9,6 +9,7 @@ import UIKit
 
 class NoteListViewController: UIViewController {
     let cellId = "cellId"
+    let headerCellId = "headerCell"
     var searchController: UISearchController!
     var indicator = UIActivityIndicatorView()
     
@@ -24,6 +25,7 @@ class NoteListViewController: UIViewController {
     func setupTableView() {
         noteListTableView.delegate = self
         noteListTableView.dataSource = self
+ 
     }
     
     func setupSearchBar() {
@@ -79,6 +81,13 @@ extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
 
 
 class NoteListTableViewCell: UITableViewCell {
+    override class func awakeFromNib() {
+        super.awakeFromNib()
+    }
+}
+
+
+class NoteListTableViewHeaderCell: UITableViewCell {
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
