@@ -9,7 +9,6 @@ import UIKit
 
 class NoteListViewController: UIViewController {
     let cellId = "cellId"
-    let headerCellId = "headerCell"
     var searchController: UISearchController!
     var indicator = UIActivityIndicatorView()
     
@@ -25,8 +24,8 @@ class NoteListViewController: UIViewController {
     func setupTableView() {
         noteListTableView.delegate = self
         noteListTableView.dataSource = self
- 
     }
+    
     
     func setupSearchBar() {
         searchController = UISearchController(searchResultsController: nil)
@@ -43,6 +42,10 @@ class NoteListViewController: UIViewController {
         indicator.center = view.center
         indicator.style = UIActivityIndicatorView.Style.large
         view.addSubview(indicator)
+    }
+    
+    @IBAction func tappedPlusButton(_ sender: Any) {
+        
     }
 
 }
@@ -77,17 +80,13 @@ extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = noteListTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteListTableViewCell
         return cell
     }
-}
-
-
-class NoteListTableViewCell: UITableViewCell {
-    override class func awakeFromNib() {
-        super.awakeFromNib()
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        
     }
 }
 
 
-class NoteListTableViewHeaderCell: UITableViewCell {
+class NoteListTableViewCell: UITableViewCell {
     override class func awakeFromNib() {
         super.awakeFromNib()
     }

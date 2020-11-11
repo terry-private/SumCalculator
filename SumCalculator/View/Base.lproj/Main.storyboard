@@ -12,8 +12,8 @@
         <scene sceneID="boL-yh-AsU">
             <objects>
                 <navigationController id="zwq-Al-o6y" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OaA-Hk-fKn">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="OaA-Hk-fKn">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -24,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="-1000" y="68"/>
         </scene>
-        <!--Note List View Controller-->
+        <!--ノート一覧-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="NoteListViewController" customModule="SumCalculator" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,32 +33,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Yx-VF-gPi">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="ZJe-Di-Kg7" userLabel="asdfa">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ノート一覧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FvM-Pb-u9t">
-                                            <rect key="frame" x="20" y="7" width="127" height="30"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    <accessibility key="accessibilityConfiguration" label="asdf">
-                                        <accessibilityTraits key="traits" none="YES"/>
-                                        <bool key="isElement" value="NO"/>
-                                    </accessibility>
-                                    <constraints>
-                                        <constraint firstItem="FvM-Pb-u9t" firstAttribute="centerY" secondItem="ZJe-Di-Kg7" secondAttribute="centerY" id="G0R-FP-ZEn"/>
-                                        <constraint firstItem="FvM-Pb-u9t" firstAttribute="leading" secondItem="ZJe-Di-Kg7" secondAttribute="leading" constant="20" id="mAf-5C-678"/>
-                                    </constraints>
-                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellId" rowHeight="70" id="lsg-Uh-UZe" customClass="NoteListTableViewCell" customModule="SumCalculator" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="414" height="70"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lsg-Uh-UZe" id="icB-2G-mhy">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
@@ -89,17 +68,32 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPl-lt-uAe">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="L9L-6A-IiC"/>
+                                    <barButtonItem style="plain" systemItem="add" id="8hA-L9-hhB">
+                                        <connections>
+                                            <action selector="tappedPlusButton:" destination="BYZ-38-t0r" id="WNt-75-fqf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="mW7-nM-iwt"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2Yx-VF-gPi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4qX-RV-HlA"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2Yx-VF-gPi" secondAttribute="bottom" id="QDQ-1K-dls"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2Yx-VF-gPi" secondAttribute="trailing" id="ShW-Qj-6ji"/>
-                            <constraint firstItem="2Yx-VF-gPi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kcL-IE-TzL"/>
+                            <constraint firstItem="2Yx-VF-gPi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7W0-m4-oV5"/>
+                            <constraint firstItem="OPl-lt-uAe" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7XZ-2x-Ksm"/>
+                            <constraint firstItem="2Yx-VF-gPi" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DWL-Tp-Qmd"/>
+                            <constraint firstItem="OPl-lt-uAe" firstAttribute="top" secondItem="2Yx-VF-gPi" secondAttribute="bottom" id="K5P-JF-geZ"/>
+                            <constraint firstItem="2Yx-VF-gPi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gxM-cZ-IGy"/>
+                            <constraint firstItem="OPl-lt-uAe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oxJ-5M-flg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OPl-lt-uAe" secondAttribute="bottom" id="z2U-p7-N3s"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ssf-FW-lOc"/>
+                    <navigationItem key="navigationItem" title="ノート一覧" id="roo-Ld-Jtg"/>
                     <connections>
                         <outlet property="noteListTableView" destination="2Yx-VF-gPi" id="mwh-2h-V2u"/>
                         <segue destination="4Uw-An-Y2P" kind="show" identifier="openNote" id="TSo-4a-fsg"/>
