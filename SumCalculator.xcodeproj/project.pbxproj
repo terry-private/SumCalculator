@@ -20,6 +20,7 @@
 		0947F98825581F5C00CA3C2D /* CalcTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F98725581F5C00CA3C2D /* CalcTableTests.swift */; };
 		0947F98D255836A700CA3C2D /* CalcNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F98C255836A700CA3C2D /* CalcNote.swift */; };
 		0947F9922558380D00CA3C2D /* CalcNoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F9912558380D00CA3C2D /* CalcNoteTests.swift */; };
+		094A0223255D4C9A0024B45A /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */; };
 		09703B7825595AD400375604 /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09703B7725595AD400375604 /* NoteListViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		0947F98725581F5C00CA3C2D /* CalcTableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcTableTests.swift; sourceTree = "<group>"; };
 		0947F98C255836A700CA3C2D /* CalcNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcNote.swift; sourceTree = "<group>"; };
 		0947F9912558380D00CA3C2D /* CalcNoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcNoteTests.swift; sourceTree = "<group>"; };
+		094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 		09703B7725595AD400375604 /* NoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +168,7 @@
 				0947F9372557D70A00CA3C2D /* AppDelegate.swift */,
 				0947F9392557D70A00CA3C2D /* SceneDelegate.swift */,
 				09703B7725595AD400375604 /* NoteListViewController.swift */,
+				094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0947F98D255836A700CA3C2D /* CalcNote.swift in Sources */,
+				094A0223255D4C9A0024B45A /* NoteDetailViewController.swift in Sources */,
 				0947F97B2558173F00CA3C2D /* CalcTable.swift in Sources */,
 				09703B7825595AD400375604 /* NoteListViewController.swift in Sources */,
 				0947F9382557D70A00CA3C2D /* AppDelegate.swift in Sources */,

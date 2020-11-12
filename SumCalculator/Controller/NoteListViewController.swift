@@ -11,6 +11,7 @@ class NoteListViewController: UIViewController {
     let cellId = "cellId"
     var searchController: UISearchController!
     var indicator = UIActivityIndicatorView()
+    var currentIndexPath: IndexPath?
     
     @IBOutlet weak var noteListTableView: UITableView!
     
@@ -68,6 +69,7 @@ extension NoteListViewController: UISearchResultsUpdating, UISearchBarDelegate {
         self.view.endEditing(true)
         indicator.startAnimating()
     }
+    
 }
 
 
@@ -80,10 +82,23 @@ extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = noteListTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteListTableViewCell
         return cell
     }
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // prepareの処理でindexを使いたいのでselfのindexに一旦保持します。
+        currentIndexPath = indexPath
+        performSegue(withIdentifier: "openNote", sender: self)
     }
+    // 遷移前に遷移先Viewにモデルとそのデリゲートをセットします。
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        guard let indexPath = currentIndexPath else { return }
+        if segue.identifier == "openNote"{
+            print(indexPath)
+        }
+    }
+
 }
+
 
 
 class NoteListTableViewCell: UITableViewCell {

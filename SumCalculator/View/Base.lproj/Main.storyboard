@@ -72,12 +72,11 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="L9L-6A-IiC"/>
-                                    <barButtonItem style="plain" systemItem="add" id="8hA-L9-hhB">
+                                    <barButtonItem image="square.and.pencil" catalog="system" style="plain" id="8hA-L9-hhB">
                                         <connections>
                                             <action selector="tappedPlusButton:" destination="BYZ-38-t0r" id="WNt-75-fqf"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="mW7-nM-iwt"/>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -103,24 +102,50 @@
             </objects>
             <point key="canvasLocation" x="-146.37681159420291" y="67.633928571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Note Detail View Controller-->
         <scene sceneID="whD-iQ-YGN">
             <objects>
-                <viewController id="4Uw-An-Y2P" sceneMemberID="viewController">
+                <viewController id="4Uw-An-Y2P" customClass="NoteDetailViewController" customModule="SumCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9ra-sq-83m">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JiY-hO-Rg2">
+                                <rect key="frame" x="20" y="0.0" width="374" height="813"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="niQ-6E-BVo">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="cde-yo-Gn1"/>
+                                    <barButtonItem image="square.and.pencil" catalog="system" id="frH-M1-8AN"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="grb-O4-afm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JiY-hO-Rg2" firstAttribute="leading" secondItem="grb-O4-afm" secondAttribute="leading" constant="20" id="EJ8-7f-2zV"/>
+                            <constraint firstItem="niQ-6E-BVo" firstAttribute="top" secondItem="JiY-hO-Rg2" secondAttribute="bottom" id="GvS-Df-gCq"/>
+                            <constraint firstItem="niQ-6E-BVo" firstAttribute="trailing" secondItem="grb-O4-afm" secondAttribute="trailing" id="UAn-3Q-shn"/>
+                            <constraint firstItem="grb-O4-afm" firstAttribute="bottom" secondItem="niQ-6E-BVo" secondAttribute="bottom" id="YyK-lN-nFT"/>
+                            <constraint firstItem="grb-O4-afm" firstAttribute="trailing" secondItem="JiY-hO-Rg2" secondAttribute="trailing" constant="20" id="elp-wG-hpC"/>
+                            <constraint firstItem="niQ-6E-BVo" firstAttribute="leading" secondItem="grb-O4-afm" secondAttribute="leading" id="j7l-vn-N4I"/>
+                            <constraint firstItem="JiY-hO-Rg2" firstAttribute="top" secondItem="9ra-sq-83m" secondAttribute="top" id="zjU-tt-mR5"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hAO-EY-NEU"/>
+                    <connections>
+                        <outlet property="noteDetailTableView" destination="JiY-hO-Rg2" id="16y-OB-Wdw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="na6-tZ-CeR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="564" y="68"/>
+            <point key="canvasLocation" x="563.768115942029" y="67.633928571428569"/>
         </scene>
     </scenes>
     <resources>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
