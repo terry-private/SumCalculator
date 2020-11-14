@@ -24,28 +24,20 @@ class NoteTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         cellBackgroundView.layer.cornerRadius = 20
+        selectionStyle = .none
     }
     
     func loadCalcItems() {
         removeAllItem()
+        
         for i in 0..<testItemsCount {
-
-            print("loadCalcItems:",i)
-//            let itemView = CalcItemView()
-//            itemView.testNum = i
-//            itemView.bounds.size.width = calcItemsStackView.frame.width
-//            calcItemsStackView.addSubview(itemView)
-            
-            
             let view = Bundle.main.loadNibNamed("CalcItemView", owner: self, options: nil)?.first as! CalcItemView
             //view.bounds.size.width = calcItemsStackView.bounds.size.width
-            view.bounds.size.height = 64
+            //view.bounds.size.height = 64
             view.calcItemNameLabel.text = "nnnn"
             view.quantityLabel.text = String(i)
-            
             calcItemsStackView.addArrangedSubview(view)
             items.append(view)
-            
         }
 
     }
