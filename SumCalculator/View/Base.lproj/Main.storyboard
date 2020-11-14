@@ -44,14 +44,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="計算ノート①" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGy-9W-3D6">
-                                                    <rect key="frame" x="25" y="10" width="374" height="23"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <rect key="frame" x="25" y="10" width="374" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020/11/10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTn-cS-DMR">
-                                                    <rect key="frame" x="25" y="42" width="74.5" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <rect key="frame" x="25" y="43" width="70" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -115,7 +115,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JiY-hO-Rg2">
-                                <rect key="frame" x="20" y="0.0" width="374" height="813"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="niQ-6E-BVo">
@@ -129,11 +129,11 @@
                         <viewLayoutGuide key="safeArea" id="grb-O4-afm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="JiY-hO-Rg2" firstAttribute="leading" secondItem="grb-O4-afm" secondAttribute="leading" constant="20" id="EJ8-7f-2zV"/>
+                            <constraint firstItem="JiY-hO-Rg2" firstAttribute="leading" secondItem="grb-O4-afm" secondAttribute="leading" id="EJ8-7f-2zV"/>
                             <constraint firstItem="niQ-6E-BVo" firstAttribute="top" secondItem="JiY-hO-Rg2" secondAttribute="bottom" id="GvS-Df-gCq"/>
                             <constraint firstItem="niQ-6E-BVo" firstAttribute="trailing" secondItem="grb-O4-afm" secondAttribute="trailing" id="UAn-3Q-shn"/>
                             <constraint firstItem="grb-O4-afm" firstAttribute="bottom" secondItem="niQ-6E-BVo" secondAttribute="bottom" id="YyK-lN-nFT"/>
-                            <constraint firstItem="grb-O4-afm" firstAttribute="trailing" secondItem="JiY-hO-Rg2" secondAttribute="trailing" constant="20" id="elp-wG-hpC"/>
+                            <constraint firstItem="grb-O4-afm" firstAttribute="trailing" secondItem="JiY-hO-Rg2" secondAttribute="trailing" id="elp-wG-hpC"/>
                             <constraint firstItem="niQ-6E-BVo" firstAttribute="leading" secondItem="grb-O4-afm" secondAttribute="leading" id="j7l-vn-N4I"/>
                             <constraint firstItem="JiY-hO-Rg2" firstAttribute="top" secondItem="9ra-sq-83m" secondAttribute="top" id="zjU-tt-mR5"/>
                         </constraints>

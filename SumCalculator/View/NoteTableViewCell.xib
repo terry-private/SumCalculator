@@ -20,53 +20,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="398" height="371"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UYd-ov-WPe">
-                                <rect key="frame" x="5" y="5" width="388" height="361"/>
+                                <rect key="frame" x="20" y="10" width="358" height="351"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TableName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gc6-ZY-FZK">
-                                        <rect key="frame" x="140.5" y="12" width="107.5" height="26.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <rect key="frame" x="129.5" y="13" width="99" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合計：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SdS-xr-UO1">
-                                        <rect key="frame" x="132.5" y="324" width="61.5" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <rect key="frame" x="123.5" y="315.5" width="55.5" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28,580円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CaW-Th-gCp">
-                                        <rect key="frame" x="194" y="324" width="84" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <rect key="frame" x="179" y="315.5" width="76.5" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DX5-xF-q6J">
-                                        <rect key="frame" x="0.0" y="50" width="388" height="261"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tableView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cda-Gf-BzF">
+                                        <rect key="frame" x="0.0" y="50" width="358" height="251"/>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D84-rt-34Z">
+                                        <rect key="frame" x="0.0" y="301" width="358" height="1"/>
+                                        <color key="backgroundColor" systemColor="secondaryLabelColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="uDe-T0-lDF"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="CaW-Th-gCp" firstAttribute="centerY" secondItem="SdS-xr-UO1" secondAttribute="centerY" id="0Lu-Pv-48J"/>
+                                    <constraint firstAttribute="trailing" secondItem="D84-rt-34Z" secondAttribute="trailing" id="1WI-1a-12I"/>
                                     <constraint firstAttribute="centerX" secondItem="SdS-xr-UO1" secondAttribute="trailing" id="3ev-eq-bSI"/>
-                                    <constraint firstItem="DX5-xF-q6J" firstAttribute="top" secondItem="UYd-ov-WPe" secondAttribute="top" constant="50" id="GmL-xf-R37"/>
+                                    <constraint firstAttribute="bottom" secondItem="cda-Gf-BzF" secondAttribute="bottom" constant="50" id="7ro-gb-zRf"/>
+                                    <constraint firstItem="cda-Gf-BzF" firstAttribute="top" secondItem="UYd-ov-WPe" secondAttribute="top" constant="50" id="L9h-lS-KeJ"/>
                                     <constraint firstItem="CaW-Th-gCp" firstAttribute="leading" secondItem="SdS-xr-UO1" secondAttribute="trailing" id="Q7X-oK-WbG"/>
                                     <constraint firstItem="gc6-ZY-FZK" firstAttribute="centerY" secondItem="UYd-ov-WPe" secondAttribute="top" constant="25" id="RcU-De-nd2"/>
-                                    <constraint firstAttribute="bottom" secondItem="DX5-xF-q6J" secondAttribute="bottom" constant="50" id="fqK-YX-68f"/>
-                                    <constraint firstItem="DX5-xF-q6J" firstAttribute="leading" secondItem="UYd-ov-WPe" secondAttribute="leading" id="p8O-6W-8WA"/>
+                                    <constraint firstItem="D84-rt-34Z" firstAttribute="top" secondItem="cda-Gf-BzF" secondAttribute="bottom" id="RdG-s2-FZT"/>
+                                    <constraint firstItem="cda-Gf-BzF" firstAttribute="leading" secondItem="UYd-ov-WPe" secondAttribute="leading" id="gJN-OB-Tnl"/>
+                                    <constraint firstAttribute="trailing" secondItem="cda-Gf-BzF" secondAttribute="trailing" id="ijv-QX-E2J"/>
                                     <constraint firstAttribute="bottom" secondItem="SdS-xr-UO1" secondAttribute="centerY" constant="25" id="pdR-uw-7Jv"/>
-                                    <constraint firstAttribute="trailing" secondItem="DX5-xF-q6J" secondAttribute="trailing" id="po1-1s-s5c"/>
+                                    <constraint firstItem="D84-rt-34Z" firstAttribute="leading" secondItem="UYd-ov-WPe" secondAttribute="leading" id="qen-Cm-ASK"/>
                                     <constraint firstItem="gc6-ZY-FZK" firstAttribute="centerX" secondItem="UYd-ov-WPe" secondAttribute="centerX" id="rQF-If-MCs"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="UYd-ov-WPe" firstAttribute="top" secondItem="Ctp-pQ-PZF" secondAttribute="top" constant="5" id="KSh-QL-M2H"/>
-                            <constraint firstAttribute="trailing" secondItem="UYd-ov-WPe" secondAttribute="trailing" constant="5" id="YE8-ur-zSb"/>
-                            <constraint firstItem="UYd-ov-WPe" firstAttribute="leading" secondItem="Ctp-pQ-PZF" secondAttribute="leading" constant="5" id="gH7-Wu-NSH"/>
-                            <constraint firstAttribute="bottom" secondItem="UYd-ov-WPe" secondAttribute="bottom" constant="5" id="mIQ-dI-XwK"/>
+                            <constraint firstItem="UYd-ov-WPe" firstAttribute="top" secondItem="Ctp-pQ-PZF" secondAttribute="top" constant="10" id="KSh-QL-M2H"/>
+                            <constraint firstAttribute="trailing" secondItem="UYd-ov-WPe" secondAttribute="trailing" constant="20" id="YE8-ur-zSb"/>
+                            <constraint firstItem="UYd-ov-WPe" firstAttribute="leading" secondItem="Ctp-pQ-PZF" secondAttribute="leading" constant="20" id="gH7-Wu-NSH"/>
+                            <constraint firstAttribute="bottom" secondItem="UYd-ov-WPe" secondAttribute="bottom" constant="10" id="mIQ-dI-XwK"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -77,8 +85,9 @@
                     <constraint firstItem="Ctp-pQ-PZF" firstAttribute="top" secondItem="Z2t-23-gxi" secondAttribute="top" id="qon-nb-fh2"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="calcItemsTableView" destination="DX5-xF-q6J" id="R9O-N2-RnQ"/>
+                <outlet property="CalcItemsStackView" destination="cda-Gf-BzF" id="lvL-ym-s5w"/>
                 <outlet property="cellBackgroundView" destination="UYd-ov-WPe" id="00g-tP-wuX"/>
                 <outlet property="subtotalLabel" destination="CaW-Th-gCp" id="egl-NF-XyR"/>
                 <outlet property="tableNameLabel" destination="gc6-ZY-FZK" id="TE1-HA-NWh"/>
@@ -87,6 +96,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -23,8 +23,9 @@
 		094A0223255D4C9A0024B45A /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */; };
 		094A0228255E9E360024B45A /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094A0227255E9E360024B45A /* NoteTableViewCell.xib */; };
 		09703B7825595AD400375604 /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09703B7725595AD400375604 /* NoteListViewController.swift */; };
-		09E43EE1255FC32400B8624A /* calcItemsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E43EE0255FC32400B8624A /* calcItemsTableViewCell.xib */; };
 		09E43EE6255FC56300B8624A /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E43EE5255FC56300B8624A /* NoteTableViewCell.swift */; };
+		09E43EEE255FD87900B8624A /* CalcItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E43EED255FD87900B8624A /* CalcItemView.xib */; };
+		09E43EF3256015C800B8624A /* CalcItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E43EF2256015C800B8624A /* CalcItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,8 +68,9 @@
 		094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 		094A0227255E9E360024B45A /* NoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
 		09703B7725595AD400375604 /* NoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
-		09E43EE0255FC32400B8624A /* calcItemsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = calcItemsTableViewCell.xib; sourceTree = "<group>"; };
 		09E43EE5255FC56300B8624A /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
+		09E43EED255FD87900B8624A /* CalcItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalcItemView.xib; sourceTree = "<group>"; };
+		09E43EF2256015C800B8624A /* CalcItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,7 +167,7 @@
 				0947F93D2557D70A00CA3C2D /* Main.storyboard */,
 				0947F9422557D70B00CA3C2D /* LaunchScreen.storyboard */,
 				094A0227255E9E360024B45A /* NoteTableViewCell.xib */,
-				09E43EE0255FC32400B8624A /* calcItemsTableViewCell.xib */,
+				09E43EED255FD87900B8624A /* CalcItemView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -186,6 +188,7 @@
 			children = (
 				094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */,
 				09E43EE5255FC56300B8624A /* NoteTableViewCell.swift */,
+				09E43EF2256015C800B8624A /* CalcItemView.swift */,
 			);
 			path = NoteDetailView;
 			sourceTree = "<group>";
@@ -294,7 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0947F9442557D70B00CA3C2D /* LaunchScreen.storyboard in Resources */,
-				09E43EE1255FC32400B8624A /* calcItemsTableViewCell.xib in Resources */,
+				09E43EEE255FD87900B8624A /* CalcItemView.xib in Resources */,
 				0947F9412557D70B00CA3C2D /* Assets.xcassets in Resources */,
 				0947F93F2557D70A00CA3C2D /* Main.storyboard in Resources */,
 				094A0228255E9E360024B45A /* NoteTableViewCell.xib in Resources */,
@@ -328,6 +331,7 @@
 				09E43EE6255FC56300B8624A /* NoteTableViewCell.swift in Sources */,
 				09703B7825595AD400375604 /* NoteListViewController.swift in Sources */,
 				0947F9382557D70A00CA3C2D /* AppDelegate.swift in Sources */,
+				09E43EF3256015C800B8624A /* CalcItemView.swift in Sources */,
 				0947F93A2557D70A00CA3C2D /* SceneDelegate.swift in Sources */,
 				0947F96E2557F1A600CA3C2D /* CalcItem.swift in Sources */,
 			);
