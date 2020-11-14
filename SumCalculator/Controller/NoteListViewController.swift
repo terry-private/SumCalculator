@@ -88,12 +88,18 @@ extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
         currentIndexPath = indexPath
         performSegue(withIdentifier: "openNote", sender: self)
     }
+    
     // 遷移前に遷移先Viewにモデルとそのデリゲートをセットします。
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         guard let indexPath = currentIndexPath else { return }
         if segue.identifier == "openNote"{
+            let noteDetailVC = segue.destination as! NoteDetailViewController
+            let cell = noteListTableView.cellForRow(at: indexPath) as? NoteListTableViewCell
+            let name = cell?.noteNameLabel.text
+            noteDetailVC.navigationItem.title = name
             print(indexPath)
+            
         }
     }
 
@@ -102,6 +108,8 @@ extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
 
 
 class NoteListTableViewCell: UITableViewCell {
+    @IBOutlet weak var noteNameLabel: UILabel!
+    @IBOutlet weak var latestEditedTimeLabel: UILabel!
     override class func awakeFromNib() {
         super.awakeFromNib()
     }

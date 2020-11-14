@@ -21,7 +21,10 @@
 		0947F98D255836A700CA3C2D /* CalcNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F98C255836A700CA3C2D /* CalcNote.swift */; };
 		0947F9922558380D00CA3C2D /* CalcNoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F9912558380D00CA3C2D /* CalcNoteTests.swift */; };
 		094A0223255D4C9A0024B45A /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */; };
+		094A0228255E9E360024B45A /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094A0227255E9E360024B45A /* NoteTableViewCell.xib */; };
 		09703B7825595AD400375604 /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09703B7725595AD400375604 /* NoteListViewController.swift */; };
+		09E43EE1255FC32400B8624A /* calcItemsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E43EE0255FC32400B8624A /* calcItemsTableViewCell.xib */; };
+		09E43EE6255FC56300B8624A /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E43EE5255FC56300B8624A /* NoteTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +65,10 @@
 		0947F98C255836A700CA3C2D /* CalcNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcNote.swift; sourceTree = "<group>"; };
 		0947F9912558380D00CA3C2D /* CalcNoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcNoteTests.swift; sourceTree = "<group>"; };
 		094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
+		094A0227255E9E360024B45A /* NoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
 		09703B7725595AD400375604 /* NoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
+		09E43EE0255FC32400B8624A /* calcItemsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = calcItemsTableViewCell.xib; sourceTree = "<group>"; };
+		09E43EE5255FC56300B8624A /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +164,8 @@
 			children = (
 				0947F93D2557D70A00CA3C2D /* Main.storyboard */,
 				0947F9422557D70B00CA3C2D /* LaunchScreen.storyboard */,
+				094A0227255E9E360024B45A /* NoteTableViewCell.xib */,
+				09E43EE0255FC32400B8624A /* calcItemsTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -168,9 +176,18 @@
 				0947F9372557D70A00CA3C2D /* AppDelegate.swift */,
 				0947F9392557D70A00CA3C2D /* SceneDelegate.swift */,
 				09703B7725595AD400375604 /* NoteListViewController.swift */,
-				094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */,
+				094A022C255EA1200024B45A /* NoteDetailView */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		094A022C255EA1200024B45A /* NoteDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */,
+				09E43EE5255FC56300B8624A /* NoteTableViewCell.swift */,
+			);
+			path = NoteDetailView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,8 +294,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0947F9442557D70B00CA3C2D /* LaunchScreen.storyboard in Resources */,
+				09E43EE1255FC32400B8624A /* calcItemsTableViewCell.xib in Resources */,
 				0947F9412557D70B00CA3C2D /* Assets.xcassets in Resources */,
 				0947F93F2557D70A00CA3C2D /* Main.storyboard in Resources */,
+				094A0228255E9E360024B45A /* NoteTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +325,7 @@
 				0947F98D255836A700CA3C2D /* CalcNote.swift in Sources */,
 				094A0223255D4C9A0024B45A /* NoteDetailViewController.swift in Sources */,
 				0947F97B2558173F00CA3C2D /* CalcTable.swift in Sources */,
+				09E43EE6255FC56300B8624A /* NoteTableViewCell.swift in Sources */,
 				09703B7825595AD400375604 /* NoteListViewController.swift in Sources */,
 				0947F9382557D70A00CA3C2D /* AppDelegate.swift in Sources */,
 				0947F93A2557D70A00CA3C2D /* SceneDelegate.swift in Sources */,

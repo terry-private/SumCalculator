@@ -17,13 +17,14 @@ class NoteDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupTableView()
         
     }
     
     func setupTableView() {
         noteDetailTableView.delegate = self
         noteDetailTableView.dataSource = self
+        noteDetailTableView.register(UINib(nibName: "NoteTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
     }
 
 }
@@ -31,11 +32,11 @@ class NoteDetailViewController: UIViewController {
 
 extension NoteDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 13
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = noteDetailTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteDetailTableViewCell
+        let cell = noteDetailTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteTableViewCell
         return cell
     }
     
@@ -43,8 +44,4 @@ extension NoteDetailViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 
-class NoteDetailTableViewCell: UITableViewCell {
-    override class func awakeFromNib() {
-        super.awakeFromNib()
-    }
-}
+
