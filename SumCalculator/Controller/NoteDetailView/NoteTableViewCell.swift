@@ -13,18 +13,21 @@ class NoteTableViewCell: UITableViewCell {
     @IBOutlet weak var subtotalLabel: UILabel!
     @IBOutlet weak var calcItemsStackView: UIStackView!
     
+    
     var testItemsCount: Int = 0 {
         didSet{
             loadCalcItems()
         }
     }
     var items = [CalcItemView]()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         cellBackgroundView.layer.cornerRadius = 20
     }
     
     func loadCalcItems() {
+        removeAllItem()
         for i in 0..<testItemsCount {
 
             print("loadCalcItems:",i)
@@ -45,5 +48,10 @@ class NoteTableViewCell: UITableViewCell {
             
         }
 
+    }
+    private func removeAllItem() {
+        for i in items {
+            i.removeFromSuperview()
+        }
     }
 }
