@@ -9,11 +9,9 @@ import Foundation
 
 extension Float {
     
-    
     /// 日本円のみの対応とします。
     /// ・小数点以下は第二位までとします。
     /// ・小数点以下の最後の桁が０の場合は消します。
-    
     var currency: String {
         let amountInt = Int(self)
         // マイナスは外しておきます
