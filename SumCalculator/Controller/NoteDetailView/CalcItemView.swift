@@ -13,7 +13,6 @@ class CalcItemView: UIView {
     @IBOutlet weak var quantityLabel: UILabel!
     
     @IBOutlet weak var subTotalLabel: UILabel!
-    var testNum = -1
     
     override init(frame: CGRect) {
         super.init(frame: frame)

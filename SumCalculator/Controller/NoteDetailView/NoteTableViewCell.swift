@@ -29,7 +29,7 @@ class NoteTableViewCell: UITableViewCell {
     
     func loadCalcItems() {
         removeAllItem()
-        
+        tableNameLabel.text = "肉類"
         for i in 0..<testItemsCount {
             let view = Bundle.main.loadNibNamed("CalcItemView", owner: self, options: nil)?.first as! CalcItemView
             //view.bounds.size.width = calcItemsStackView.bounds.size.width

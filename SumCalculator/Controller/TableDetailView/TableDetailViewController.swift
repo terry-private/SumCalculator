@@ -1,21 +1,22 @@
 //
-//  NoteDetailViewController.swift
+//  TableDetailViewController.swift
 //  SumCalculator
 //
-//  Created by 若江照仁 on 2020/11/12.
+//  Created by 若江照仁 on 2020/11/15.
 //
 
 import UIKit
 
-class NoteDetailViewController: UIViewController {
+class TableDetailViewController: UIViewController {
+
     let cellId = "cellId"
     var searchController: UISearchController!
     var indicator = UIActivityIndicatorView()
-    var currentIndexPath: IndexPath?
+    
+    @IBOutlet weak var totalAmountLabel: UILabel!
     var testTableCount = 6
 
-    @IBOutlet weak var totalAmountLabel: UILabel!
-    @IBOutlet weak var noteDetailTableView: UITableView!
+    @IBOutlet weak var itemsTableView: UITableView!
     
     
     override func viewDidLoad() {
@@ -24,13 +25,11 @@ class NoteDetailViewController: UIViewController {
         setupIndicator()
         setupSearchBar()
         totalAmountLabel.text = "123,456円"
-        
     }
     
     func setupTableView() {
-        noteDetailTableView.delegate = self
-        noteDetailTableView.dataSource = self
-        noteDetailTableView.register(UINib(nibName: "NoteTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
+        itemsTableView.delegate = self
+        itemsTableView.dataSource = self
     }
     func setupSearchBar() {
         searchController = UISearchController(searchResultsController: nil)
@@ -51,7 +50,7 @@ class NoteDetailViewController: UIViewController {
 }
 
 /// UISearchBarDelegateのロジック周りをextensionとして分けます。
-extension NoteDetailViewController: UISearchResultsUpdating, UISearchBarDelegate {
+extension TableDetailViewController: UISearchResultsUpdating, UISearchBarDelegate {
     
     // 編集だけでなくキーボードを開く時も
     // Apiのタスクとクルクルが止まる仕様(taskがrunningの場合のみ)
@@ -67,45 +66,34 @@ extension NoteDetailViewController: UISearchResultsUpdating, UISearchBarDelegate
         self.view.endEditing(true)
         indicator.startAnimating()
     }
+    
 }
 
 
-extension NoteDetailViewController: UITableViewDelegate, UITableViewDataSource {
+extension TableDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = noteDetailTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteTableViewCell
+        let cell = itemsTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ItemTableViewCell
         print("cellForRowAt:")
-        cell.testItemsCount = testTableCount
         
         return cell
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(100 + 64 * testTableCount)
-    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // prepareの処理でindexを使いたいのでselfのindexに一旦保持します。
-        currentIndexPath = indexPath
-        performSegue(withIdentifier: "openTable", sender: self)
-    }
-    
-    // 遷移前に遷移先Viewにモデルとそのデリゲートをセットします。
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        guard let indexPath = currentIndexPath else { return }
-        if segue.identifier == "openTable"{
-            let tableDetailVC = segue.destination as! TableDetailViewController
-            let cell = noteDetailTableView.cellForRow(at: indexPath) as? NoteTableViewCell
-            let name = cell?.tableNameLabel.text
-            tableDetailVC.navigationItem.title = name
-            print(indexPath)
-            
-        }
+        print("selected")
     }
     
 }
 
-
-
+class ItemTableViewCell: UITableViewCell {
+    @IBOutlet weak var calcItemNameLabel: UILabel!
+    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var unitPriceLabel: UILabel!
+    @IBOutlet weak var subTotalLabel: UILabel!
+    
+    override class func awakeFromNib() {
+        super.awakeFromNib()
+    }
+}
