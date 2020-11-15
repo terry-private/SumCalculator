@@ -11,8 +11,8 @@ import XCTest
 class FloatTests: XCTestCase {
 
     func testCurrency() throws {
-        var testFloat: Float = 2184.1
-        XCTAssertEqual(testFloat.currency, "¥2,184.1")
+        var testFloat: Float = -2184.1
+        XCTAssertEqual(testFloat.currency, "-¥2,184.1")
         
         testFloat = 0.1
         XCTAssertNotEqual(testFloat.currency, "¥0.10")

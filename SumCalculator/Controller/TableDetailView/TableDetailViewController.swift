@@ -83,6 +83,13 @@ extension TableDetailViewController: UITableViewDelegate, UITableViewDataSource 
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected")
+        let storyboard = UIStoryboard(name: "InputCalcItem", bundle: nil)
+        let inputCalcItemViewController = storyboard.instantiateViewController(identifier: "InputCalcItemViewController") as! InputCalcItemViewController
+        //inputCalcItemViewController.recordViewControllerDelegate = self
+        
+        let nav = UINavigationController(rootViewController: inputCalcItemViewController)
+        
+        self.present(nav,animated: true, completion: nil)
     }
     
 }
