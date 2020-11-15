@@ -98,6 +98,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09472F412560A0BD00D94ED5 /* NoteDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				094A0227255E9E360024B45A /* NoteTableViewCell.xib */,
+				09E43EED255FD87900B8624A /* CalcItemView.xib */,
+			);
+			path = NoteDetailView;
+			sourceTree = "<group>";
+		};
 		0947F92B2557D70A00CA3C2D = {
 			isa = PBXGroup;
 			children = (
@@ -166,8 +175,7 @@
 			children = (
 				0947F93D2557D70A00CA3C2D /* Main.storyboard */,
 				0947F9422557D70B00CA3C2D /* LaunchScreen.storyboard */,
-				094A0227255E9E360024B45A /* NoteTableViewCell.xib */,
-				09E43EED255FD87900B8624A /* CalcItemView.xib */,
+				09472F412560A0BD00D94ED5 /* NoteDetailView */,
 			);
 			path = View;
 			sourceTree = "<group>";

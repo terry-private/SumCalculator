@@ -34,8 +34,10 @@ class NoteTableViewCell: UITableViewCell {
             let view = Bundle.main.loadNibNamed("CalcItemView", owner: self, options: nil)?.first as! CalcItemView
             //view.bounds.size.width = calcItemsStackView.bounds.size.width
             //view.bounds.size.height = 64
-            view.calcItemNameLabel.text = "nnnn"
+            view.calcItemNameLabel.text = "カルビ"
             view.quantityLabel.text = String(i)
+            view.unitPriceLabel.text = "5,800円"
+            view.subTotalLabel.text = "38,260円"
             calcItemsStackView.addArrangedSubview(view)
             items.append(view)
         }
