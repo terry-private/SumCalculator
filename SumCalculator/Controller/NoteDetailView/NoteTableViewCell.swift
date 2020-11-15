@@ -35,9 +35,9 @@ class NoteTableViewCell: UITableViewCell {
             //view.bounds.size.width = calcItemsStackView.bounds.size.width
             //view.bounds.size.height = 64
             view.calcItemNameLabel.text = "カルビ"
-            view.quantityLabel.text = String(i)
-            view.unitPriceLabel.text = "5,800円"
-            view.subTotalLabel.text = "38,260円"
+            view.quantityLabel.text = "48" + String(i) + "g"
+            view.unitPriceLabel.text = "3円／g"
+            view.subTotalLabel.text = "1,440円"
             calcItemsStackView.addArrangedSubview(view)
             items.append(view)
         }

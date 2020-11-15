@@ -87,7 +87,7 @@
             </tableViewCellContentView>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="CalcItemsStackView" destination="cda-Gf-BzF" id="lvL-ym-s5w"/>
+                <outlet property="calcItemsStackView" destination="cda-Gf-BzF" id="htR-QJ-Ho7"/>
                 <outlet property="cellBackgroundView" destination="UYd-ov-WPe" id="00g-tP-wuX"/>
                 <outlet property="subtotalLabel" destination="CaW-Th-gCp" id="egl-NF-XyR"/>
                 <outlet property="tableNameLabel" destination="gc6-ZY-FZK" id="TE1-HA-NWh"/>
