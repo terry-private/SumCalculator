@@ -11,9 +11,9 @@ class CalcNote {
     let id: String = ""
     var noteName: String = ""
     var calcTables: [CalcTable] = []
-    var total: Int {
+    var total: Float {
         get {
-            var sum = 0
+            var sum = Float()
             for calcTable in calcTables {
                 sum += calcTable.subtotal
             }

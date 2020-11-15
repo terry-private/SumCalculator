@@ -10,10 +10,10 @@ import Foundation
 class CalcItem {
     let id: String = ""
     var name: String = ""
-    var unitPrice: Int = 0
-    var quantity: Int = 0
+    var unitPrice: Float = 0
+    var quantity: Float = 0
     
-    var subtotal: Int {
+    var subtotal: Float {
         get {
             return unitPrice * quantity
         }

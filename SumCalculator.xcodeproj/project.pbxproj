@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		09472F472560BE2400D94ED5 /* TableDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09472F462560BE2400D94ED5 /* TableDetailViewController.swift */; };
+		09472F582560F18300D94ED5 /* InputCalcItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09472F572560F18300D94ED5 /* InputCalcItem.storyboard */; };
+		09472F5E2560F8EF00D94ED5 /* Float - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09472F5D2560F8EF00D94ED5 /* Float - Extension.swift */; };
 		0947F9382557D70A00CA3C2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F9372557D70A00CA3C2D /* AppDelegate.swift */; };
 		0947F93A2557D70A00CA3C2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F9392557D70A00CA3C2D /* SceneDelegate.swift */; };
 		0947F93F2557D70A00CA3C2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0947F93D2557D70A00CA3C2D /* Main.storyboard */; };
@@ -48,6 +50,8 @@
 
 /* Begin PBXFileReference section */
 		09472F462560BE2400D94ED5 /* TableDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDetailViewController.swift; sourceTree = "<group>"; };
+		09472F572560F18300D94ED5 /* InputCalcItem.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputCalcItem.storyboard; sourceTree = "<group>"; };
+		09472F5D2560F8EF00D94ED5 /* Float - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float - Extension.swift"; sourceTree = "<group>"; };
 		0947F9342557D70A00CA3C2D /* SumCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SumCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0947F9372557D70A00CA3C2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0947F9392557D70A00CA3C2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +128,14 @@
 			path = TableDetailView;
 			sourceTree = "<group>";
 		};
+		09472F5C2560F8CF00D94ED5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				09472F5D2560F8EF00D94ED5 /* Float - Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		0947F92B2557D70A00CA3C2D = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +164,7 @@
 				0947F96C2557F11800CA3C2D /* Controller */,
 				0947F9402557D70B00CA3C2D /* Assets.xcassets */,
 				0947F9452557D70B00CA3C2D /* Info.plist */,
+				09472F5C2560F8CF00D94ED5 /* Extensions */,
 			);
 			path = SumCalculator;
 			sourceTree = "<group>";
@@ -192,6 +205,7 @@
 			children = (
 				0947F93D2557D70A00CA3C2D /* Main.storyboard */,
 				0947F9422557D70B00CA3C2D /* LaunchScreen.storyboard */,
+				09472F572560F18300D94ED5 /* InputCalcItem.storyboard */,
 				09472F412560A0BD00D94ED5 /* NoteDetailView */,
 				09472F4B2560C1D300D94ED5 /* TableDetailView */,
 			);
@@ -324,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0947F9442557D70B00CA3C2D /* LaunchScreen.storyboard in Resources */,
+				09472F582560F18300D94ED5 /* InputCalcItem.storyboard in Resources */,
 				09E43EEE255FD87900B8624A /* CalcItemView.xib in Resources */,
 				0947F9412557D70B00CA3C2D /* Assets.xcassets in Resources */,
 				0947F93F2557D70A00CA3C2D /* Main.storyboard in Resources */,
@@ -355,6 +370,7 @@
 				0947F98D255836A700CA3C2D /* CalcNote.swift in Sources */,
 				094A0223255D4C9A0024B45A /* NoteDetailViewController.swift in Sources */,
 				0947F97B2558173F00CA3C2D /* CalcTable.swift in Sources */,
+				09472F5E2560F8EF00D94ED5 /* Float - Extension.swift in Sources */,
 				09E43EE6255FC56300B8624A /* NoteTableViewCell.swift in Sources */,
 				09703B7825595AD400375604 /* NoteListViewController.swift in Sources */,
 				0947F9382557D70A00CA3C2D /* AppDelegate.swift in Sources */,

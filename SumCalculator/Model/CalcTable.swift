@@ -11,9 +11,9 @@ class CalcTable {
     let id: String = ""
     var tableName: String = ""
     var calcItems: [CalcItem] = []
-    var subtotal: Int {
+    var subtotal: Float {
         get {
-            var sum = 0
+            var sum = Float()
             for calcItem in calcItems {
                 sum += calcItem.subtotal
             }
