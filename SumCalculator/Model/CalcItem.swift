@@ -6,12 +6,17 @@
 //
 
 import Foundation
+import RealmSwift
 
-class CalcItem {
-    let id: String = ""
-    var name: String = ""
-    var unitPrice: Float = 0
-    var quantity: Float = 0
+class CalcItem: Object {
+    dynamic var id: String = ""
+    dynamic var name: String = ""
+    dynamic var unitPrice: Float = 0
+    dynamic var quantity: Float = 0
+    
+    override static func primaryKey() -> String? {
+            return "id"
+        }
     
     var subtotal: Float {
         get {

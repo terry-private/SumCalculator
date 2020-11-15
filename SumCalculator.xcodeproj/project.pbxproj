@@ -31,6 +31,9 @@
 		09E43EE6255FC56300B8624A /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E43EE5255FC56300B8624A /* NoteTableViewCell.swift */; };
 		09E43EEE255FD87900B8624A /* CalcItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E43EED255FD87900B8624A /* CalcItemView.xib */; };
 		09E43EF3256015C800B8624A /* CalcItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E43EF2256015C800B8624A /* CalcItemView.swift */; };
+		1A1F09F308D27961E7E43C9B /* Pods_SumCalculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE55605D1782AE495CBF613 /* Pods_SumCalculator.framework */; };
+		A44580A01E1C5CA2E86B998D /* Pods_SumCalculator_SumCalculatorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E64D4BDDC58C9FC5ACB6692 /* Pods_SumCalculator_SumCalculatorUITests.framework */; };
+		D729710DFBB604973BC71068 /* Pods_SumCalculatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C851BA532DABC1B9F2467A5D /* Pods_SumCalculatorTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,15 @@
 		09E43EE5255FC56300B8624A /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		09E43EED255FD87900B8624A /* CalcItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalcItemView.xib; sourceTree = "<group>"; };
 		09E43EF2256015C800B8624A /* CalcItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcItemView.swift; sourceTree = "<group>"; };
+		0A17D1084FEBFD01FC12A1B3 /* Pods-SumCalculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SumCalculator.debug.xcconfig"; path = "Target Support Files/Pods-SumCalculator/Pods-SumCalculator.debug.xcconfig"; sourceTree = "<group>"; };
+		1E64D4BDDC58C9FC5ACB6692 /* Pods_SumCalculator_SumCalculatorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SumCalculator_SumCalculatorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		22AAD8BDF3C45688D4A2B7C7 /* Pods-SumCalculatorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SumCalculatorTests.debug.xcconfig"; path = "Target Support Files/Pods-SumCalculatorTests/Pods-SumCalculatorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		584EE139AD16FD3A8B8B174C /* Pods-SumCalculator-SumCalculatorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SumCalculator-SumCalculatorUITests.debug.xcconfig"; path = "Target Support Files/Pods-SumCalculator-SumCalculatorUITests/Pods-SumCalculator-SumCalculatorUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8DF0EFB8BE219C5964989526 /* Pods-SumCalculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SumCalculator.release.xcconfig"; path = "Target Support Files/Pods-SumCalculator/Pods-SumCalculator.release.xcconfig"; sourceTree = "<group>"; };
+		9FE55605D1782AE495CBF613 /* Pods_SumCalculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SumCalculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEB2FDE786FE91FCF4A0C4FE /* Pods-SumCalculatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SumCalculatorTests.release.xcconfig"; path = "Target Support Files/Pods-SumCalculatorTests/Pods-SumCalculatorTests.release.xcconfig"; sourceTree = "<group>"; };
+		C851BA532DABC1B9F2467A5D /* Pods_SumCalculatorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SumCalculatorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFFE368D0D385DC17575E122 /* Pods-SumCalculator-SumCalculatorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SumCalculator-SumCalculatorUITests.release.xcconfig"; path = "Target Support Files/Pods-SumCalculator-SumCalculatorUITests/Pods-SumCalculator-SumCalculatorUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A1F09F308D27961E7E43C9B /* Pods_SumCalculator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D729710DFBB604973BC71068 /* Pods_SumCalculatorTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A44580A01E1C5CA2E86B998D /* Pods_SumCalculator_SumCalculatorUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +171,8 @@
 				0947F94D2557D70C00CA3C2D /* SumCalculatorTests */,
 				0947F9582557D70C00CA3C2D /* SumCalculatorUITests */,
 				0947F9352557D70A00CA3C2D /* Products */,
+				AA955A6D7DC9002343517D44 /* Pods */,
+				5A2D661119DA76D87F2749A3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -248,6 +265,30 @@
 			path = NoteDetailView;
 			sourceTree = "<group>";
 		};
+		5A2D661119DA76D87F2749A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9FE55605D1782AE495CBF613 /* Pods_SumCalculator.framework */,
+				1E64D4BDDC58C9FC5ACB6692 /* Pods_SumCalculator_SumCalculatorUITests.framework */,
+				C851BA532DABC1B9F2467A5D /* Pods_SumCalculatorTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA955A6D7DC9002343517D44 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0A17D1084FEBFD01FC12A1B3 /* Pods-SumCalculator.debug.xcconfig */,
+				8DF0EFB8BE219C5964989526 /* Pods-SumCalculator.release.xcconfig */,
+				584EE139AD16FD3A8B8B174C /* Pods-SumCalculator-SumCalculatorUITests.debug.xcconfig */,
+				CFFE368D0D385DC17575E122 /* Pods-SumCalculator-SumCalculatorUITests.release.xcconfig */,
+				22AAD8BDF3C45688D4A2B7C7 /* Pods-SumCalculatorTests.debug.xcconfig */,
+				AEB2FDE786FE91FCF4A0C4FE /* Pods-SumCalculatorTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -255,9 +296,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0947F95E2557D70C00CA3C2D /* Build configuration list for PBXNativeTarget "SumCalculator" */;
 			buildPhases = (
+				2F6EE05AF78C3FEF542C421F /* [CP] Check Pods Manifest.lock */,
 				0947F9302557D70A00CA3C2D /* Sources */,
 				0947F9312557D70A00CA3C2D /* Frameworks */,
 				0947F9322557D70A00CA3C2D /* Resources */,
+				8DE15DFC7129F34AFC82EE10 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -272,6 +315,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0947F9612557D70C00CA3C2D /* Build configuration list for PBXNativeTarget "SumCalculatorTests" */;
 			buildPhases = (
+				0B76E0D02F60C1E68AB07DE8 /* [CP] Check Pods Manifest.lock */,
 				0947F9462557D70C00CA3C2D /* Sources */,
 				0947F9472557D70C00CA3C2D /* Frameworks */,
 				0947F9482557D70C00CA3C2D /* Resources */,
@@ -290,9 +334,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0947F9642557D70C00CA3C2D /* Build configuration list for PBXNativeTarget "SumCalculatorUITests" */;
 			buildPhases = (
+				7F62B13641F3C8257D488B8C /* [CP] Check Pods Manifest.lock */,
 				0947F9512557D70C00CA3C2D /* Sources */,
 				0947F9522557D70C00CA3C2D /* Frameworks */,
 				0947F9532557D70C00CA3C2D /* Resources */,
+				C5C746E861417F68C5B4D13C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -375,6 +421,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0B76E0D02F60C1E68AB07DE8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SumCalculatorTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2F6EE05AF78C3FEF542C421F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SumCalculator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F62B13641F3C8257D488B8C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SumCalculator-SumCalculatorUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8DE15DFC7129F34AFC82EE10 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SumCalculator/Pods-SumCalculator-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SumCalculator/Pods-SumCalculator-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SumCalculator/Pods-SumCalculator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5C746E861417F68C5B4D13C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SumCalculator-SumCalculatorUITests/Pods-SumCalculator-SumCalculatorUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SumCalculator-SumCalculatorUITests/Pods-SumCalculator-SumCalculatorUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SumCalculator-SumCalculatorUITests/Pods-SumCalculator-SumCalculatorUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0947F9302557D70A00CA3C2D /* Sources */ = {
@@ -569,6 +718,7 @@
 		};
 		0947F95F2557D70C00CA3C2D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A17D1084FEBFD01FC12A1B3 /* Pods-SumCalculator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -588,6 +738,7 @@
 		};
 		0947F9602557D70C00CA3C2D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DF0EFB8BE219C5964989526 /* Pods-SumCalculator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -607,6 +758,7 @@
 		};
 		0947F9622557D70C00CA3C2D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22AAD8BDF3C45688D4A2B7C7 /* Pods-SumCalculatorTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -629,6 +781,7 @@
 		};
 		0947F9632557D70C00CA3C2D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AEB2FDE786FE91FCF4A0C4FE /* Pods-SumCalculatorTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -651,6 +804,7 @@
 		};
 		0947F9652557D70C00CA3C2D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 584EE139AD16FD3A8B8B174C /* Pods-SumCalculator-SumCalculatorUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -671,6 +825,7 @@
 		};
 		0947F9662557D70C00CA3C2D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFFE368D0D385DC17575E122 /* Pods-SumCalculator-SumCalculatorUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
