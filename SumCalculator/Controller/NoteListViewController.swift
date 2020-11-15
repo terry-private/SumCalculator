@@ -27,12 +27,11 @@ class NoteListViewController: UIViewController {
         noteListTableView.dataSource = self
     }
     
-    
     func setupSearchBar() {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "計算ノートを検索します。"
+        searchController.searchBar.placeholder = "ノートを検索します。"
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
@@ -69,7 +68,6 @@ extension NoteListViewController: UISearchResultsUpdating, UISearchBarDelegate {
         self.view.endEditing(true)
         indicator.startAnimating()
     }
-    
 }
 
 

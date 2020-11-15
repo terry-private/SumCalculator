@@ -20,6 +20,8 @@ class NoteDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupIndicator()
+        setupSearchBar()
         
     }
     
@@ -28,7 +30,41 @@ class NoteDetailViewController: UIViewController {
         noteDetailTableView.dataSource = self
         noteDetailTableView.register(UINib(nibName: "NoteTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
     }
+    func setupSearchBar() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "表を検索します。"
+        searchController.searchBar.delegate = self
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
+    }
+    // クルクルインジゲーター設定
+    func setupIndicator() {
+        indicator.center = view.center
+        indicator.style = UIActivityIndicatorView.Style.large
+        view.addSubview(indicator)
+    }
 
+}
+
+/// UISearchBarDelegateのロジック周りをextensionとして分けます。
+extension NoteDetailViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    
+    // 編集だけでなくキーボードを開く時も
+    // Apiのタスクとクルクルが止まる仕様(taskがrunningの場合のみ)
+    func updateSearchResults(for searchController: UISearchController) {
+        DispatchQueue.main.async {
+            //self.repositoryListModel.cancel()
+            self.indicator.stopAnimating()
+        }
+    }
+    // 検索ボタン押下時処理　クルクルスタート
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // guard let searchWord = searchBar.text else { return }
+        self.view.endEditing(true)
+        indicator.startAnimating()
+    }
 }
 
 
