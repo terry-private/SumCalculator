@@ -13,13 +13,13 @@ class NoteTableViewCell: UITableViewCell {
     @IBOutlet weak var subtotalLabel: UILabel!
     @IBOutlet weak var calcItemsStackView: UIStackView!
     
-    
-    var testItemsCount: Int = 0 {
+    var table: CalcTable? {
         didSet{
             loadCalcItems()
         }
     }
-    var items = [CalcItemView]()
+    
+    var itemList = [CalcItemView]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,23 +28,24 @@ class NoteTableViewCell: UITableViewCell {
     }
     
     func loadCalcItems() {
+        guard let items = table?.calcItems else { return }
         removeAllItem()
-        tableNameLabel.text = "肉類"
-        for i in 0..<testItemsCount {
+        tableNameLabel.text = table?.tableName
+        for i in items {
             let view = Bundle.main.loadNibNamed("CalcItemView", owner: self, options: nil)?.first as! CalcItemView
             //view.bounds.size.width = calcItemsStackView.bounds.size.width
             //view.bounds.size.height = 64
-            view.calcItemNameLabel.text = "カルビ"
-            view.quantityLabel.text = "48" + String(i) + "g"
-            view.unitPriceLabel.text = "3円／g"
-            view.subTotalLabel.text = "1,440円"
+            view.calcItemNameLabel.text = i.name
+            view.quantityLabel.text = String(i.quantity)
+            view.unitPriceLabel.text = i.unitPrice.currency + "／\(i.unit)"
+            view.subTotalLabel.text = i.subtotal.currency
             calcItemsStackView.addArrangedSubview(view)
-            items.append(view)
+            itemList.append(view)
         }
 
     }
     private func removeAllItem() {
-        for i in items {
+        for i in itemList {
             i.removeFromSuperview()
         }
     }

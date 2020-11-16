@@ -122,7 +122,11 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="cde-yo-Gn1"/>
-                                    <barButtonItem image="square.and.pencil" catalog="system" id="frH-M1-8AN"/>
+                                    <barButtonItem image="square.and.pencil" catalog="system" id="frH-M1-8AN">
+                                        <connections>
+                                            <action selector="tappedNewButton:" destination="4Uw-An-Y2P" id="Kzi-OJ-LzA"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lyb-Lc-r5I">

@@ -6,24 +6,34 @@
 //
 
 import UIKit
+import RealmSwift
 
 class NoteDetailViewController: UIViewController {
     let cellId = "cellId"
     var searchController: UISearchController!
     var indicator = UIActivityIndicatorView()
     var currentIndexPath: IndexPath?
-    var testTableCount = 6
+    
+    var noteId = "" // notes内の何こ目のnoteなのかのindex
+    var note: CalcNote?
+    private var realm: Realm!
 
     @IBOutlet weak var totalAmountLabel: UILabel!
     @IBOutlet weak var noteDetailTableView: UITableView!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // 各パーツのセットアップ
         setupTableView()
         setupIndicator()
         setupSearchBar()
-        totalAmountLabel.text = "123,456円"
+        //データベースの準備
+        realm = try! Realm()
+        //表示処理
+        reload()
+        
         
     }
     
@@ -47,9 +57,41 @@ class NoteDetailViewController: UIViewController {
         indicator.style = UIActivityIndicatorView.Style.large
         view.addSubview(indicator)
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reload()
+    }
+    
+    func reload() {
+        note = realm.object(ofType: CalcNote.self, forPrimaryKey: noteId)
+        DispatchQueue.main.async {
+            self.navigationItem.title = self.note?.noteName
+            self.noteDetailTableView.reloadData()
+        }
+    }
+    @IBAction func tappedNewButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
+        let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
+        //inputCalcItemViewController.recordViewControllerDelegate = self
+        inputNewNameViewController.delegate = self
+        inputNewNameViewController.navigationItem.title = "新規ノートの作成"
+        let nav = UINavigationController(rootViewController: inputNewNameViewController)
+        
+        self.present(nav,animated: true, completion: nil)
+    }
 }
 
+//------------------------------------------------------------------------------
+extension NoteDetailViewController: InputNewNameDelegate {
+    func addNew(name: String) {
+        realm.addNewTable(name, parentNote: note!)
+        reload()
+    }
+}
+
+
+//------------------------------------------------------------------------------
 /// UISearchBarDelegateのロジック周りをextensionとして分けます。
 extension NoteDetailViewController: UISearchResultsUpdating, UISearchBarDelegate {
     
@@ -69,21 +111,20 @@ extension NoteDetailViewController: UISearchResultsUpdating, UISearchBarDelegate
     }
 }
 
-
+//------------------------------------------------------------------------------
 extension NoteDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return note?.calcTables.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = noteDetailTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteTableViewCell
-        print("cellForRowAt:")
-        cell.testItemsCount = testTableCount
-        
+        cell.table = note?.calcTables[indexPath.row]
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(100 + 64 * testTableCount)
+        let itemsCount = note?.calcTables[indexPath.row].calcItems.count ?? 0
+        return CGFloat(100 + 64 * itemsCount)
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // prepareの処理でindexを使いたいのでselfのindexに一旦保持します。
