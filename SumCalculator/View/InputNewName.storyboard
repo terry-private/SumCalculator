@@ -16,28 +16,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="JJR-o9-UEf">
-                                <rect key="frame" x="30" y="390" width="354" height="116"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="JJR-o9-UEf">
+                                <rect key="frame" x="30" y="94" width="354" height="145"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSj-LK-gsP">
-                                        <rect key="frame" x="0.0" y="0.0" width="354" height="34"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="o2b-B0-ypN">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="63"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLS-z2-oTE">
-                                                <rect key="frame" x="0.0" y="0.0" width="61.5" height="34"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLS-z2-oTE">
+                                                <rect key="frame" x="0.0" y="0.0" width="41" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="smP-ay-7kc">
-                                                <rect key="frame" x="61.5" y="0.0" width="292.5" height="34"/>
+                                                <rect key="frame" x="0.0" y="29" width="354" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="smP-ay-7kc" secondAttribute="trailing" id="Jti-X7-kVh"/>
+                                        </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlf-6h-nMg">
-                                        <rect key="frame" x="0.0" y="74" width="354" height="42"/>
+                                        <rect key="frame" x="77" y="103" width="200" height="42"/>
                                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="eBR-So-rnp"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                         <color key="tintColor" systemColor="secondaryLabelColor"/>
                                         <state key="normal" title="確定"/>
@@ -46,13 +52,17 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="o2b-B0-ypN" firstAttribute="leading" secondItem="JJR-o9-UEf" secondAttribute="leading" id="VSN-14-DsI"/>
+                                    <constraint firstAttribute="trailing" secondItem="o2b-B0-ypN" secondAttribute="trailing" id="mrm-nx-NcE"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eiH-Mf-fA6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="JJR-o9-UEf" firstAttribute="leading" secondItem="eiH-Mf-fA6" secondAttribute="leading" constant="30" id="Px6-80-Vzv"/>
-                            <constraint firstItem="JJR-o9-UEf" firstAttribute="centerY" secondItem="dW5-6k-JVv" secondAttribute="centerY" id="bVS-C1-7BU"/>
+                            <constraint firstItem="JJR-o9-UEf" firstAttribute="top" secondItem="eiH-Mf-fA6" secondAttribute="top" constant="50" id="mIl-vr-aXU"/>
                             <constraint firstItem="eiH-Mf-fA6" firstAttribute="trailing" secondItem="JJR-o9-UEf" secondAttribute="trailing" constant="30" id="ycM-tR-4cY"/>
                         </constraints>
                     </view>

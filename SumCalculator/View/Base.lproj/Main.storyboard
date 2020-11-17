@@ -244,7 +244,11 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="3dZ-jW-2CF"/>
-                                    <barButtonItem image="square.and.pencil" catalog="system" id="ZKv-Ec-zYB"/>
+                                    <barButtonItem image="square.and.pencil" catalog="system" id="ZKv-Ec-zYB">
+                                        <connections>
+                                            <action selector="tappedNewButton:" destination="YQY-LP-1dW" id="BGP-zd-pav"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RmN-O5-hUa">

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TableDetailViewController: UIViewController {
 
@@ -13,9 +14,12 @@ class TableDetailViewController: UIViewController {
     var searchController: UISearchController!
     var indicator = UIActivityIndicatorView()
     
+    // ドメイン系のプロパティ
+    var tableId = "" // 親のノートID {リロードの時にこれを使って note<CalcNote> の値をrealmから取ってくる
+    var table: CalcTable?
+    private var realm: Realm!
+    
     @IBOutlet weak var totalAmountLabel: UILabel!
-    var testTableCount = 6
-
     @IBOutlet weak var itemsTableView: UITableView!
     
     
@@ -46,8 +50,29 @@ class TableDetailViewController: UIViewController {
         indicator.style = UIActivityIndicatorView.Style.large
         view.addSubview(indicator)
     }
-
+    
+    
+    @IBAction func tappedNewButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "InputCalcItem", bundle: nil)
+        let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputCalcItemViewController") as! InputCalcItemViewController
+        //inputCalcItemViewController.recordViewControllerDelegate = self
+        inputNewNameViewController.delegate = self
+        inputNewNameViewController.navigationItem.title = "新規項目の作成"
+        let nav = UINavigationController(rootViewController: inputNewNameViewController)
+        
+        self.present(nav,animated: true, completion: nil)
+    }
+    
 }
+
+extension TableDetailViewController: InputCalcItemViewControllerDelegate{
+    func inputData(calcItem: CalcItem, inputType: InputType) {
+        
+    }
+    
+    
+}
+
 
 /// UISearchBarDelegateのロジック周りをextensionとして分けます。
 extension TableDetailViewController: UISearchResultsUpdating, UISearchBarDelegate {
@@ -67,18 +92,28 @@ extension TableDetailViewController: UISearchResultsUpdating, UISearchBarDelegat
         indicator.startAnimating()
     }
     
+    func reload() {
+        table = realm.object(ofType: CalcTable.self, forPrimaryKey: tableId)
+        DispatchQueue.main.async {
+            self.navigationItem.title = self.table?.tableName
+            self.itemsTableView.reloadData()
+        }
+    }
+    
 }
 
 
 extension TableDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return table?.calcItems.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = itemsTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ItemTableViewCell
-        print("cellForRowAt:")
-        
+        cell.calcItemNameLabel.text = table?.calcItems[indexPath.row].name
+        cell.quantityLabel.text = table?.calcItems[indexPath.row].quantity.currency
+        cell.unitPriceLabel.text = table?.calcItems[indexPath.row].unitPrice.currency
+        cell.subTotalLabel.text = table?.calcItems[indexPath.row].subtotal.currency
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

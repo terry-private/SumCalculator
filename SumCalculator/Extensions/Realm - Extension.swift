@@ -24,4 +24,9 @@ extension Realm {
             note.calcTables.append(table)
         }
     }
+    func addNewItem(_ calcItem: CalcItem, parentTable: CalcTable) {
+        try! self.write {
+            parentTable.calcItems.append(calcItem)
+        }
+    }
 }

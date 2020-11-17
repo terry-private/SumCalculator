@@ -14,14 +14,14 @@ class NoteDetailViewController: UIViewController {
     var indicator = UIActivityIndicatorView()
     var currentIndexPath: IndexPath?
     
-    var noteId = "" // notes内の何こ目のnoteなのかのindex
+    // ドメイン系のプロパティ
+    var noteId = "" // 親のノートID {リロードの時にこれを使って note<CalcNote> の値をrealmから取ってくる
     var note: CalcNote?
     private var realm: Realm!
 
     @IBOutlet weak var totalAmountLabel: UILabel!
     @IBOutlet weak var noteDetailTableView: UITableView!
-    
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
