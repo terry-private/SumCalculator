@@ -10,8 +10,17 @@ import RealmSwift
 
 class CalcNote: Object {
     @objc dynamic var id: String = NSUUID().uuidString
-    @objc dynamic var noteName: String = ""
-    var calcTables: List<CalcTable> = List<CalcTable>()
+    @objc dynamic var editedAt = Date()
+    @objc dynamic var noteName: String = "" {
+        didSet {
+            editedAt = Date()
+        }
+    }
+    var calcTables: List<CalcTable> = List<CalcTable>(){
+        didSet {
+            editedAt = Date()
+        }
+    }
     var total: Float {
         get {
             var sum = Float()
@@ -25,14 +34,11 @@ class CalcNote: Object {
     /// calcTablesの中で最新のlatestEditedDateを返す。
     /// 末端にCalcItemが無いもの容認しているのでnilの場合もあり得る。
     var latestEditedAt: Date? {
-        var latestDate: Date?
+        var latestDate = editedAt
         for calcTable in calcTables {
-            if let calcDate = calcTable.latestEditedAt {
-                if latestDate == nil {
-                    latestDate = calcDate
-                }else if latestDate! > calcDate {
-                    latestDate = calcDate
-                }
+            let tableLatestDate = calcTable.latestEditedAt
+            if latestDate > tableLatestDate {
+                latestDate = tableLatestDate
             }
         }
         return latestDate

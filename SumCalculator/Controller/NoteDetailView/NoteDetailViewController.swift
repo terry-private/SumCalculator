@@ -122,9 +122,10 @@ extension NoteDetailViewController: UITableViewDelegate, UITableViewDataSource {
         cell.table = note?.calcTables[indexPath.row]
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let itemsCount = note?.calcTables[indexPath.row].calcItems.count ?? 0
-        return CGFloat(100 + 64 * itemsCount)
+        return CGFloat(120 + 64 * itemsCount)
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // prepareの処理でindexを使いたいのでselfのindexに一旦保持します。

@@ -31,10 +31,9 @@ class NoteTableViewCell: UITableViewCell {
         guard let items = table?.calcItems else { return }
         removeAllItem()
         tableNameLabel.text = table?.tableName
+        subtotalLabel.text = table?.subtotal.currency
         for i in items {
             let view = Bundle.main.loadNibNamed("CalcItemView", owner: self, options: nil)?.first as! CalcItemView
-            //view.bounds.size.width = calcItemsStackView.bounds.size.width
-            //view.bounds.size.height = 64
             view.calcItemNameLabel.text = i.name
             view.quantityLabel.text = String(i.quantity)
             view.unitPriceLabel.text = i.unitPrice.currency + "／\(i.unit)"
