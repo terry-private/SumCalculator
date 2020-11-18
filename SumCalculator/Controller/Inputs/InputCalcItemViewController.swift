@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import BottomHalfModal
 
 protocol InputCalcItemViewControllerDelegate: class {
     func inputData(calcItem: CalcItem, inputType: InputType)
@@ -35,8 +35,10 @@ class InputCalcItemViewController: UIViewController {
     // IBAction
     // -------------------------------------------------
     @IBAction func tappedUnitPriceButton(_ sender: Any) {
+        modalCalculator(type: .unitPrice)
     }
     @IBAction func tappedQuantityButton(_ sender: Any) {
+        modalCalculator(type: .quantity)
     }
     @IBAction func changedQuantityStepperValue(_ sender: Any) {
         calcItem?.quantity += Float(quantityStepper.value)
@@ -92,6 +94,33 @@ class InputCalcItemViewController: UIViewController {
     private func quantityRedisplay() {
         quantityButton.setTitle((calcItem?.quantity ?? 0).quantity,for: .normal)
     }
+    
+    private func modalCalculator(type: AmountType){
+        let storyboard = UIStoryboard.init(name: "InputCalculatorView", bundle: nil)
+        let inputCalculatorViewController = storyboard.instantiateViewController(withIdentifier: "InputCalculatorViewController") as! InputCalculatorViewController
+        let fN = calcItem?.quantity.quantity ?? "0"
+        inputCalculatorViewController.firstNumber = fN
+        inputCalculatorViewController.inputCalculatorViewControllerDelegate = self
+        inputCalculatorViewController.type = type
+        let nav = BottomHalfModalNavigationController(rootViewController: inputCalculatorViewController)
+        presentBottomHalfModal(nav, animated: true, completion: nil)
+    }
 
 
+}
+
+
+extension InputCalcItemViewController: InputCalculatorViewControllerDelegate {
+    func fixAmount(_ amount: Float, _ type: AmountType) {
+        switch type {
+        case .quantity:
+            calcItem?.quantity = amount
+            quantityRedisplay()
+        case .unitPrice:
+            calcItem?.unitPrice = amount
+            unitPriceRedisplay()
+        }
+    }
+    
+    
 }

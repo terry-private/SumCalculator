@@ -30,6 +30,10 @@
 		0947F9922558380D00CA3C2D /* CalcNoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F9912558380D00CA3C2D /* CalcNoteTests.swift */; };
 		094A0223255D4C9A0024B45A /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */; };
 		094A0228255E9E360024B45A /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094A0227255E9E360024B45A /* NoteTableViewCell.xib */; };
+		095186F1256562BE00EAA820 /* InputCalculatorView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095186F0256562BE00EAA820 /* InputCalculatorView.storyboard */; };
+		095186F6256563D500EAA820 /* InputCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095186F5256563D500EAA820 /* InputCalculatorViewController.swift */; };
+		0951870A256566ED00EAA820 /* CalculatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09518709256566ED00EAA820 /* CalculatorViewCell.swift */; };
+		0951870F2565683B00EAA820 /* String - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951870E2565683B00EAA820 /* String - Extension.swift */; };
 		09703B7825595AD400375604 /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09703B7725595AD400375604 /* NoteListViewController.swift */; };
 		09E43EE6255FC56300B8624A /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E43EE5255FC56300B8624A /* NoteTableViewCell.swift */; };
 		09E43EEE255FD87900B8624A /* CalcItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E43EED255FD87900B8624A /* CalcItemView.xib */; };
@@ -86,6 +90,10 @@
 		0947F9912558380D00CA3C2D /* CalcNoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcNoteTests.swift; sourceTree = "<group>"; };
 		094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 		094A0227255E9E360024B45A /* NoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
+		095186F0256562BE00EAA820 /* InputCalculatorView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputCalculatorView.storyboard; sourceTree = "<group>"; };
+		095186F5256563D500EAA820 /* InputCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputCalculatorViewController.swift; sourceTree = "<group>"; };
+		09518709256566ED00EAA820 /* CalculatorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewCell.swift; sourceTree = "<group>"; };
+		0951870E2565683B00EAA820 /* String - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String - Extension.swift"; sourceTree = "<group>"; };
 		09703B7725595AD400375604 /* NoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
 		09E43EE5255FC56300B8624A /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		09E43EED255FD87900B8624A /* CalcItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalcItemView.xib; sourceTree = "<group>"; };
@@ -146,29 +154,14 @@
 			path = TableDetailView;
 			sourceTree = "<group>";
 		};
-		09472F4B2560C1D300D94ED5 /* InputCalcItem */ = {
-			isa = PBXGroup;
-			children = (
-				09472F572560F18300D94ED5 /* InputCalcItem.storyboard */,
-			);
-			path = InputCalcItem;
-			sourceTree = "<group>";
-		};
 		09472F5C2560F8CF00D94ED5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				09472F5D2560F8EF00D94ED5 /* Float - Extension.swift */,
 				09472F8525616B8A00D94ED5 /* Realm - Extension.swift */,
+				0951870E2565683B00EAA820 /* String - Extension.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		09472F672561097F00D94ED5 /* InputCalcItem */ = {
-			isa = PBXGroup;
-			children = (
-				09472F68256109AD00D94ED5 /* InputCalcItemViewController.swift */,
-			);
-			path = InputCalcItem;
 			sourceTree = "<group>";
 		};
 		0947F92B2557D70A00CA3C2D = {
@@ -243,9 +236,8 @@
 			children = (
 				0947F93D2557D70A00CA3C2D /* Main.storyboard */,
 				0947F9422557D70B00CA3C2D /* LaunchScreen.storyboard */,
-				09472F8A256170C300D94ED5 /* InputNewName.storyboard */,
+				095186EE2565620000EAA820 /* Inputs */,
 				09472F412560A0BD00D94ED5 /* NoteDetailView */,
-				09472F4B2560C1D300D94ED5 /* InputCalcItem */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -256,10 +248,9 @@
 				0947F9372557D70A00CA3C2D /* AppDelegate.swift */,
 				0947F9392557D70A00CA3C2D /* SceneDelegate.swift */,
 				09703B7725595AD400375604 /* NoteListViewController.swift */,
-				09472F8F256174C900D94ED5 /* InputNewNameViewController.swift */,
+				095186EF2565626100EAA820 /* Inputs */,
 				094A022C255EA1200024B45A /* NoteDetailView */,
 				09472F452560BDC500D94ED5 /* TableDetailView */,
-				09472F672561097F00D94ED5 /* InputCalcItem */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -272,6 +263,27 @@
 				09E43EF2256015C800B8624A /* CalcItemView.swift */,
 			);
 			path = NoteDetailView;
+			sourceTree = "<group>";
+		};
+		095186EE2565620000EAA820 /* Inputs */ = {
+			isa = PBXGroup;
+			children = (
+				09472F8A256170C300D94ED5 /* InputNewName.storyboard */,
+				09472F572560F18300D94ED5 /* InputCalcItem.storyboard */,
+				095186F0256562BE00EAA820 /* InputCalculatorView.storyboard */,
+			);
+			path = Inputs;
+			sourceTree = "<group>";
+		};
+		095186EF2565626100EAA820 /* Inputs */ = {
+			isa = PBXGroup;
+			children = (
+				09472F8F256174C900D94ED5 /* InputNewNameViewController.swift */,
+				09472F68256109AD00D94ED5 /* InputCalcItemViewController.swift */,
+				095186F5256563D500EAA820 /* InputCalculatorViewController.swift */,
+				09518709256566ED00EAA820 /* CalculatorViewCell.swift */,
+			);
+			path = Inputs;
 			sourceTree = "<group>";
 		};
 		5A2D661119DA76D87F2749A3 /* Frameworks */ = {
@@ -407,6 +419,7 @@
 			files = (
 				0947F9442557D70B00CA3C2D /* LaunchScreen.storyboard in Resources */,
 				09472F582560F18300D94ED5 /* InputCalcItem.storyboard in Resources */,
+				095186F1256562BE00EAA820 /* InputCalculatorView.storyboard in Resources */,
 				09E43EEE255FD87900B8624A /* CalcItemView.xib in Resources */,
 				0947F9412557D70B00CA3C2D /* Assets.xcassets in Resources */,
 				0947F93F2557D70A00CA3C2D /* Main.storyboard in Resources */,
@@ -539,6 +552,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0951870F2565683B00EAA820 /* String - Extension.swift in Sources */,
 				0947F98D255836A700CA3C2D /* CalcNote.swift in Sources */,
 				094A0223255D4C9A0024B45A /* NoteDetailViewController.swift in Sources */,
 				0947F97B2558173F00CA3C2D /* CalcTable.swift in Sources */,
@@ -547,7 +561,9 @@
 				09472F5E2560F8EF00D94ED5 /* Float - Extension.swift in Sources */,
 				09E43EE6255FC56300B8624A /* NoteTableViewCell.swift in Sources */,
 				09703B7825595AD400375604 /* NoteListViewController.swift in Sources */,
+				0951870A256566ED00EAA820 /* CalculatorViewCell.swift in Sources */,
 				0947F9382557D70A00CA3C2D /* AppDelegate.swift in Sources */,
+				095186F6256563D500EAA820 /* InputCalculatorViewController.swift in Sources */,
 				09472F472560BE2400D94ED5 /* TableDetailViewController.swift in Sources */,
 				09E43EF3256015C800B8624A /* CalcItemView.swift in Sources */,
 				0947F93A2557D70A00CA3C2D /* SceneDelegate.swift in Sources */,

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Input Calculator View Controller-->
+        <scene sceneID="NyL-GO-9GY">
+            <objects>
+                <viewController storyboardIdentifier="InputCalculatorViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="200-X7-3xD" customClass="InputCalculatorViewController" customModule="SumCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KQs-c5-mXn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gq1-og-5Pr">
+                                <rect key="frame" x="0.0" y="512" width="401" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="kmR-oa-aQZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" delaysContentTouches="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GFP-TQ-rpL">
+                                <rect key="frame" x="0.0" y="562" width="414" height="300"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="o7p-xl-058"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wm2-AO-ufV">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellId" id="h8q-PE-raS" customClass="CalculatorViewCell" customModule="SumCalculator" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="J7C-aq-8xW">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Je-jp-Wzz">
+                                <rect key="frame" x="394" y="512" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemOrangeColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Hg7-Ye-Mof"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Hg7-Ye-Mof" firstAttribute="trailing" secondItem="gq1-og-5Pr" secondAttribute="trailing" constant="13" id="4P4-2C-5dX"/>
+                            <constraint firstItem="Hg7-Ye-Mof" firstAttribute="bottom" secondItem="GFP-TQ-rpL" secondAttribute="bottom" id="HAH-ff-iBi"/>
+                            <constraint firstItem="Hg7-Ye-Mof" firstAttribute="trailing" secondItem="2Je-jp-Wzz" secondAttribute="trailing" constant="20" id="SZG-XX-jdR"/>
+                            <constraint firstItem="GFP-TQ-rpL" firstAttribute="leading" secondItem="Hg7-Ye-Mof" secondAttribute="leading" id="Zi9-kg-fXz"/>
+                            <constraint firstItem="gq1-og-5Pr" firstAttribute="top" secondItem="2Je-jp-Wzz" secondAttribute="bottom" id="i0f-NT-kEJ"/>
+                            <constraint firstItem="gq1-og-5Pr" firstAttribute="leading" secondItem="Hg7-Ye-Mof" secondAttribute="leading" id="nkY-dL-jlx"/>
+                            <constraint firstItem="GFP-TQ-rpL" firstAttribute="top" secondItem="gq1-og-5Pr" secondAttribute="bottom" id="rUD-kz-kPs"/>
+                            <constraint firstItem="Hg7-Ye-Mof" firstAttribute="trailing" secondItem="GFP-TQ-rpL" secondAttribute="trailing" id="v4N-dT-vMn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="calculatorCollectionView" destination="GFP-TQ-rpL" id="lsT-hP-h8s"/>
+                        <outlet property="calculatorHeightConstraint" destination="o7p-xl-058" id="Bmf-1b-tsa"/>
+                        <outlet property="numberLabel" destination="gq1-og-5Pr" id="OxL-BJ-m5T"/>
+                        <outlet property="statusLabel" destination="2Je-jp-Wzz" id="TQQ-0A-vub"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7sb-yu-9di" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-133.33333333333334" y="124.55357142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

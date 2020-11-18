@@ -73,7 +73,7 @@ class NoteDetailViewController: UIViewController {
         let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
         //inputCalcItemViewController.recordViewControllerDelegate = self
         inputNewNameViewController.delegate = self
-        inputNewNameViewController.navigationItem.title = "新規ノートの作成"
+        inputNewNameViewController.navigationItem.title = "新規リストの作成"
         let nav = UINavigationController(rootViewController: inputNewNameViewController)
         
         self.present(nav,animated: true, completion: nil)
