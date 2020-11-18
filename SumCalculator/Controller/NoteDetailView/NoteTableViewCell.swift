@@ -35,7 +35,7 @@ class NoteTableViewCell: UITableViewCell {
         for i in items {
             let view = Bundle.main.loadNibNamed("CalcItemView", owner: self, options: nil)?.first as! CalcItemView
             view.calcItemNameLabel.text = i.name
-            view.quantityLabel.text = String(i.quantity) + i.unit
+            view.quantityLabel.text = i.quantity.quantity + i.unit
             if i.unit == "" {
                 view.unitPriceLabel.text = i.unitPrice.currency
             } else {

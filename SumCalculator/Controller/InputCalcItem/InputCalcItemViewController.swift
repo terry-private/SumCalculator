@@ -90,7 +90,7 @@ class InputCalcItemViewController: UIViewController {
         unitPriceButton.setTitle((calcItem?.unitPrice ?? 0).currency, for: .normal)
     }
     private func quantityRedisplay() {
-        quantityButton.setTitle(String(calcItem?.quantity ?? 0),for: .normal)
+        quantityButton.setTitle((calcItem?.quantity ?? 0).quantity,for: .normal)
     }
 
 
