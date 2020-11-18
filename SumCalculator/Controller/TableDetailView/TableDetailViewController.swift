@@ -28,7 +28,12 @@ class TableDetailViewController: UIViewController {
         setupTableView()
         setupIndicator()
         setupSearchBar()
-        totalAmountLabel.text = "123,456円"
+        //データベースの準備
+        realm = try! Realm()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reload()
     }
     
     func setupTableView() {
@@ -51,6 +56,14 @@ class TableDetailViewController: UIViewController {
         view.addSubview(indicator)
     }
     
+    func reload() {
+        table = realm.object(ofType: CalcTable.self, forPrimaryKey: tableId)
+        DispatchQueue.main.async {
+            self.navigationItem.title = self.table?.tableName
+            self.itemsTableView.reloadData()
+            self.totalAmountLabel.text = self.table?.subtotal.currency ?? "¥0"
+        }
+    }
     
     @IBAction func tappedNewButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "InputCalcItem", bundle: nil)
@@ -64,12 +77,16 @@ class TableDetailViewController: UIViewController {
     }
     
 }
-
+// 強制アンラップ使ってます。
 extension TableDetailViewController: InputCalcItemViewControllerDelegate{
     func inputData(calcItem: CalcItem, inputType: InputType) {
-        
+        if inputType == .AddNew {
+            realm.addNewItem(calcItem, parentTable: table!)
+        } else {
+            
+        }
+        reload()
     }
-    
     
 }
 
@@ -92,13 +109,6 @@ extension TableDetailViewController: UISearchResultsUpdating, UISearchBarDelegat
         indicator.startAnimating()
     }
     
-    func reload() {
-        table = realm.object(ofType: CalcTable.self, forPrimaryKey: tableId)
-        DispatchQueue.main.async {
-            self.navigationItem.title = self.table?.tableName
-            self.itemsTableView.reloadData()
-        }
-    }
     
 }
 
@@ -110,10 +120,16 @@ extension TableDetailViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = itemsTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ItemTableViewCell
-        cell.calcItemNameLabel.text = table?.calcItems[indexPath.row].name
-        cell.quantityLabel.text = table?.calcItems[indexPath.row].quantity.currency
-        cell.unitPriceLabel.text = table?.calcItems[indexPath.row].unitPrice.currency
-        cell.subTotalLabel.text = table?.calcItems[indexPath.row].subtotal.currency
+        let item = table?.calcItems[indexPath.row]
+        let unit = item?.unit ?? ""
+        cell.calcItemNameLabel.text = item?.name
+        cell.quantityLabel.text = (item?.quantity ?? 0).currency + unit
+        if unit == "" {
+            cell.unitPriceLabel.text = item?.unitPrice.currency
+        } else {
+            cell.unitPriceLabel.text = (item?.unitPrice ?? 0).currency + "／\(unit)"
+        }
+        cell.subTotalLabel.text = item?.subtotal.currency
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

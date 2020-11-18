@@ -31,9 +31,6 @@ class NoteDetailViewController: UIViewController {
         setupSearchBar()
         //データベースの準備
         realm = try! Realm()
-        //表示処理
-        reload()
-        
         
     }
     
@@ -67,6 +64,7 @@ class NoteDetailViewController: UIViewController {
         note = realm.object(ofType: CalcNote.self, forPrimaryKey: noteId)
         DispatchQueue.main.async {
             self.navigationItem.title = self.note?.noteName
+            self.totalAmountLabel.text = self.note?.total.currency
             self.noteDetailTableView.reloadData()
         }
     }
@@ -139,10 +137,7 @@ extension NoteDetailViewController: UITableViewDelegate, UITableViewDataSource {
         guard let indexPath = currentIndexPath else { return }
         if segue.identifier == "openTable"{
             let tableDetailVC = segue.destination as! TableDetailViewController
-            let cell = noteDetailTableView.cellForRow(at: indexPath) as? NoteTableViewCell
-            let name = cell?.tableNameLabel.text
-            tableDetailVC.navigationItem.title = name
-            print(indexPath)
+            tableDetailVC.tableId = note?.calcTables[indexPath.row].id ?? ""
             
         }
     }

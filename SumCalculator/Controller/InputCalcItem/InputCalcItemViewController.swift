@@ -17,57 +17,81 @@ enum InputType {
 }
 class InputCalcItemViewController: UIViewController {
     
-    
     weak var delegate: InputCalcItemViewControllerDelegate?
     var calcItem: CalcItem?
     var inputType:InputType = .AddNew
     
-    @IBOutlet weak var itemNameLabel: UIStackView!
-    @IBOutlet weak var unitLabel: UITextField!
+    // -------------------------------------------------
+    // IBOutlet
+    // -------------------------------------------------
+    @IBOutlet weak var itemNameTextField: UITextField!
+    @IBOutlet weak var unitTextField: UITextField!
     @IBOutlet weak var unitPriceButton: UIButton!
     @IBOutlet weak var quantityButton: UIButton!
-    
+    @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var quantityStepper: UIStepper!
+    
+    // -------------------------------------------------
+    // IBAction
+    // -------------------------------------------------
     @IBAction func tappedUnitPriceButton(_ sender: Any) {
     }
     @IBAction func tappedQuantityButton(_ sender: Any) {
     }
-    @IBAction func changedValueStepper(_ sender: Any) {
+    @IBAction func changedQuantityStepperValue(_ sender: Any) {
         calcItem?.quantity += Float(quantityStepper.value)
         quantityStepper.value = 0
+        quantityRedisplay()
     }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationItem.title = "詳細情報"
-        
-        // Do any additional setup after loading the view.
-    }
-    
     
     @IBAction func itemNameEdited(_ sender: Any) {
         view.endEditing(true)
     }
+    @IBAction func unitEdited(_ sender: Any) {
+        view.endEditing(true)
+    }
+    @IBAction func tappedConfirmButton(_ sender: Any) {
+        guard let fixedItem = calcItem else { return }
+        fixedItem.unit = unitTextField.text ?? ""
+        fixedItem.name = itemNameTextField.text ?? ""
+        
+        delegate?.inputData(calcItem: fixedItem, inputType: inputType)
+        dismiss(animated: true, completion: nil)
+    }
     
     
+    // -------------------------------------------------
+    // ライフサイクル
+    // -------------------------------------------------
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.title = "詳細情報"
+        confirmButton.layer.cornerRadius = 8
+        confirmButton.layer.borderWidth = 1
+        confirmButton.layer.borderColor = UIColor.opaqueSeparator.cgColor
+        if calcItem == nil {
+            calcItem = CalcItem()
+        } else {
+            inputType = .Update
+        }
+        reDisplay()
+    }
+    
+    
+    
+    // -------------------------------------------------
     // 表示処理シリーズ
+    // -------------------------------------------------
+    private func reDisplay() {
+        unitPriceRedisplay()
+        quantityRedisplay()
+    }
     private func unitPriceRedisplay() {
-        unitPriceButton.titleLabel?.text = (calcItem?.unitPrice ?? 0).currency
+        unitPriceButton.setTitle((calcItem?.unitPrice ?? 0).currency, for: .normal)
     }
-    
     private func quantityRedisplay() {
-        quantityButton.titleLabel?.text = String(calcItem?.quantity ?? 0)
+        quantityButton.setTitle(String(calcItem?.quantity ?? 0),for: .normal)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
