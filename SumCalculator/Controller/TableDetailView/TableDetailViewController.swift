@@ -13,6 +13,7 @@ class TableDetailViewController: UIViewController {
     let cellId = "cellId"
     var searchController: UISearchController!
     var indicator = UIActivityIndicatorView()
+    var currentIndex = 0
     
     // ドメイン系のプロパティ
     var tableId = "" // 親のノートID {リロードの時にこれを使って note<CalcNote> の値をrealmから取ってくる
@@ -83,7 +84,7 @@ extension TableDetailViewController: InputCalcItemViewControllerDelegate{
         if inputType == .AddNew {
             realm.addNewItem(calcItem, parentTable: calcTable!) // 強制アンラップ使ってます。
         } else {
-            
+            realm.updateItem(calcTable!.calcItems[currentIndex], after: calcItem) // 強制アンラップ使ってます。
         }
         reload()
     }
@@ -134,10 +135,10 @@ extension TableDetailViewController: UITableViewDelegate, UITableViewDataSource 
         print("selected")
         let storyboard = UIStoryboard(name: "InputCalcItem", bundle: nil)
         let inputCalcItemViewController = storyboard.instantiateViewController(identifier: "InputCalcItemViewController") as! InputCalcItemViewController
-        //inputCalcItemViewController.recordViewControllerDelegate = self
-        
+        inputCalcItemViewController.delegate = self
+        inputCalcItemViewController.before = calcTable?.calcItems[indexPath.row]
         let nav = UINavigationController(rootViewController: inputCalcItemViewController)
-        
+        currentIndex = indexPath.row
         self.present(nav,animated: true, completion: nil)
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

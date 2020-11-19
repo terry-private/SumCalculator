@@ -18,8 +18,9 @@ enum InputType {
 class InputCalcItemViewController: UIViewController {
     
     weak var delegate: InputCalcItemViewControllerDelegate?
-    var calcItem: CalcItem?
+    var calcItem = CalcItem()
     var inputType:InputType = .AddNew
+    var before: CalcItem?
     
     // -------------------------------------------------
     // IBOutlet
@@ -41,7 +42,9 @@ class InputCalcItemViewController: UIViewController {
         modalCalculator(type: .quantity)
     }
     @IBAction func changedQuantityStepperValue(_ sender: Any) {
-        calcItem?.quantity += Double(quantityStepper.value)
+        
+        
+        calcItem.quantity += Double(quantityStepper.value)
         quantityStepper.value = 0
         quantityRedisplay()
     }
@@ -53,11 +56,10 @@ class InputCalcItemViewController: UIViewController {
         view.endEditing(true)
     }
     @IBAction func tappedConfirmButton(_ sender: Any) {
-        guard let fixedItem = calcItem else { return }
-        fixedItem.unit = unitTextField.text ?? ""
-        fixedItem.name = itemNameTextField.text ?? ""
+        calcItem.unit = unitTextField.text ?? ""
+        calcItem.name = itemNameTextField.text ?? ""
         
-        delegate?.inputData(calcItem: fixedItem, inputType: inputType)
+        delegate?.inputData(calcItem: calcItem, inputType: inputType)
         dismiss(animated: true, completion: nil)
     }
     
@@ -67,14 +69,26 @@ class InputCalcItemViewController: UIViewController {
     // -------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "詳細情報"
+        
         confirmButton.layer.cornerRadius = 8
         confirmButton.layer.borderWidth = 1
         confirmButton.layer.borderColor = UIColor.opaqueSeparator.cgColor
-        if calcItem == nil {
-            calcItem = CalcItem()
+        if before == nil {
+            navigationItem.title = "新しい項目を追加します"
         } else {
             inputType = .Update
+            guard let beforeItem = before else {
+                return
+            }
+            calcItem.id = beforeItem.id
+            calcItem.name = beforeItem.name
+            calcItem.quantity = beforeItem.quantity
+            calcItem.unit = beforeItem.unit
+            calcItem.unitPrice = beforeItem.unitPrice
+            
+            unitTextField.text = calcItem.unit
+            itemNameTextField.text = calcItem.name
+            navigationItem.title = "この項目修正します。"
         }
         reDisplay()
     }
@@ -89,16 +103,16 @@ class InputCalcItemViewController: UIViewController {
         quantityRedisplay()
     }
     private func unitPriceRedisplay() {
-        unitPriceButton.setTitle((calcItem?.unitPrice ?? 0).currency, for: .normal)
+        unitPriceButton.setTitle(calcItem.unitPrice.currency, for: .normal)
     }
     private func quantityRedisplay() {
-        quantityButton.setTitle((calcItem?.quantity ?? 0).quantity,for: .normal)
+        quantityButton.setTitle(calcItem.quantity.quantity,for: .normal)
     }
     
     private func modalCalculator(type: AmountType){
         let storyboard = UIStoryboard.init(name: "InputCalculatorView", bundle: nil)
         let inputCalculatorViewController = storyboard.instantiateViewController(withIdentifier: "InputCalculatorViewController") as! InputCalculatorViewController
-        let fN = calcItem?.quantity.quantity ?? "0"
+        let fN = calcItem.quantity.quantity
         inputCalculatorViewController.firstNumber = fN
         inputCalculatorViewController.inputCalculatorViewControllerDelegate = self
         inputCalculatorViewController.type = type
@@ -114,10 +128,10 @@ extension InputCalcItemViewController: InputCalculatorViewControllerDelegate {
     func fixAmount(_ amount: Double, _ type: AmountType) {
         switch type {
         case .quantity:
-            calcItem?.quantity = amount
+            calcItem.quantity = amount
             quantityRedisplay()
         case .unitPrice:
-            calcItem?.unitPrice = amount
+            calcItem.unitPrice = amount
             unitPriceRedisplay()
         }
     }

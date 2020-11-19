@@ -34,6 +34,17 @@ extension Realm {
         }
     }
     // --------------------------------------------------------------
+    // addメソッド
+    // --------------------------------------------------------------
+    func updateItem(_ before: CalcItem, after: CalcItem) {
+        try! self.write {
+            before.name = after.name
+            before.quantity = after.quantity
+            before.unit = after.unit
+            before.unitPrice = after.unitPrice
+        }
+    }
+    // --------------------------------------------------------------
     // deleteメソッド
     // --------------------------------------------------------------
     func deleteItem(calcItem: CalcItem) {
