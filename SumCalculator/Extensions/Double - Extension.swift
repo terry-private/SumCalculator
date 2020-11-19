@@ -1,5 +1,5 @@
 //
-//  Float - Extension.swift
+//  Double - Extension.swift
 //  SumCalculator
 //
 //  Created by 若江照仁 on 2020/11/15.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Float {
+extension Double {
     
     /// 日本円のみの対応とします。
     /// ・小数点以下は第二位までとします。
@@ -15,7 +15,7 @@ extension Float {
     var currency: String {
         let amountInt = Int(self)
         // マイナスは外しておきます
-        let afterDot = abs(self - Float(amountInt))
+        let afterDot = abs(self - Double(amountInt))
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.locale = Locale(identifier: "ja_JP")
@@ -35,7 +35,7 @@ extension Float {
     var quantity: String {
         let amountInt = Int(self)
         // マイナスは外しておきます
-        let afterDot = abs(self - Float(amountInt))
+        let afterDot = abs(self - Double(amountInt))
         var resultString = String(amountInt)
         if afterDot != 0 {
             // 小数点以下は第二位までとします。

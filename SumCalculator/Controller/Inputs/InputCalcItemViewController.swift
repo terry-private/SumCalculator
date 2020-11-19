@@ -41,7 +41,7 @@ class InputCalcItemViewController: UIViewController {
         modalCalculator(type: .quantity)
     }
     @IBAction func changedQuantityStepperValue(_ sender: Any) {
-        calcItem?.quantity += Float(quantityStepper.value)
+        calcItem?.quantity += Double(quantityStepper.value)
         quantityStepper.value = 0
         quantityRedisplay()
     }
@@ -111,7 +111,7 @@ class InputCalcItemViewController: UIViewController {
 
 
 extension InputCalcItemViewController: InputCalculatorViewControllerDelegate {
-    func fixAmount(_ amount: Float, _ type: AmountType) {
+    func fixAmount(_ amount: Double, _ type: AmountType) {
         switch type {
         case .quantity:
             calcItem?.quantity = amount

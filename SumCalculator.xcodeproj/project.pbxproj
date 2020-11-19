@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		09472F472560BE2400D94ED5 /* TableDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09472F462560BE2400D94ED5 /* TableDetailViewController.swift */; };
 		09472F582560F18300D94ED5 /* InputCalcItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09472F572560F18300D94ED5 /* InputCalcItem.storyboard */; };
-		09472F5E2560F8EF00D94ED5 /* Float - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09472F5D2560F8EF00D94ED5 /* Float - Extension.swift */; };
-		09472F632560FD4D00D94ED5 /* FloatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09472F622560FD4D00D94ED5 /* FloatTests.swift */; };
+		09472F5E2560F8EF00D94ED5 /* Double - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09472F5D2560F8EF00D94ED5 /* Double - Extension.swift */; };
+		09472F632560FD4D00D94ED5 /* DoubleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09472F622560FD4D00D94ED5 /* DoubleTests.swift */; };
 		09472F69256109AD00D94ED5 /* InputCalcItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09472F68256109AD00D94ED5 /* InputCalcItemViewController.swift */; };
 		09472F8625616B8A00D94ED5 /* Realm - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09472F8525616B8A00D94ED5 /* Realm - Extension.swift */; };
 		09472F8B256170C300D94ED5 /* InputNewName.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09472F8A256170C300D94ED5 /* InputNewName.storyboard */; };
@@ -63,8 +63,8 @@
 /* Begin PBXFileReference section */
 		09472F462560BE2400D94ED5 /* TableDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDetailViewController.swift; sourceTree = "<group>"; };
 		09472F572560F18300D94ED5 /* InputCalcItem.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputCalcItem.storyboard; sourceTree = "<group>"; };
-		09472F5D2560F8EF00D94ED5 /* Float - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float - Extension.swift"; sourceTree = "<group>"; };
-		09472F622560FD4D00D94ED5 /* FloatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatTests.swift; sourceTree = "<group>"; };
+		09472F5D2560F8EF00D94ED5 /* Double - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double - Extension.swift"; sourceTree = "<group>"; };
+		09472F622560FD4D00D94ED5 /* DoubleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleTests.swift; sourceTree = "<group>"; };
 		09472F68256109AD00D94ED5 /* InputCalcItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputCalcItemViewController.swift; sourceTree = "<group>"; };
 		09472F8525616B8A00D94ED5 /* Realm - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm - Extension.swift"; sourceTree = "<group>"; };
 		09472F8A256170C300D94ED5 /* InputNewName.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputNewName.storyboard; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 		09472F5C2560F8CF00D94ED5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				09472F5D2560F8EF00D94ED5 /* Float - Extension.swift */,
+				09472F5D2560F8EF00D94ED5 /* Double - Extension.swift */,
 				09472F8525616B8A00D94ED5 /* Realm - Extension.swift */,
 				0951870E2565683B00EAA820 /* String - Extension.swift */,
 			);
@@ -206,7 +206,7 @@
 				0947F9752558139A00CA3C2D /* CalcItemTests.swift */,
 				0947F98725581F5C00CA3C2D /* CalcTableTests.swift */,
 				0947F9912558380D00CA3C2D /* CalcNoteTests.swift */,
-				09472F622560FD4D00D94ED5 /* FloatTests.swift */,
+				09472F622560FD4D00D94ED5 /* DoubleTests.swift */,
 				0947F9502557D70C00CA3C2D /* Info.plist */,
 			);
 			path = SumCalculatorTests;
@@ -558,7 +558,7 @@
 				0947F97B2558173F00CA3C2D /* CalcTable.swift in Sources */,
 				09472F8625616B8A00D94ED5 /* Realm - Extension.swift in Sources */,
 				09472F69256109AD00D94ED5 /* InputCalcItemViewController.swift in Sources */,
-				09472F5E2560F8EF00D94ED5 /* Float - Extension.swift in Sources */,
+				09472F5E2560F8EF00D94ED5 /* Double - Extension.swift in Sources */,
 				09E43EE6255FC56300B8624A /* NoteTableViewCell.swift in Sources */,
 				09703B7825595AD400375604 /* NoteListViewController.swift in Sources */,
 				0951870A256566ED00EAA820 /* CalculatorViewCell.swift in Sources */,
@@ -580,7 +580,7 @@
 				0947F98825581F5C00CA3C2D /* CalcTableTests.swift in Sources */,
 				0947F9922558380D00CA3C2D /* CalcNoteTests.swift in Sources */,
 				0947F9762558139A00CA3C2D /* CalcItemTests.swift in Sources */,
-				09472F632560FD4D00D94ED5 /* FloatTests.swift in Sources */,
+				09472F632560FD4D00D94ED5 /* DoubleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

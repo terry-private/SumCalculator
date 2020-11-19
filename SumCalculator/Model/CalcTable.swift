@@ -23,8 +23,8 @@ class CalcTable: Object {
         }
     }
     
-    var subtotal: Float {
-        var sum = Float()
+    var subtotal: Double {
+        var sum = Double()
         for calcItem in calcItems {
             sum += calcItem.subtotal
         }

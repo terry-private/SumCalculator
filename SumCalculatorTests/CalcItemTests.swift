@@ -20,8 +20,8 @@ class CalcItemTests: XCTestCase {
 
     func testSubtotal() throws {
         let calcItem = CalcItem()
-        let testPrice:Float = 2800
-        let testQuantity:Float = 3
+        let testPrice:Double = 2800
+        let testQuantity:Double = 3
         let testSum = testPrice * testQuantity
         calcItem.unitPrice = testPrice
         calcItem.quantity = testQuantity

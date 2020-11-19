@@ -21,9 +21,9 @@ class CalcNote: Object {
             editedAt = Date()
         }
     }
-    var total: Float {
+    var total: Double {
         get {
-            var sum = Float()
+            var sum = Double()
             for calcTable in calcTables {
                 sum += calcTable.subtotal
             }

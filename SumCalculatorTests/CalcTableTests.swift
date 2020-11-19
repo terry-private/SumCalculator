@@ -24,13 +24,13 @@ class CalcTableTests: XCTestCase {
         let calcItem1 = CalcItem()
         calcItem1.quantity = 3
         calcItem1.unitPrice = 1000
-        let testResult1:Float = 3000
+        let testResult1:Double = 3000
         calcTable.calcItems.append(calcItem1)
         
         let calcItem2 = CalcItem()
         calcItem2.quantity = 4
         calcItem2.unitPrice = 2000
-        let testResult2:Float = 8000
+        let testResult2:Double = 8000
         calcTable.calcItems.append(calcItem2)
         
         XCTAssertEqual(calcTable.subtotal, testResult1 + testResult2)

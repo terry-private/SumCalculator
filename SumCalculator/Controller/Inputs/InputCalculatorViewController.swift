@@ -9,7 +9,7 @@ import UIKit
 import BottomHalfModal
 
 protocol InputCalculatorViewControllerDelegate {
-    func fixAmount(_ amount: Float, _ type: AmountType)
+    func fixAmount(_ amount: Double, _ type: AmountType)
 }
 enum AmountType {
     case quantity
@@ -97,15 +97,15 @@ class InputCalculatorViewController: UIViewController, SheetContentHeightModifia
         if amount.contains(".") {
             numberLabel.text = amount
         } else {
-            setDecimalString(Float(amount) ?? 0)
+            setDecimalString(Double(amount) ?? 0)
         }
     }
-    func setDecimalString(_ amountFloat: Float) {
-        numberLabel.text = amountFloat.quantity
+    func setDecimalString(_ amountDouble: Double) {
+        numberLabel.text = amountDouble.quantity
     }
     
     func fixAmount(){
-        let amount = Float(numberLabel.text ?? "0") ?? 0
+        let amount = Double(numberLabel.text ?? "0") ?? 0
         inputCalculatorViewControllerDelegate?.fixAmount(amount, type)
         dismiss(animated: true, completion: nil)
     }
@@ -290,7 +290,7 @@ extension InputCalculatorViewController: UICollectionViewDelegate, UICollectionV
         if let result = resultString, result.hasSuffix(".0") {
             resultString = result.replacingOccurrences(of: ".0", with: "")
         }
-        setDecimalString(Float(resultString ?? "") ?? 0)
+        setDecimalString(Double(resultString ?? "") ?? 0)
         firstNumber = ""
         secondNumber = ""
         
