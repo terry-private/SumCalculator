@@ -9,6 +9,10 @@ import Foundation
 import RealmSwift
 
 extension Realm {
+    
+    // --------------------------------------------------------------
+    // addメソッド
+    // --------------------------------------------------------------
     func addNewNote(_ name: String) {
         let note = CalcNote()
         note.noteName = name
@@ -27,6 +31,30 @@ extension Realm {
     func addNewItem(_ calcItem: CalcItem, parentTable: CalcTable) {
         try! self.write {
             parentTable.calcItems.append(calcItem)
+        }
+    }
+    // --------------------------------------------------------------
+    // deleteメソッド
+    // --------------------------------------------------------------
+    func deleteItem(calcItem: CalcItem) {
+        try! self.write {
+            self.delete(calcItem)
+        }
+    }
+    func deleteTable(calcTable: CalcTable) {
+        for i in calcTable.calcItems {
+            self.deleteItem(calcItem: i)
+        }
+        try! self.write {
+            self.delete(calcTable)
+        }
+    }
+    func deleteNote(calcNote: CalcNote) {
+        for i in calcNote.calcTables {
+            self.deleteTable(calcTable: i)
+        }
+        try! self.write {
+            self.delete(calcNote)
         }
     }
 }

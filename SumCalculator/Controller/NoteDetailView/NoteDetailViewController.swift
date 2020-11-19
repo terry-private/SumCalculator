@@ -16,7 +16,7 @@ class NoteDetailViewController: UIViewController {
     
     // ドメイン系のプロパティ
     var noteId = "" // 親のノートID {リロードの時にこれを使って note<CalcNote> の値をrealmから取ってくる
-    var note: CalcNote?
+    var calcNote: CalcNote?
     private var realm: Realm!
 
     @IBOutlet weak var totalAmountLabel: UILabel!
@@ -61,10 +61,10 @@ class NoteDetailViewController: UIViewController {
     }
     
     func reload() {
-        note = realm.object(ofType: CalcNote.self, forPrimaryKey: noteId)
+        calcNote = realm.object(ofType: CalcNote.self, forPrimaryKey: noteId)
         DispatchQueue.main.async {
-            self.navigationItem.title = self.note?.noteName
-            self.totalAmountLabel.text = self.note?.total.currency
+            self.navigationItem.title = self.calcNote?.noteName
+            self.totalAmountLabel.text = self.calcNote?.total.currency
             self.noteDetailTableView.reloadData()
         }
     }
@@ -83,7 +83,7 @@ class NoteDetailViewController: UIViewController {
 //------------------------------------------------------------------------------
 extension NoteDetailViewController: InputNewNameDelegate {
     func addNew(name: String) {
-        realm.addNewTable(name, parentNote: note!)
+        realm.addNewTable(name, parentNote: calcNote!)
         reload()
     }
 }
@@ -112,23 +112,28 @@ extension NoteDetailViewController: UISearchResultsUpdating, UISearchBarDelegate
 //------------------------------------------------------------------------------
 extension NoteDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return note?.calcTables.count ?? 0
+        return calcNote?.calcTables.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = noteDetailTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteTableViewCell
-        cell.table = note?.calcTables[indexPath.row]
+        cell.table = calcNote?.calcTables[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let itemsCount = note?.calcTables[indexPath.row].calcItems.count ?? 0
+        let itemsCount = calcNote?.calcTables[indexPath.row].calcItems.count ?? 0
         return CGFloat(120 + 64 * itemsCount)
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // prepareの処理でindexを使いたいのでselfのindexに一旦保持します。
         currentIndexPath = indexPath
         performSegue(withIdentifier: "openTable", sender: self)
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard let deleteItem = calcNote?.calcTables[indexPath.row] else { return }
+        realm.deleteTable(calcTable: deleteItem)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
     // 遷移前に遷移先Viewにモデルとそのデリゲートをセットします。
@@ -137,7 +142,7 @@ extension NoteDetailViewController: UITableViewDelegate, UITableViewDataSource {
         guard let indexPath = currentIndexPath else { return }
         if segue.identifier == "openTable"{
             let tableDetailVC = segue.destination as! TableDetailViewController
-            tableDetailVC.tableId = note?.calcTables[indexPath.row].id ?? ""
+            tableDetailVC.tableId = calcNote?.calcTables[indexPath.row].id ?? ""
             
         }
     }

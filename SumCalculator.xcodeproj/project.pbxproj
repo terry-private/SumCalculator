@@ -236,8 +236,8 @@
 			children = (
 				0947F93D2557D70A00CA3C2D /* Main.storyboard */,
 				0947F9422557D70B00CA3C2D /* LaunchScreen.storyboard */,
-				095186EE2565620000EAA820 /* Inputs */,
 				09472F412560A0BD00D94ED5 /* NoteDetailView */,
+				095186EE2565620000EAA820 /* Inputs */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -248,9 +248,9 @@
 				0947F9372557D70A00CA3C2D /* AppDelegate.swift */,
 				0947F9392557D70A00CA3C2D /* SceneDelegate.swift */,
 				09703B7725595AD400375604 /* NoteListViewController.swift */,
-				095186EF2565626100EAA820 /* Inputs */,
 				094A022C255EA1200024B45A /* NoteDetailView */,
 				09472F452560BDC500D94ED5 /* TableDetailView */,
+				095186EF2565626100EAA820 /* Inputs */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

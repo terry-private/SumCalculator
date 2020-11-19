@@ -14,7 +14,7 @@ class NoteListViewController: UIViewController {
     var indicator = UIActivityIndicatorView()
     var currentIndexPath: IndexPath?
     
-    var notes: Results<CalcNote>?
+    var calcNotes: Results<CalcNote>?
     private var realm: Realm!
     
     @IBOutlet weak var noteListTableView: UITableView!
@@ -58,7 +58,7 @@ class NoteListViewController: UIViewController {
     }
     
     func reload() {
-        notes = realm.objects(CalcNote.self)
+        calcNotes = realm.objects(CalcNote.self)
         DispatchQueue.main.async {
             self.noteListTableView.reloadData()
         }
@@ -109,12 +109,12 @@ extension NoteListViewController: UISearchResultsUpdating, UISearchBarDelegate {
 // UITableViewDelegate, UITableViewDataSourceのロジック周りをextensionとして分けます。
 extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notes?.count ?? 0
+        return calcNotes?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = noteListTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteListTableViewCell
-        cell.noteNameLabel.text = notes?[indexPath.row].noteName ?? ""
+        cell.noteNameLabel.text = calcNotes?[indexPath.row].noteName ?? ""
         return cell
     }
     
@@ -123,6 +123,11 @@ extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
         currentIndexPath = indexPath
         performSegue(withIdentifier: "openNote", sender: self)
     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard let deleteItem = calcNotes?[indexPath.row] else { return }
+        realm.deleteNote(calcNote: deleteItem)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
     
     // 遷移前に遷移先Viewにモデルとそのデリゲートをセットします。
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -130,7 +135,7 @@ extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
         guard let indexPath = currentIndexPath else { return }
         if segue.identifier == "openNote"{
             let noteDetailVC = segue.destination as! NoteDetailViewController
-            noteDetailVC.noteId = notes?[indexPath.row].id ?? ""
+            noteDetailVC.noteId = calcNotes?[indexPath.row].id ?? ""
             
         }
     }

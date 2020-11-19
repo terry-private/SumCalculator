@@ -16,7 +16,7 @@ class TableDetailViewController: UIViewController {
     
     // ドメイン系のプロパティ
     var tableId = "" // 親のノートID {リロードの時にこれを使って note<CalcNote> の値をrealmから取ってくる
-    var table: CalcTable?
+    var calcTable: CalcTable?
     private var realm: Realm!
     
     @IBOutlet weak var totalAmountLabel: UILabel!
@@ -57,11 +57,11 @@ class TableDetailViewController: UIViewController {
     }
     
     func reload() {
-        table = realm.object(ofType: CalcTable.self, forPrimaryKey: tableId)
+        calcTable = realm.object(ofType: CalcTable.self, forPrimaryKey: tableId)
         DispatchQueue.main.async {
-            self.navigationItem.title = self.table?.tableName
+            self.navigationItem.title = self.calcTable?.tableName
             self.itemsTableView.reloadData()
-            self.totalAmountLabel.text = self.table?.subtotal.currency ?? "¥0"
+            self.totalAmountLabel.text = self.calcTable?.subtotal.currency ?? "¥0"
         }
     }
     
@@ -77,11 +77,11 @@ class TableDetailViewController: UIViewController {
     }
     
 }
-// 強制アンラップ使ってます。
+
 extension TableDetailViewController: InputCalcItemViewControllerDelegate{
     func inputData(calcItem: CalcItem, inputType: InputType) {
         if inputType == .AddNew {
-            realm.addNewItem(calcItem, parentTable: table!)
+            realm.addNewItem(calcItem, parentTable: calcTable!) // 強制アンラップ使ってます。
         } else {
             
         }
@@ -108,19 +108,17 @@ extension TableDetailViewController: UISearchResultsUpdating, UISearchBarDelegat
         self.view.endEditing(true)
         indicator.startAnimating()
     }
-    
-    
 }
 
 
 extension TableDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return table?.calcItems.count ?? 0
+        return calcTable?.calcItems.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = itemsTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ItemTableViewCell
-        let item = table?.calcItems[indexPath.row]
+        let item = calcTable?.calcItems[indexPath.row]
         let unit = item?.unit ?? ""
         cell.calcItemNameLabel.text = item?.name
         cell.quantityLabel.text = (item?.quantity ?? 0).quantity + unit
@@ -142,7 +140,11 @@ extension TableDetailViewController: UITableViewDelegate, UITableViewDataSource 
         
         self.present(nav,animated: true, completion: nil)
     }
-    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard let deleteItem = calcTable?.calcItems[indexPath.row] else { return }
+        realm.deleteItem(calcItem: deleteItem)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
 }
 
 class ItemTableViewCell: UITableViewCell {
