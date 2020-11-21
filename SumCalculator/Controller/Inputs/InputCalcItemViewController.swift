@@ -71,8 +71,16 @@ class InputCalcItemViewController: UIViewController {
         super.viewDidLoad()
         
         confirmButton.layer.cornerRadius = 8
-        confirmButton.layer.borderWidth = 1
+        confirmButton.layer.borderWidth = 0.5
         confirmButton.layer.borderColor = UIColor.opaqueSeparator.cgColor
+        
+        quantityButton.layer.cornerRadius = 5
+        quantityButton.layer.borderWidth = 0.5
+        quantityButton.layer.borderColor = UIColor.opaqueSeparator.cgColor
+        
+        unitPriceButton.layer.cornerRadius = 5
+        unitPriceButton.layer.borderWidth = 0.5
+        unitPriceButton.layer.borderColor = UIColor.opaqueSeparator.cgColor
         if before == nil {
             navigationItem.title = "新しい項目を追加します"
         } else {
@@ -103,10 +111,10 @@ class InputCalcItemViewController: UIViewController {
         quantityRedisplay()
     }
     private func unitPriceRedisplay() {
-        unitPriceButton.setTitle(calcItem.unitPrice.currency, for: .normal)
+        unitPriceButton.setTitle("  " + calcItem.unitPrice.currency, for: .normal)
     }
     private func quantityRedisplay() {
-        quantityButton.setTitle(calcItem.quantity.quantity,for: .normal)
+        quantityButton.setTitle("  " + calcItem.quantity.quantity,for: .normal)
     }
     
     private func modalCalculator(type: AmountType){

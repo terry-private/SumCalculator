@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zwq-Al-o6y">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -123,7 +122,7 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="cde-yo-Gn1"/>
-                                    <barButtonItem image="square.and.pencil" catalog="system" id="frH-M1-8AN">
+                                    <barButtonItem image="square.and.pencil" catalog="system" style="plain" id="frH-M1-8AN">
                                         <connections>
                                             <action selector="tappedNewButton:" destination="4Uw-An-Y2P" id="Kzi-OJ-LzA"/>
                                         </connections>
@@ -245,9 +244,9 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="3dZ-jW-2CF"/>
-                                    <barButtonItem image="square.and.pencil" catalog="system" id="ZKv-Ec-zYB">
+                                    <barButtonItem image="square.and.pencil" catalog="system" id="2VQ-mC-emf">
                                         <connections>
-                                            <action selector="tappedNewButton:" destination="YQY-LP-1dW" id="BGP-zd-pav"/>
+                                            <action selector="tappedNewButton:" destination="YQY-LP-1dW" id="cYo-e9-gTq"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -292,7 +291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DCS-4O-n2x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1329" y="68"/>
+            <point key="canvasLocation" x="1328.985507246377" y="67.633928571428569"/>
         </scene>
     </scenes>
     <resources>

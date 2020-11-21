@@ -143,7 +143,7 @@ extension NoteDetailViewController: UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == "openTable"{
             let tableDetailVC = segue.destination as! TableDetailViewController
             tableDetailVC.tableId = calcNote?.calcTables[indexPath.row].id ?? ""
-            
+            tableDetailVC.navigationItem.leftBarButtonItem?.title = calcNote?.noteName
         }
     }
     

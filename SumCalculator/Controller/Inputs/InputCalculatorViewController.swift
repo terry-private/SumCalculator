@@ -56,17 +56,17 @@ class InputCalculatorViewController: UIViewController, SheetContentHeightModifia
         navigationItem.rightBarButtonItem = doneButton
         
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         adjustFrameToSheetContentHeightIfNeeded()
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         adjustFrameToSheetContentHeightIfNeeded(with: coordinator)
     }
-
+    
     @objc func close() {
         dismiss(animated: true, completion: nil)
     }
@@ -85,11 +85,11 @@ class InputCalculatorViewController: UIViewController, SheetContentHeightModifia
         setAmount(firstNumber)
         
     }
-   
+    
     func clear() {
-        firstNumber = ""
-        secondNumber = ""
-        setAmount("")
+        firstNumber = "0"
+        secondNumber = "0"
+        setAmount("0")
         calculateStatus = .none
     }
     
@@ -101,7 +101,7 @@ class InputCalculatorViewController: UIViewController, SheetContentHeightModifia
         }
     }
     func setDecimalString(_ amountDouble: Double) {
-        numberLabel.text = amountDouble.quantity
+        numberLabel.text = amountDouble.string
     }
     
     func fixAmount(){
@@ -148,8 +148,8 @@ extension InputCalculatorViewController: UICollectionViewDelegate, UICollectionV
             if "0"..."9" ~= numberString || numberString.description == "." {
                 cell.numberLabel.backgroundColor = .darkGray
             } else if numberString == "C" || numberString == "←" {
-                cell.numberLabel.backgroundColor = .secondarySystemBackground
-                cell.numberLabel.textColor = .label
+                cell.numberLabel.backgroundColor = .lightGray
+                cell.numberLabel.textColor = .black
             }
         }
         
@@ -169,71 +169,77 @@ extension InputCalculatorViewController: UICollectionViewDelegate, UICollectionV
     
     private func handleFirstNumberSelected(number: String) {
         switch number {
-         case "0"..."9":
-             firstNumber += number
-             setAmount(firstNumber)
-             if firstNumber.hasPrefix("0") {
+        case "0"..."9":
+            firstNumber += number
+            if firstNumber.count > 12 {
+                firstNumber = String(firstNumber.dropLast(1))
+            }
+            setAmount(firstNumber)
+            if firstNumber.hasPrefix("0") {
                 firstNumber = String(firstNumber.dropFirst(1))
-             }
+            }
         case "←":
             if firstNumber.count > 0 {
                 firstNumber = String(firstNumber.prefix(firstNumber.count - 1))
                 setAmount(firstNumber)
             }
-         case ".":
-             if !confirmIncludeDecimalPoint(numberString: firstNumber) {
-                 firstNumber += number
+        case ".":
+            if !confirmIncludeDecimalPoint(numberString: firstNumber) {
+                firstNumber += number
                 numberLabel.text = firstNumber
-             }
-         case "+":
-             calculateStatus = .plus
-             statusLabel.text =  (self.numberLabel?.text ?? "") + " " + number
-             setAmount("")
-         case "-":
-             calculateStatus = .minus
-             statusLabel.text = (self.numberLabel?.text ?? "") + " " + number
-             setAmount("")
-         case "×":
-             calculateStatus = .multiplication
-             statusLabel.text = (self.numberLabel?.text ?? "") + " " + number
-             setAmount("")
-         case "÷":
-             calculateStatus = .division
-             statusLabel.text = (self.numberLabel?.text ?? "") + " " + number
-             setAmount("")
+            }
+        case "+":
+            calculateStatus = .plus
+            statusLabel.text =  (self.numberLabel?.text ?? "") + " " + number
+            setAmount("")
+        case "-":
+            calculateStatus = .minus
+            statusLabel.text = (self.numberLabel?.text ?? "") + " " + number
+            setAmount("")
+        case "×":
+            calculateStatus = .multiplication
+            statusLabel.text = (self.numberLabel?.text ?? "") + " " + number
+            setAmount("")
+        case "÷":
+            calculateStatus = .division
+            statusLabel.text = (self.numberLabel?.text ?? "") + " " + number
+            setAmount("")
         case "=":
             self.fixAmount()
-         case "C":
-             clear()
-             statusLabel.text = ""
-         default:
-             break
-         }
+        case "C":
+            clear()
+            statusLabel.text = ""
+        default:
+            break
+        }
     }
     
     private func handleSecondNumberSelected(number: String) {
         switch number {
-         case "0"..."9":
-             secondNumber += number
-             if calculateStatus == .division || calculateStatus == .multiplication{
+        case "0"..."9":
+            secondNumber += number
+            if secondNumber.count > 12 {
+                secondNumber = String(secondNumber.dropLast(1))
+            }
+            if calculateStatus == .division || calculateStatus == .multiplication{
                 numberLabel.text = secondNumber
-             } else {
+            } else {
                 setAmount(secondNumber)
-             }
-             
-             if secondNumber.hasPrefix("0") {
-                 secondNumber = ""
-             }
+            }
+            
+            if secondNumber.hasPrefix("0") {
+                secondNumber = ""
+            }
         case "←":
-        if secondNumber.count > 0 {
-            secondNumber = String(secondNumber.prefix(secondNumber.count - 1))
-            setAmount(secondNumber)
-        }
-         case ".":
-             if !confirmIncludeDecimalPoint(numberString: secondNumber) {
-                 secondNumber += number
-                 numberLabel.text = secondNumber
-             }
+            if secondNumber.count > 0 {
+                secondNumber = String(secondNumber.prefix(secondNumber.count - 1))
+                setAmount(secondNumber)
+            }
+        case ".":
+            if !confirmIncludeDecimalPoint(numberString: secondNumber) {
+                secondNumber += number
+                numberLabel.text = secondNumber
+            }
         case "+":
             calculateResultNumber()
             calculateStatus = .plus
@@ -254,15 +260,15 @@ extension InputCalculatorViewController: UICollectionViewDelegate, UICollectionV
             calculateStatus = .division
             statusLabel.text = (self.numberLabel?.text ?? "") + " " + number
             setAmount("")
-         case "=":
+        case "=":
             calculateResultNumber()
             statusLabel.text = ""
-         case "C":
-             clear()
-             statusLabel.text = ""
-         default:
-             break
-         }
+        case "C":
+            clear()
+            statusLabel.text = ""
+        default:
+            break
+        }
     }
     
     private func calculateResultNumber() {
