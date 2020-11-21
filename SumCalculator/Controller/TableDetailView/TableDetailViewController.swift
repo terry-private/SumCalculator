@@ -131,8 +131,8 @@ extension TableDetailViewController: UITableViewDelegate, UITableViewDataSource 
         cell.subTotalLabel.text = item?.subtotal.currency
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected")
         let storyboard = UIStoryboard(name: "InputCalcItem", bundle: nil)
         let inputCalcItemViewController = storyboard.instantiateViewController(identifier: "InputCalcItemViewController") as! InputCalcItemViewController
         inputCalcItemViewController.delegate = self

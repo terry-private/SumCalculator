@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ZLn-1A-xu6">
-                                <rect key="frame" x="30" y="64" width="354" height="384"/>
+                                <rect key="frame" x="30" y="64" width="354" height="433"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hPQ-97-2CF">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="60.5"/>
@@ -110,8 +111,14 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合計：255円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kel-Jo-57U">
+                                        <rect key="frame" x="119" y="342" width="116.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rCd-Uw-ogQ">
-                                        <rect key="frame" x="77" y="342" width="200" height="42"/>
+                                        <rect key="frame" x="77" y="391" width="200" height="42"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="vQH-5n-pjU"/>
@@ -149,6 +156,7 @@
                         <outlet property="itemNameTextField" destination="SoU-8g-dZ9" id="3cW-Zq-box"/>
                         <outlet property="quantityButton" destination="UxO-cO-hcG" id="Q99-X9-aFW"/>
                         <outlet property="quantityStepper" destination="H5U-y2-nAV" id="reY-qr-xb0"/>
+                        <outlet property="subtotalLabel" destination="kel-Jo-57U" id="LEw-dx-uDm"/>
                         <outlet property="unitPriceButton" destination="aUT-4z-LIy" id="Zu1-Ha-ow9"/>
                         <outlet property="unitTextField" destination="cAl-Cf-wqE" id="4Dh-FW-kmu"/>
                     </connections>

@@ -58,31 +58,31 @@ extension Double {
         return resultString
     }
     
-    var string: String {
-        // マイナスは外しておきます。
-        let minus = self < 0
-        let absDouble = abs(self)
-        
-        // 整数パートと小数パートで分けます。
-        let integerPart = Int(absDouble)
-        let fractionalPart = absDouble - Double(integerPart)
-        
-        var resultString = String(integerPart)
-        if fractionalPart != 0 {
-            // 小数点以下は第二位までとします。
-            // "0.14159265..."の場合は前から4文字取得して先頭の0を削除したもの加えて実現しています。
-            resultString += String(String(resultString).dropFirst(1))
-            // ・小数点以下の最後の桁が０の場合は消します。
-            if resultString.hasSuffix("0") {
-                resultString = String(resultString.dropLast(1))
-            }
-        }
-        if minus {
-            resultString = "-" + resultString
-        }
-        if resultString.count > 12 {
-            resultString = String(resultString.dropLast(1))
-        }
-        return resultString
-    }
+//    var string: String {
+//        // マイナスは外しておきます。
+//        let minus = self < 0
+//        let absDouble = abs(self)
+//        
+//        // 整数パートと小数パートで分けます。
+//        let integerPart = Int(absDouble)
+//        let fractionalPart = absDouble - Double(integerPart)
+//        
+//        var resultString = String(integerPart)
+//        if fractionalPart != 0 {
+//            // 小数点以下は第二位までとします。
+//            // "0.14159265..."の場合は前から4文字取得して先頭の0を削除したもの加えて実現しています。
+//            resultString += String(String(fractionalPart).dropFirst(1))
+//            // ・小数点以下の最後の桁が０の場合は消します。
+//            if resultString.hasSuffix("0") {
+//                resultString = String(resultString.dropLast(1))
+//            }
+//        }
+//        if minus {
+//            resultString = "-" + resultString
+//        }
+//        if resultString.count > 12 {
+//            resultString = String(resultString.dropLast(1))
+//        }
+//        return resultString
+//    }
 }

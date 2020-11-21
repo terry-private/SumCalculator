@@ -36,16 +36,20 @@ class InputCalculatorViewController: UIViewController, SheetContentHeightModifia
     ]
     let cellId = "cellId"
     
+    // -------------------------------------------------
+    // IBOutlet
+    // -------------------------------------------------
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var calculatorCollectionView: UICollectionView!
     @IBOutlet weak var calculatorHeightConstraint: NSLayoutConstraint!
     
+    // -------------------------------------------------
+    // ライフサイクル
+    // -------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViews()
-        super.viewDidLoad()
         let closeButton = UIBarButtonItem(title: "キャンセル", style: .plain, target: self, action: #selector(close))
         //closeButton.tintColor = .label
         
@@ -67,6 +71,9 @@ class InputCalculatorViewController: UIViewController, SheetContentHeightModifia
         adjustFrameToSheetContentHeightIfNeeded(with: coordinator)
     }
     
+    // -------------------------------------------------
+    // @objc
+    // -------------------------------------------------
     @objc func close() {
         dismiss(animated: true, completion: nil)
     }
@@ -74,14 +81,17 @@ class InputCalculatorViewController: UIViewController, SheetContentHeightModifia
         fixAmount()
     }
     
+    // -------------------------------------------------
+    // 表示処理シリーズ
+    // -------------------------------------------------
     func setupViews() {
+        sheetContentHeightToModify = view.frame.width * 1.25 + 60 // 要検証
         calculatorCollectionView?.delegate = self
         calculatorCollectionView?.dataSource = self
         calculatorCollectionView?.register(CalculatorViewCell.self, forCellWithReuseIdentifier: cellId)
         calculatorHeightConstraint?.constant = view.frame.width * 1.2
         calculatorCollectionView?.backgroundColor = .clear
         calculatorCollectionView?.contentInset = .init(top: 0, left: 14, bottom: 0, right: 14)
-        
         setAmount(firstNumber)
         
     }
@@ -101,7 +111,7 @@ class InputCalculatorViewController: UIViewController, SheetContentHeightModifia
         }
     }
     func setDecimalString(_ amountDouble: Double) {
-        numberLabel.text = amountDouble.string
+        numberLabel.text = amountDouble.quantity
     }
     
     func fixAmount(){
@@ -111,7 +121,7 @@ class InputCalculatorViewController: UIViewController, SheetContentHeightModifia
     }
 }
 
-// MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+
 extension InputCalculatorViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -170,14 +180,11 @@ extension InputCalculatorViewController: UICollectionViewDelegate, UICollectionV
     private func handleFirstNumberSelected(number: String) {
         switch number {
         case "0"..."9":
-            firstNumber += number
+            firstNumber = firstNumber + number
             if firstNumber.count > 12 {
                 firstNumber = String(firstNumber.dropLast(1))
             }
             setAmount(firstNumber)
-            if firstNumber.hasPrefix("0") {
-                firstNumber = String(firstNumber.dropFirst(1))
-            }
         case "←":
             if firstNumber.count > 0 {
                 firstNumber = String(firstNumber.prefix(firstNumber.count - 1))

@@ -31,20 +31,22 @@ class InputCalcItemViewController: UIViewController {
     @IBOutlet weak var quantityButton: UIButton!
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var quantityStepper: UIStepper!
+    @IBOutlet weak var subtotalLabel: UILabel!
     
     // -------------------------------------------------
     // IBAction
     // -------------------------------------------------
     @IBAction func tappedUnitPriceButton(_ sender: Any) {
-        modalCalculator(type: .unitPrice)
+        modalCalculator(type: .unitPrice, firstNumber: calcItem.unitPrice.quantity)
     }
     @IBAction func tappedQuantityButton(_ sender: Any) {
-        modalCalculator(type: .quantity)
+        modalCalculator(type: .quantity, firstNumber: calcItem.quantity.quantity)
     }
     @IBAction func changedQuantityStepperValue(_ sender: Any) {
         calcItem.quantity += Double(quantityStepper.value)
         quantityStepper.value = 0
         quantityRedisplay()
+        sumRedisplay()
     }
     
     @IBAction func itemNameEdited(_ sender: Any) {
@@ -108,6 +110,7 @@ class InputCalcItemViewController: UIViewController {
     private func reDisplay() {
         unitPriceRedisplay()
         quantityRedisplay()
+        sumRedisplay()
     }
     private func unitPriceRedisplay() {
         unitPriceButton.setTitle("  " + calcItem.unitPrice.currency, for: .normal)
@@ -115,18 +118,20 @@ class InputCalcItemViewController: UIViewController {
     private func quantityRedisplay() {
         quantityButton.setTitle("  " + calcItem.quantity.quantity,for: .normal)
     }
+    private func sumRedisplay() {
+        subtotalLabel.text = "合計：\(calcItem.subtotal.currency)"
+    }
     
-    private func modalCalculator(type: AmountType){
+    private func modalCalculator(type: AmountType, firstNumber: String){
         let storyboard = UIStoryboard.init(name: "InputCalculatorView", bundle: nil)
         let inputCalculatorViewController = storyboard.instantiateViewController(withIdentifier: "InputCalculatorViewController") as! InputCalculatorViewController
-        let fN = calcItem.quantity.quantity
-        inputCalculatorViewController.firstNumber = fN
+        inputCalculatorViewController.firstNumber = firstNumber
         inputCalculatorViewController.inputCalculatorViewControllerDelegate = self
         inputCalculatorViewController.type = type
         let nav = BottomHalfModalNavigationController(rootViewController: inputCalculatorViewController)
         presentBottomHalfModal(nav, animated: true, completion: nil)
     }
-
+    
 
 }
 
@@ -137,9 +142,11 @@ extension InputCalcItemViewController: InputCalculatorViewControllerDelegate {
         case .quantity:
             calcItem.quantity = amount
             quantityRedisplay()
+            sumRedisplay()
         case .unitPrice:
             calcItem.unitPrice = amount
             unitPriceRedisplay()
+            sumRedisplay()
         }
     }
     
