@@ -52,7 +52,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 <connections>
-                                                    <action selector="unitEdited:" destination="wU8-uU-KUl" eventType="editingDidEnd" id="Y6i-GV-Ydc"/>
+                                                    <action selector="unitEdited:" destination="wU8-uU-KUl" eventType="editingDidEndOnExit" id="E1a-ua-UYo"/>
                                                 </connections>
                                             </textField>
                                         </subviews>

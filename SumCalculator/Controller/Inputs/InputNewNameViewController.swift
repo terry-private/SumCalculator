@@ -20,7 +20,7 @@ class InputNewNameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         confirmButton.layer.cornerRadius = 8
-        confirmButton.layer.borderWidth = 1
+        confirmButton.layer.borderWidth = 0.5
         confirmButton.layer.borderColor = UIColor.opaqueSeparator.cgColor
     }
     @IBAction func tappedConfirmButton(_ sender: Any) {

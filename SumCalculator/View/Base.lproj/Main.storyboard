@@ -72,11 +72,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPl-lt-uAe">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPl-lt-uAe">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="L9L-6A-IiC"/>
                                     <barButtonItem image="square.and.pencil" catalog="system" style="plain" id="8hA-L9-hhB">
+                                        <color key="tintColor" systemColor="systemOrangeColor"/>
                                         <connections>
                                             <action selector="tappedPlusButton:" destination="BYZ-38-t0r" id="WNt-75-fqf"/>
                                         </connections>
@@ -118,16 +119,18 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="niQ-6E-BVo">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niQ-6E-BVo">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="cde-yo-Gn1"/>
                                     <barButtonItem image="square.and.pencil" catalog="system" style="plain" id="frH-M1-8AN">
+                                        <color key="tintColor" systemColor="systemOrangeColor"/>
                                         <connections>
                                             <action selector="tappedNewButton:" destination="4Uw-An-Y2P" id="Kzi-OJ-LzA"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
+                                <color key="barTintColor" systemColor="secondarySystemBackgroundColor"/>
                             </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lyb-Lc-r5I">
                                 <rect key="frame" x="160.5" y="827.5" width="93.5" height="20.5"/>
@@ -240,16 +243,18 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c3G-xP-JSI">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3G-xP-JSI">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="3dZ-jW-2CF"/>
                                     <barButtonItem image="square.and.pencil" catalog="system" id="2VQ-mC-emf">
+                                        <color key="tintColor" systemColor="systemOrangeColor"/>
                                         <connections>
                                             <action selector="tappedNewButton:" destination="YQY-LP-1dW" id="cYo-e9-gTq"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
+                                <color key="barTintColor" systemColor="secondarySystemBackgroundColor"/>
                             </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RmN-O5-hUa">
                                 <rect key="frame" x="160.5" y="827.5" width="93.5" height="20.5"/>
@@ -299,11 +304,17 @@
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

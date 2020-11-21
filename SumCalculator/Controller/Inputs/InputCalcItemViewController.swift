@@ -42,8 +42,6 @@ class InputCalcItemViewController: UIViewController {
         modalCalculator(type: .quantity)
     }
     @IBAction func changedQuantityStepperValue(_ sender: Any) {
-        
-        
         calcItem.quantity += Double(quantityStepper.value)
         quantityStepper.value = 0
         quantityRedisplay()
@@ -55,6 +53,7 @@ class InputCalcItemViewController: UIViewController {
     @IBAction func unitEdited(_ sender: Any) {
         view.endEditing(true)
     }
+    
     @IBAction func tappedConfirmButton(_ sender: Any) {
         calcItem.unit = unitTextField.text ?? ""
         calcItem.name = itemNameTextField.text ?? ""
@@ -72,15 +71,15 @@ class InputCalcItemViewController: UIViewController {
         
         confirmButton.layer.cornerRadius = 8
         confirmButton.layer.borderWidth = 0.5
-        confirmButton.layer.borderColor = UIColor.opaqueSeparator.cgColor
+        confirmButton.layer.borderColor = UIColor.systemGray3.cgColor
         
         quantityButton.layer.cornerRadius = 5
         quantityButton.layer.borderWidth = 0.5
-        quantityButton.layer.borderColor = UIColor.opaqueSeparator.cgColor
+        quantityButton.layer.borderColor = UIColor.systemGray3.cgColor
         
         unitPriceButton.layer.cornerRadius = 5
         unitPriceButton.layer.borderWidth = 0.5
-        unitPriceButton.layer.borderColor = UIColor.opaqueSeparator.cgColor
+        unitPriceButton.layer.borderColor = UIColor.systemGray3.cgColor
         if before == nil {
             navigationItem.title = "新しい項目を追加します"
         } else {
