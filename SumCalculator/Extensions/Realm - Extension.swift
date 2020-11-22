@@ -34,7 +34,7 @@ extension Realm {
         }
     }
     // --------------------------------------------------------------
-    // addメソッド
+    // updateメソッド
     // --------------------------------------------------------------
     func updateItem(_ before: CalcItem, after: CalcItem) {
         try! self.write {
@@ -44,6 +44,19 @@ extension Realm {
             before.unitPrice = after.unitPrice
         }
     }
+    
+    func updateTable(_ calcTable: CalcTable, name: String) {
+        try! self.write {
+            calcTable.tableName = name
+        }
+    }
+    
+    func updateNote(_ calcNote: CalcNote, name: String) {
+        try! self.write {
+            calcNote.noteName = name
+        }
+    }
+    
     // --------------------------------------------------------------
     // deleteメソッド
     // --------------------------------------------------------------

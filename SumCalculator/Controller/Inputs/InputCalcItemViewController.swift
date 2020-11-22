@@ -11,10 +11,7 @@ import BottomHalfModal
 protocol InputCalcItemViewControllerDelegate: class {
     func inputData(calcItem: CalcItem, inputType: InputType)
 }
-enum InputType {
-    case AddNew
-    case Update
-}
+
 class InputCalcItemViewController: UIViewController {
     
     weak var delegate: InputCalcItemViewControllerDelegate?

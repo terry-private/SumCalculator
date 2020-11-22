@@ -28,6 +28,9 @@
 		0947F98825581F5C00CA3C2D /* CalcTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F98725581F5C00CA3C2D /* CalcTableTests.swift */; };
 		0947F98D255836A700CA3C2D /* CalcNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F98C255836A700CA3C2D /* CalcNote.swift */; };
 		0947F9922558380D00CA3C2D /* CalcNoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F9912558380D00CA3C2D /* CalcNoteTests.swift */; };
+		09486848256A15DB000191C0 /* Decimal - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09486847256A15DB000191C0 /* Decimal - Extension.swift */; };
+		0948684D256A19AD000191C0 /* DecimalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0948684C256A19AD000191C0 /* DecimalTests.swift */; };
+		0949711C25696DB600A96DA8 /* InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0949711B25696DB600A96DA8 /* InputType.swift */; };
 		094A0223255D4C9A0024B45A /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */; };
 		094A0228255E9E360024B45A /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094A0227255E9E360024B45A /* NoteTableViewCell.xib */; };
 		095186F1256562BE00EAA820 /* InputCalculatorView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095186F0256562BE00EAA820 /* InputCalculatorView.storyboard */; };
@@ -88,6 +91,9 @@
 		0947F98725581F5C00CA3C2D /* CalcTableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcTableTests.swift; sourceTree = "<group>"; };
 		0947F98C255836A700CA3C2D /* CalcNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcNote.swift; sourceTree = "<group>"; };
 		0947F9912558380D00CA3C2D /* CalcNoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcNoteTests.swift; sourceTree = "<group>"; };
+		09486847256A15DB000191C0 /* Decimal - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal - Extension.swift"; sourceTree = "<group>"; };
+		0948684C256A19AD000191C0 /* DecimalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalTests.swift; sourceTree = "<group>"; };
+		0949711B25696DB600A96DA8 /* InputType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputType.swift; sourceTree = "<group>"; };
 		094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 		094A0227255E9E360024B45A /* NoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
 		095186F0256562BE00EAA820 /* InputCalculatorView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputCalculatorView.storyboard; sourceTree = "<group>"; };
@@ -160,6 +166,7 @@
 				09472F5D2560F8EF00D94ED5 /* Double - Extension.swift */,
 				09472F8525616B8A00D94ED5 /* Realm - Extension.swift */,
 				0951870E2565683B00EAA820 /* String - Extension.swift */,
+				09486847256A15DB000191C0 /* Decimal - Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -207,6 +214,7 @@
 				0947F98725581F5C00CA3C2D /* CalcTableTests.swift */,
 				0947F9912558380D00CA3C2D /* CalcNoteTests.swift */,
 				09472F622560FD4D00D94ED5 /* DoubleTests.swift */,
+				0948684C256A19AD000191C0 /* DecimalTests.swift */,
 				0947F9502557D70C00CA3C2D /* Info.plist */,
 			);
 			path = SumCalculatorTests;
@@ -279,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				09472F8F256174C900D94ED5 /* InputNewNameViewController.swift */,
+				0949711B25696DB600A96DA8 /* InputType.swift */,
 				09472F68256109AD00D94ED5 /* InputCalcItemViewController.swift */,
 				095186F5256563D500EAA820 /* InputCalculatorViewController.swift */,
 				09518709256566ED00EAA820 /* CalculatorViewCell.swift */,
@@ -552,6 +561,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0949711C25696DB600A96DA8 /* InputType.swift in Sources */,
 				0951870F2565683B00EAA820 /* String - Extension.swift in Sources */,
 				0947F98D255836A700CA3C2D /* CalcNote.swift in Sources */,
 				094A0223255D4C9A0024B45A /* NoteDetailViewController.swift in Sources */,
@@ -566,6 +576,7 @@
 				095186F6256563D500EAA820 /* InputCalculatorViewController.swift in Sources */,
 				09472F472560BE2400D94ED5 /* TableDetailViewController.swift in Sources */,
 				09E43EF3256015C800B8624A /* CalcItemView.swift in Sources */,
+				09486848256A15DB000191C0 /* Decimal - Extension.swift in Sources */,
 				0947F93A2557D70A00CA3C2D /* SceneDelegate.swift in Sources */,
 				09472F90256174C900D94ED5 /* InputNewNameViewController.swift in Sources */,
 				0947F96E2557F1A600CA3C2D /* CalcItem.swift in Sources */,
@@ -581,6 +592,7 @@
 				0947F9922558380D00CA3C2D /* CalcNoteTests.swift in Sources */,
 				0947F9762558139A00CA3C2D /* CalcItemTests.swift in Sources */,
 				09472F632560FD4D00D94ED5 /* DoubleTests.swift in Sources */,
+				0948684D256A19AD000191C0 /* DecimalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

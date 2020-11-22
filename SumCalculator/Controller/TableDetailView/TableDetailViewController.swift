@@ -77,6 +77,18 @@ class TableDetailViewController: UIViewController {
         self.present(nav,animated: true, completion: nil)
     }
     
+    @IBAction func tappedEditButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
+        let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
+        //inputCalcItemViewController.recordViewControllerDelegate = self
+        inputNewNameViewController.delegate = self
+        inputNewNameViewController.navigationItem.title = "タイトルの編集"
+        inputNewNameViewController.originName = calcTable?.tableName ?? ""
+        let nav = UINavigationController(rootViewController: inputNewNameViewController)
+        
+        self.present(nav,animated: true, completion: nil)
+    }
+    
 }
 
 extension TableDetailViewController: InputCalcItemViewControllerDelegate{
@@ -145,6 +157,18 @@ extension TableDetailViewController: UITableViewDelegate, UITableViewDataSource 
         guard let deleteItem = calcTable?.calcItems[indexPath.row] else { return }
         realm.deleteItem(calcItem: deleteItem)
         tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+}
+
+extension TableDetailViewController: InputNewNameDelegate {
+    func addNew(name: String) {
+        
+    }
+    func upDate(name: String) {
+        func upDate(name: String) {
+            realm.updateTable(calcTable!, name: name)// 強制アンラップを使ってます
+            reload()
+        }
     }
 }
 

@@ -64,7 +64,7 @@ class NoteListViewController: UIViewController {
         }
     }
     
-    @IBAction func tappedPlusButton(_ sender: Any) {
+    @IBAction func tappedNewButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
         let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
         //inputCalcItemViewController.recordViewControllerDelegate = self
@@ -79,6 +79,9 @@ class NoteListViewController: UIViewController {
 
 //------------------------------------------------------------------------------
 extension NoteListViewController: InputNewNameDelegate {
+    func upDate(name: String) {
+    }
+    
     func addNew(name: String) {
         realm.addNewNote(name)
         reload()

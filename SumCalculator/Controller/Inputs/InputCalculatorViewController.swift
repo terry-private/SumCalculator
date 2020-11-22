@@ -180,6 +180,7 @@ extension InputCalculatorViewController: UICollectionViewDelegate, UICollectionV
     private func handleFirstNumberSelected(number: String) {
         switch number {
         case "0"..."9":
+            if firstNumber == "0" { firstNumber = "" }
             firstNumber = firstNumber + number
             if firstNumber.count > 12 {
                 firstNumber = String(firstNumber.dropLast(1))
@@ -188,6 +189,7 @@ extension InputCalculatorViewController: UICollectionViewDelegate, UICollectionV
         case "←":
             if firstNumber.count > 0 {
                 firstNumber = String(firstNumber.prefix(firstNumber.count - 1))
+                if firstNumber == "" { firstNumber = "0" }
                 setAmount(firstNumber)
             }
         case ".":
@@ -224,6 +226,7 @@ extension InputCalculatorViewController: UICollectionViewDelegate, UICollectionV
     private func handleSecondNumberSelected(number: String) {
         switch number {
         case "0"..."9":
+            if secondNumber == "0" { secondNumber = "" }
             secondNumber += number
             if secondNumber.count > 12 {
                 secondNumber = String(secondNumber.dropLast(1))
@@ -233,13 +236,10 @@ extension InputCalculatorViewController: UICollectionViewDelegate, UICollectionV
             } else {
                 setAmount(secondNumber)
             }
-            
-            if secondNumber.hasPrefix("0") {
-                secondNumber = ""
-            }
         case "←":
             if secondNumber.count > 0 {
                 secondNumber = String(secondNumber.prefix(secondNumber.count - 1))
+                if secondNumber == "" { secondNumber = "0" }
                 setAmount(secondNumber)
             }
         case ".":
@@ -282,6 +282,13 @@ extension InputCalculatorViewController: UICollectionViewDelegate, UICollectionV
         let firstNum = Double(firstNumber) ?? 0
         let secondNum = Double(secondNumber) ?? 0
         
+        let a = Decimal(string: firstNumber)!
+        let b = Decimal(string: secondNumber)!
+        print("a:\(a)")
+        print("b:\(b)")
+        print(a * b)
+        print(a / b)
+        print(a.exponent)
         var resultString: String?
         switch calculateStatus {
         case .plus:

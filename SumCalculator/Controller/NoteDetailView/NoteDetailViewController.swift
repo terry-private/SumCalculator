@@ -78,10 +78,28 @@ class NoteDetailViewController: UIViewController {
         
         self.present(nav,animated: true, completion: nil)
     }
+    @IBAction func tappedEditButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
+        let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
+        //inputCalcItemViewController.recordViewControllerDelegate = self
+        inputNewNameViewController.delegate = self
+        inputNewNameViewController.navigationItem.title = "タイトルの編集"
+        inputNewNameViewController.originName = calcNote?.noteName ?? ""
+        let nav = UINavigationController(rootViewController: inputNewNameViewController)
+        
+        self.present(nav,animated: true, completion: nil)
+    }
 }
 
 //------------------------------------------------------------------------------
 extension NoteDetailViewController: InputNewNameDelegate {
+    func upDate(name: String) {
+        func upDate(name: String) {
+            realm.updateNote(calcNote!, name: name) // 強制アンラップ
+            reload()
+        }
+    }
+    
     func addNew(name: String) {
         realm.addNewTable(name, parentNote: calcNote!)
         reload()
