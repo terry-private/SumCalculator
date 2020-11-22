@@ -40,4 +40,24 @@ extension Decimal {
         
         return resultString + "円"
     }
+    
+    var totalCurrencyWithMyDigit: String {
+        let digit = UserConfig().totalCurrencyFractionalDigit
+        let digit10 = Decimal(pow(10, Double(digit)))
+        let myDecimal = Decimal((self * digit10).integerPart) / digit10
+        return myDecimal.currency
+    }
+    var unitCurrencyWithMyDigit: String {
+        let digit = UserConfig().unitCurrencyFractionalDigit
+        let digit10 = Decimal(pow(10, Double(digit)))
+        let myDecimal = Decimal((self * digit10).integerPart) / digit10
+        return myDecimal.currency
+    }
+    
+    var quantityWithMyDigit: String {
+        let digit = UserConfig().quantityFractionalDigit
+        let digit10 = Decimal(pow(10, Double(digit)))
+        let myDecimal = Decimal((self * digit10).integerPart) / digit10
+        return myDecimal.description
+    }
 }

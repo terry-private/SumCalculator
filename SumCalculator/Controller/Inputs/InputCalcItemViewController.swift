@@ -110,13 +110,13 @@ class InputCalcItemViewController: UIViewController {
         sumRedisplay()
     }
     private func unitPriceRedisplay() {
-        unitPriceButton.setTitle("  " + calcItem.unitPrice.currency, for: .normal)
+        unitPriceButton.setTitle("  " + calcItem.unitPrice.unitCurrencyWithMyDigit, for: .normal)
     }
     private func quantityRedisplay() {
-        quantityButton.setTitle("  " + calcItem.quantity.description,for: .normal)
+        quantityButton.setTitle("  " + calcItem.quantity.quantityWithMyDigit,for: .normal)
     }
     private func sumRedisplay() {
-        subtotalLabel.text = "合計：\(calcItem.subtotal.currency)"
+        subtotalLabel.text = "合計：\(calcItem.subtotal.totalCurrencyWithMyDigit)"
     }
     
     private func modalCalculator(type: AmountType, firstNumber: String){

@@ -62,7 +62,7 @@ class TableDetailViewController: UIViewController {
         DispatchQueue.main.async {
             self.navigationItem.title = self.calcTable?.tableName
             self.itemsTableView.reloadData()
-            self.totalAmountLabel.text = self.calcTable?.subtotal.currency ?? "¥0"
+            self.totalAmountLabel.text = self.calcTable?.subtotal.totalCurrencyWithMyDigit ?? "¥0"
         }
     }
     
@@ -134,13 +134,13 @@ extension TableDetailViewController: UITableViewDelegate, UITableViewDataSource 
         let item = calcTable?.calcItems[indexPath.row]
         let unit = item?.unit ?? ""
         cell.calcItemNameLabel.text = item?.name
-        cell.quantityLabel.text = (item?.quantity ?? 0).description + unit
+        cell.quantityLabel.text = (item?.quantity ?? 0).quantityWithMyDigit + unit
         if unit == "" {
-            cell.unitPriceLabel.text = item?.unitPrice.currency
+            cell.unitPriceLabel.text = item?.unitPrice.unitCurrencyWithMyDigit
         } else {
-            cell.unitPriceLabel.text = (item?.unitPrice ?? 0).currency + "／\(unit)"
+            cell.unitPriceLabel.text = (item?.unitPrice ?? 0).unitCurrencyWithMyDigit + "／\(unit)"
         }
-        cell.subTotalLabel.text = item?.subtotal.currency
+        cell.subTotalLabel.text = item?.subtotal.totalCurrencyWithMyDigit
         return cell
     }
     

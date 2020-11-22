@@ -31,17 +31,17 @@ class NoteTableViewCell: UITableViewCell {
         guard let items = table?.calcItems else { return }
         removeAllItem()
         tableNameLabel.text = table?.tableName
-        subtotalLabel.text = table?.subtotal.currency
+        subtotalLabel.text = table?.subtotal.totalCurrencyWithMyDigit
         for i in items {
             let view = Bundle.main.loadNibNamed("CalcItemView", owner: self, options: nil)?.first as! CalcItemView
             view.calcItemNameLabel.text = i.name
-            view.quantityLabel.text = i.quantity.description + i.unit
+            view.quantityLabel.text = i.quantity.quantityWithMyDigit + i.unit
             if i.unit == "" {
-                view.unitPriceLabel.text = i.unitPrice.currency
+                view.unitPriceLabel.text = i.unitPrice.unitCurrencyWithMyDigit
             } else {
-                view.unitPriceLabel.text = i.unitPrice.currency + "／\(i.unit)"
+                view.unitPriceLabel.text = i.unitPrice.unitCurrencyWithMyDigit + "／\(i.unit)"
             }
-            view.subTotalLabel.text = i.subtotal.currency
+            view.subTotalLabel.text = i.subtotal.totalCurrencyWithMyDigit
             calcItemsStackView.addArrangedSubview(view)
             itemList.append(view)
         }

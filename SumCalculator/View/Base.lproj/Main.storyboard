@@ -76,6 +76,16 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPl-lt-uAe">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
+                                    <barButtonItem style="plain" id="Xzl-RJ-ftg">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="HcW-cw-yMn">
+                                            <rect key="frame" x="20" y="15" width="61" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                                            <state key="normal" title="編集" image="t.bubble" catalog="system">
+                                                <color key="titleColor" systemColor="systemOrangeColor"/>
+                                            </state>
+                                        </button>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="L9L-6A-IiC"/>
                                     <barButtonItem image="square.and.pencil" catalog="system" style="plain" id="8hA-L9-hhB">
                                         <color key="tintColor" systemColor="systemOrangeColor"/>
@@ -99,7 +109,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OPl-lt-uAe" secondAttribute="bottom" id="z2U-p7-N3s"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="ノート一覧" id="roo-Ld-Jtg"/>
+                    <navigationItem key="navigationItem" title="ノート一覧" id="roo-Ld-Jtg">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="gearshape" catalog="system" id="dlS-9N-W8d"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="noteListTableView" destination="2Yx-VF-gPi" id="mwh-2h-V2u"/>
                         <segue destination="4Uw-An-Y2P" kind="show" identifier="openNote" id="TSo-4a-fsg"/>
@@ -300,7 +312,7 @@
                     <navigationItem key="navigationItem" id="Knp-Jm-0ud">
                         <barButtonItem key="rightBarButtonItem" title="編集" id="KyX-0Q-gwx">
                             <connections>
-                                <action selector="tappedEditButton:" destination="4Uw-An-Y2P" id="0q6-ya-CIC"/>
+                                <action selector="tappedEditButton:" destination="YQY-LP-1dW" id="uK9-4L-aDF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -316,7 +328,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
+        <image name="t.bubble" catalog="system" width="128" height="110"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
