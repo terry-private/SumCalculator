@@ -34,13 +34,13 @@ class InputCalcItemViewController: UIViewController {
     // IBAction
     // -------------------------------------------------
     @IBAction func tappedUnitPriceButton(_ sender: Any) {
-        modalCalculator(type: .unitPrice, firstNumber: calcItem.unitPrice.quantity)
+        modalCalculator(type: .unitPrice, firstNumber: calcItem.unitPrice.description)
     }
     @IBAction func tappedQuantityButton(_ sender: Any) {
-        modalCalculator(type: .quantity, firstNumber: calcItem.quantity.quantity)
+        modalCalculator(type: .quantity, firstNumber: calcItem.quantity.description)
     }
     @IBAction func changedQuantityStepperValue(_ sender: Any) {
-        calcItem.quantity += Double(quantityStepper.value)
+        calcItem.quantity += Decimal(quantityStepper.value)
         quantityStepper.value = 0
         quantityRedisplay()
         sumRedisplay()
@@ -113,7 +113,7 @@ class InputCalcItemViewController: UIViewController {
         unitPriceButton.setTitle("  " + calcItem.unitPrice.currency, for: .normal)
     }
     private func quantityRedisplay() {
-        quantityButton.setTitle("  " + calcItem.quantity.quantity,for: .normal)
+        quantityButton.setTitle("  " + calcItem.quantity.description,for: .normal)
     }
     private func sumRedisplay() {
         subtotalLabel.text = "合計：\(calcItem.subtotal.currency)"
@@ -134,7 +134,7 @@ class InputCalcItemViewController: UIViewController {
 
 
 extension InputCalcItemViewController: InputCalculatorViewControllerDelegate {
-    func fixAmount(_ amount: Double, _ type: AmountType) {
+    func fixAmount(_ amount: Decimal, _ type: AmountType) {
         switch type {
         case .quantity:
             calcItem.quantity = amount

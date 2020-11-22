@@ -9,7 +9,7 @@ import UIKit
 import BottomHalfModal
 
 protocol InputCalculatorViewControllerDelegate {
-    func fixAmount(_ amount: Double, _ type: AmountType)
+    func fixAmount(_ amount: Decimal, _ type: AmountType)
 }
 enum AmountType {
     case quantity
@@ -107,15 +107,15 @@ class InputCalculatorViewController: UIViewController, SheetContentHeightModifia
         if amount.contains(".") {
             numberLabel.text = amount
         } else {
-            setDecimalString(Double(amount) ?? 0)
+            setDecimalString(Decimal(string: amount) ?? 0)
         }
     }
-    func setDecimalString(_ amountDouble: Double) {
-        numberLabel.text = amountDouble.quantity
+    func setDecimalString(_ amountDouble: Decimal) {
+        numberLabel.text = amountDouble.description
     }
     
     func fixAmount(){
-        let amount = Double(numberLabel.text ?? "0") ?? 0
+        let amount = Decimal(string:numberLabel.text ?? "0") ?? 0
         inputCalculatorViewControllerDelegate?.fixAmount(amount, type)
         dismiss(animated: true, completion: nil)
     }
@@ -279,29 +279,22 @@ extension InputCalculatorViewController: UICollectionViewDelegate, UICollectionV
     }
     
     private func calculateResultNumber() {
-        let firstNum = Double(firstNumber) ?? 0
-        let secondNum = Double(secondNumber) ?? 0
+        let firstNum = Decimal(string: firstNumber) ?? Decimal()
+        let secondNum = Decimal(string: secondNumber) ?? Decimal()
         
-        let a = Decimal(string: firstNumber)!
-        let b = Decimal(string: secondNumber)!
-        print("a:\(a)")
-        print("b:\(b)")
-        print(a * b)
-        print(a / b)
-        print(a.exponent)
         var resultString: String?
         switch calculateStatus {
         case .plus:
-            resultString = String(firstNum + secondNum)
+            resultString = (firstNum + secondNum).description
         case .minus:
-            resultString = String(firstNum - secondNum)
+            resultString = (firstNum - secondNum).description
         case .multiplication:
-            resultString = String(firstNum * secondNum)
+            resultString = (firstNum * secondNum).description
         case .division:
             if secondNum == 0 {
-                resultString = String(firstNum)
+                resultString = (firstNum).description
             } else {
-                resultString = String(firstNum / secondNum)
+                resultString = (firstNum / secondNum).description
             }
         default:
             break
@@ -310,7 +303,7 @@ extension InputCalculatorViewController: UICollectionViewDelegate, UICollectionV
         if let result = resultString, result.hasSuffix(".0") {
             resultString = result.replacingOccurrences(of: ".0", with: "")
         }
-        setDecimalString(Double(resultString ?? "") ?? 0)
+        setDecimalString(Decimal(string: resultString ?? "") ?? 0)
         firstNumber = ""
         secondNumber = ""
         

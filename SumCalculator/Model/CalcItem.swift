@@ -15,12 +15,12 @@ class CalcItem: Object {
             editedAt = Date()
         }
     }
-    @objc dynamic var unitPrice: Double = 0 {
+    @objc dynamic var _unitPrice: String = "0" {
         didSet {
             editedAt = Date()
         }
     }
-    @objc dynamic var quantity: Double = 0 {
+    @objc dynamic var _quantity: String = "0" {
         didSet {
             editedAt = Date()
         }
@@ -38,9 +38,28 @@ class CalcItem: Object {
             return "id"
     }
     
-    var subtotal: Double {
+    var subtotal: Decimal {
         get {
             return unitPrice * quantity
         }
     }
+    
+    var unitPrice: Decimal {
+        get {
+            return Decimal(string: _unitPrice) ?? Decimal()
+        }
+        set {
+            _unitPrice = newValue.description
+        }
+    }
+    
+    var quantity: Decimal {
+        get {
+            return Decimal(string: _quantity) ?? Decimal()
+        }
+        set {
+            _quantity = newValue.description
+        }
+    }
+    
 }

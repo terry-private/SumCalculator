@@ -134,7 +134,7 @@ extension TableDetailViewController: UITableViewDelegate, UITableViewDataSource 
         let item = calcTable?.calcItems[indexPath.row]
         let unit = item?.unit ?? ""
         cell.calcItemNameLabel.text = item?.name
-        cell.quantityLabel.text = (item?.quantity ?? 0).quantity + unit
+        cell.quantityLabel.text = (item?.quantity ?? 0).description + unit
         if unit == "" {
             cell.unitPriceLabel.text = item?.unitPrice.currency
         } else {

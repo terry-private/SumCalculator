@@ -34,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Yx-VF-gPi">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellId" rowHeight="70" id="lsg-Uh-UZe" customClass="NoteListTableViewCell" customModule="SumCalculator" customModuleProvider="target">
@@ -74,7 +74,7 @@
                                 </prototypes>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPl-lt-uAe">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="L9L-6A-IiC"/>
                                     <barButtonItem image="square.and.pencil" catalog="system" style="plain" id="8hA-L9-hhB">
@@ -84,6 +84,7 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
+                                <color key="barTintColor" systemColor="secondarySystemBackgroundColor"/>
                             </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -191,7 +192,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="64" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oB7-8u-ioQ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="764"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellId" id="r30-nD-4gy" customClass="ItemTableViewCell" customModule="SumCalculator" customModuleProvider="target">
@@ -251,7 +252,7 @@
                                 </prototypes>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3G-xP-JSI">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="764" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="3dZ-jW-2CF"/>
                                     <barButtonItem image="square.and.pencil" catalog="system" id="2VQ-mC-emf">
@@ -264,7 +265,7 @@
                                 <color key="barTintColor" systemColor="secondarySystemBackgroundColor"/>
                             </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RmN-O5-hUa">
-                                <rect key="frame" x="160.5" y="827.5" width="93.5" height="20.5"/>
+                                <rect key="frame" x="160.5" y="778.5" width="93.5" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合計：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eha-BZ-S2m">
                                         <rect key="frame" x="0.0" y="0.0" width="52" height="20.5"/>
@@ -295,18 +296,15 @@
                             <constraint firstItem="c3G-xP-JSI" firstAttribute="leading" secondItem="whP-2x-SfL" secondAttribute="leading" id="sxl-rk-4hE"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="Knp-Jm-0ud">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Kr7-GO-kis">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="U3V-4o-Ujc">
-                                <rect key="frame" x="302" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="編集"/>
-                                <connections>
-                                    <action selector="tappedEditButton:" destination="YQY-LP-1dW" eventType="touchUpInside" id="pHV-CN-aUC"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="編集" id="KyX-0Q-gwx">
+                            <connections>
+                                <action selector="tappedEditButton:" destination="4Uw-An-Y2P" id="0q6-ya-CIC"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="itemsTableView" destination="oB7-8u-ioQ" id="SuC-te-jtC"/>
                         <outlet property="totalAmountLabel" destination="T4S-hu-igr" id="Qc2-Hz-kXM"/>
