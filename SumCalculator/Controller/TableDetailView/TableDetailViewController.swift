@@ -20,10 +20,16 @@ class TableDetailViewController: UIViewController {
     var calcTable: CalcTable?
     private var realm: Realm!
     
-    @IBOutlet weak var totalAmountLabel: UILabel!
+    // -------------------------------------------------
+    // IBOutlet unitPrice
+    // -------------------------------------------------
+    @IBOutlet weak var totalAmountIntegerPartLabel: UILabel!
+    @IBOutlet weak var totalAmountAfterDotLabel: UILabel!
     @IBOutlet weak var itemsTableView: UITableView!
     
-    
+    // -------------------------------------------------
+    // ライフサイクル
+    // -------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -37,6 +43,9 @@ class TableDetailViewController: UIViewController {
         reload()
     }
     
+    // -------------------------------------------------
+    // setUpシリーズ
+    // -------------------------------------------------
     func setupTableView() {
         itemsTableView.delegate = self
         itemsTableView.dataSource = self
@@ -45,7 +54,7 @@ class TableDetailViewController: UIViewController {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "表を検索します。"
+        searchController.searchBar.placeholder = "項目を検索します。"
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
@@ -57,15 +66,22 @@ class TableDetailViewController: UIViewController {
         view.addSubview(indicator)
     }
     
+    // -------------------------------------------------
+    // reload
+    // -------------------------------------------------
     func reload() {
         calcTable = realm.object(ofType: CalcTable.self, forPrimaryKey: tableId)
         DispatchQueue.main.async {
             self.navigationItem.title = self.calcTable?.tableName
             self.itemsTableView.reloadData()
-            self.totalAmountLabel.text = self.calcTable?.subtotal.totalCurrencyWithMyDigit ?? "¥0"
+            self.totalAmountIntegerPartLabel.text = self.calcTable?.subtotal.totalRounded.intPartCurrency
+            self.totalAmountAfterDotLabel.text = self.calcTable?.subtotal.totalRounded.afterDot
         }
     }
     
+    // -------------------------------------------------
+    // IBAction
+    // -------------------------------------------------
     @IBAction func tappedNewButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "InputCalcItem", bundle: nil)
         let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputCalcItemViewController") as! InputCalcItemViewController
@@ -91,6 +107,7 @@ class TableDetailViewController: UIViewController {
     
 }
 
+
 extension TableDetailViewController: InputCalcItemViewControllerDelegate{
     func inputData(calcItem: CalcItem, inputType: InputType) {
         if inputType == .AddNew {
@@ -100,9 +117,7 @@ extension TableDetailViewController: InputCalcItemViewControllerDelegate{
         }
         reload()
     }
-    
 }
-
 
 /// UISearchBarDelegateのロジック周りをextensionとして分けます。
 extension TableDetailViewController: UISearchResultsUpdating, UISearchBarDelegate {
@@ -134,13 +149,21 @@ extension TableDetailViewController: UITableViewDelegate, UITableViewDataSource 
         let item = calcTable?.calcItems[indexPath.row]
         let unit = item?.unit ?? ""
         cell.calcItemNameLabel.text = item?.name
-        cell.quantityLabel.text = (item?.quantity ?? 0).quantityWithMyDigit + unit
+        // unitPrice
+        cell.unitPriceIntegerPartLabel.text = item?.unitPrice.unitPriceRounded.intPartCurrency
+        cell.unitPriceAfterDotLabel.text = item?.unitPrice.unitPriceRounded.afterDot
         if unit == "" {
-            cell.unitPriceLabel.text = item?.unitPrice.unitCurrencyWithMyDigit
+            cell.unitPriceUnitLabel.text = ""
         } else {
-            cell.unitPriceLabel.text = (item?.unitPrice ?? 0).unitCurrencyWithMyDigit + "／\(unit)"
+            cell.unitPriceUnitLabel.text = "円／\(unit)"
         }
-        cell.subTotalLabel.text = item?.subtotal.totalCurrencyWithMyDigit
+        
+        // quantity
+        cell.quantityIntegerPartLabel.text = item?.quantity.quantityRounded.intPartCurrency
+        cell.quantityAfterDotLabel.text = item?.quantity.quantityRounded.afterDot
+        cell.quantityUnitLabel.text = item?.unit
+        cell.subTotalIntegerPartLabel.text = item?.subtotal.totalRounded.intPartCurrency
+        cell.subTotalAfterDotLabel.text = item?.subtotal.totalRounded.afterDot
         return cell
     }
     
@@ -174,9 +197,26 @@ extension TableDetailViewController: InputNewNameDelegate {
 
 class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var calcItemNameLabel: UILabel!
-    @IBOutlet weak var quantityLabel: UILabel!
-    @IBOutlet weak var unitPriceLabel: UILabel!
-    @IBOutlet weak var subTotalLabel: UILabel!
+    
+    // -------------------------------------------------
+    // IBOutlet unitPrice
+    // -------------------------------------------------
+    @IBOutlet weak var unitPriceIntegerPartLabel: UILabel!
+    @IBOutlet weak var unitPriceAfterDotLabel: UILabel!
+    @IBOutlet weak var unitPriceUnitLabel: UILabel!
+    
+    // -------------------------------------------------
+    // IBOutlet unitPrice
+    // -------------------------------------------------
+    @IBOutlet weak var quantityIntegerPartLabel: UILabel!
+    @IBOutlet weak var quantityAfterDotLabel: UILabel!
+    @IBOutlet weak var quantityUnitLabel: UILabel!
+    
+    // -------------------------------------------------
+    // IBOutlet unitPrice
+    // -------------------------------------------------
+    @IBOutlet weak var subTotalIntegerPartLabel: UILabel!
+    @IBOutlet weak var subTotalAfterDotLabel: UILabel!
     
     override class func awakeFromNib() {
         super.awakeFromNib()

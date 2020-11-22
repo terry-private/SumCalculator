@@ -16,6 +16,12 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="OaA-Hk-fKn">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="17"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="30"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="odc-w9-Z7m"/>
@@ -25,7 +31,7 @@
             </objects>
             <point key="canvasLocation" x="-1000" y="68"/>
         </scene>
-        <!--ノート一覧-->
+        <!--OIKURA NOTE-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="NoteListViewController" customModule="SumCalculator" customModuleProvider="target" sceneMemberID="viewController">
@@ -45,14 +51,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="計算ノート①" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGy-9W-3D6">
-                                                    <rect key="frame" x="25" y="10" width="374" height="21.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <rect key="frame" x="25" y="10" width="374" height="24"/>
+                                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020/11/10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTn-cS-DMR">
-                                                    <rect key="frame" x="25" y="43" width="70" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <rect key="frame" x="25" y="40" width="72.5" height="20"/>
+                                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="14"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -78,17 +84,17 @@
                                 <items>
                                     <barButtonItem style="plain" id="Xzl-RJ-ftg">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="HcW-cw-yMn">
-                                            <rect key="frame" x="20" y="15" width="61" height="24"/>
+                                            <rect key="frame" x="20" y="15" width="61.5" height="24.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="tintColor" systemColor="systemOrangeColor"/>
-                                            <state key="normal" title="編集" image="t.bubble" catalog="system">
-                                                <color key="titleColor" systemColor="systemOrangeColor"/>
-                                            </state>
+                                            <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="17"/>
+                                            <state key="normal" title="編集" image="t.bubble" catalog="system"/>
+                                            <connections>
+                                                <action selector="tappedTemplateEditButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6ds-qF-NjU"/>
+                                            </connections>
                                         </button>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="L9L-6A-IiC"/>
                                     <barButtonItem image="square.and.pencil" catalog="system" style="plain" id="8hA-L9-hhB">
-                                        <color key="tintColor" systemColor="systemOrangeColor"/>
                                         <connections>
                                             <action selector="tappedNewButton:" destination="BYZ-38-t0r" id="WNt-75-fqf"/>
                                         </connections>
@@ -109,8 +115,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OPl-lt-uAe" secondAttribute="bottom" id="z2U-p7-N3s"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="ノート一覧" id="roo-Ld-Jtg">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="gearshape" catalog="system" id="dlS-9N-W8d"/>
+                    <navigationItem key="navigationItem" title="OIKURA NOTE" id="roo-Ld-Jtg">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="gear" catalog="system" id="dlS-9N-W8d"/>
                     </navigationItem>
                     <connections>
                         <outlet property="noteListTableView" destination="2Yx-VF-gPi" id="mwh-2h-V2u"/>
@@ -138,7 +144,6 @@
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="cde-yo-Gn1"/>
                                     <barButtonItem image="square.and.pencil" catalog="system" style="plain" id="frH-M1-8AN">
-                                        <color key="tintColor" systemColor="systemOrangeColor"/>
                                         <connections>
                                             <action selector="tappedNewButton:" destination="4Uw-An-Y2P" id="Kzi-OJ-LzA"/>
                                         </connections>
@@ -146,18 +151,30 @@
                                 </items>
                                 <color key="barTintColor" systemColor="secondarySystemBackgroundColor"/>
                             </toolbar>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lyb-Lc-r5I">
-                                <rect key="frame" x="160.5" y="827.5" width="93.5" height="20.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="Lyb-Lc-r5I">
+                                <rect key="frame" x="135" y="825" width="144" height="25.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="総計：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZ5-Yd-POw">
-                                        <rect key="frame" x="0.0" y="0.0" width="52" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="54" height="25.5"/>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEd-vH-xj4">
-                                        <rect key="frame" x="52" y="0.0" width="41.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="54" y="1.5" width="42" height="24"/>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJg-bH-T2k">
+                                        <rect key="frame" x="96" y="7" width="32" height="18.5"/>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gI4-e4-HQt">
+                                        <rect key="frame" x="128" y="3" width="16" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -187,7 +204,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="noteDetailTableView" destination="JiY-hO-Rg2" id="16y-OB-Wdw"/>
-                        <outlet property="totalAmountLabel" destination="aEd-vH-xj4" id="n6z-BD-pYu"/>
+                        <outlet property="totalAmountAfterDotLabel" destination="MJg-bH-T2k" id="KiH-xK-K3Q"/>
+                        <outlet property="totalAmountIntegerPartLabel" destination="aEd-vH-xj4" id="n6z-BD-pYu"/>
                         <segue destination="YQY-LP-1dW" kind="show" identifier="openTable" id="vUg-cB-UQi"/>
                     </connections>
                 </viewController>
@@ -220,27 +238,78 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="g0x-8L-qw7">
-                                                    <rect key="frame" x="40" y="42" width="354" height="17"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="g0x-8L-qw7">
+                                                    <rect key="frame" x="40" y="39" width="354" height="20"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unitPrice" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tsb-be-z4r">
-                                                            <rect key="frame" x="0.0" y="0.0" width="118" height="17"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="quantity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6B-Vf-oHl">
-                                                            <rect key="frame" x="118" y="0.0" width="118" height="17"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="subTotal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dps-6C-OHo">
-                                                            <rect key="frame" x="236" y="0.0" width="118" height="17"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <stackView opaque="NO" contentMode="left" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="i9b-d1-AC7">
+                                                            <rect key="frame" x="0.0" y="0.0" width="111.5" height="20"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unitPrice" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tsb-be-z4r">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="55" height="20"/>
+                                                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="14"/>
+                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUU-4S-7qN">
+                                                                    <rect key="frame" x="55" y="6" width="24.5" height="14"/>
+                                                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="10"/>
+                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3V-SA-RSY">
+                                                                    <rect key="frame" x="79.5" y="1.5" width="32" height="18.5"/>
+                                                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="13"/>
+                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="center" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="sLP-yi-Bte">
+                                                            <rect key="frame" x="128.5" y="0.0" width="106.5" height="20"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="quantity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6B-Vf-oHl">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="20"/>
+                                                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="14"/>
+                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6F-md-0Rl">
+                                                                    <rect key="frame" x="50" y="6" width="24.5" height="14"/>
+                                                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="10"/>
+                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yX-sR-eJj">
+                                                                    <rect key="frame" x="74.5" y="1.5" width="32" height="18.5"/>
+                                                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="13"/>
+                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="right" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="afY-hr-l3q">
+                                                            <rect key="frame" x="262" y="0.0" width="92" height="20"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="subTotal" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dps-6C-OHo">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="54.5" height="20"/>
+                                                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="14"/>
+                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8es-pd-k86">
+                                                                    <rect key="frame" x="54.5" y="6" width="24.5" height="14"/>
+                                                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="10"/>
+                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="円" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqJ-8u-dQK">
+                                                                    <rect key="frame" x="79" y="1.5" width="13" height="18.5"/>
+                                                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="13"/>
+                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -256,9 +325,14 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="calcItemNameLabel" destination="HxA-JG-aoK" id="gE7-Py-8S4"/>
-                                            <outlet property="quantityLabel" destination="q6B-Vf-oHl" id="50R-lH-lb2"/>
-                                            <outlet property="subTotalLabel" destination="Dps-6C-OHo" id="7JZ-hG-2Q2"/>
-                                            <outlet property="unitPriceLabel" destination="Tsb-be-z4r" id="Es4-L9-cZR"/>
+                                            <outlet property="quantityAfterDotLabel" destination="K6F-md-0Rl" id="REz-mh-OZH"/>
+                                            <outlet property="quantityIntegerPartLabel" destination="q6B-Vf-oHl" id="50R-lH-lb2"/>
+                                            <outlet property="quantityUnitLabel" destination="1yX-sR-eJj" id="b5M-GW-Dxq"/>
+                                            <outlet property="subTotalAfterDotLabel" destination="8es-pd-k86" id="IAc-DP-pbR"/>
+                                            <outlet property="subTotalIntegerPartLabel" destination="Dps-6C-OHo" id="7JZ-hG-2Q2"/>
+                                            <outlet property="unitPriceAfterDotLabel" destination="HUU-4S-7qN" id="U0Y-Yp-YqB"/>
+                                            <outlet property="unitPriceIntegerPartLabel" destination="Tsb-be-z4r" id="Es4-L9-cZR"/>
+                                            <outlet property="unitPriceUnitLabel" destination="s3V-SA-RSY" id="Nqu-46-3K7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -276,18 +350,30 @@
                                 </items>
                                 <color key="barTintColor" systemColor="secondarySystemBackgroundColor"/>
                             </toolbar>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RmN-O5-hUa">
-                                <rect key="frame" x="160.5" y="778.5" width="93.5" height="20.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="RmN-O5-hUa">
+                                <rect key="frame" x="134" y="776" width="146.5" height="25.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合計：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eha-BZ-S2m">
-                                        <rect key="frame" x="0.0" y="0.0" width="52" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="54" height="25.5"/>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4S-hu-igr">
-                                        <rect key="frame" x="52" y="0.0" width="41.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="54" y="0.0" width="44.5" height="25.5"/>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHM-3Q-BRs">
+                                        <rect key="frame" x="98.5" y="7" width="32" height="18.5"/>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFa-AD-wdK">
+                                        <rect key="frame" x="130.5" y="3" width="16" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -319,7 +405,8 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="itemsTableView" destination="oB7-8u-ioQ" id="SuC-te-jtC"/>
-                        <outlet property="totalAmountLabel" destination="T4S-hu-igr" id="Qc2-Hz-kXM"/>
+                        <outlet property="totalAmountAfterDotLabel" destination="JHM-3Q-BRs" id="VPd-bp-rhg"/>
+                        <outlet property="totalAmountIntegerPartLabel" destination="T4S-hu-igr" id="Qc2-Hz-kXM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DCS-4O-n2x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -328,7 +415,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="t.bubble" catalog="system" width="128" height="110"/>
         <systemColor name="secondaryLabelColor">

@@ -10,8 +10,9 @@ import UIKit
 class NoteTableViewCell: UITableViewCell {
     @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var tableNameLabel: UILabel!
-    @IBOutlet weak var subtotalLabel: UILabel!
+    @IBOutlet weak var subtotalIntLabel: UILabel!
     @IBOutlet weak var calcItemsStackView: UIStackView!
+    @IBOutlet weak var subtotalFractionalLabel: UILabel!
     
     var table: CalcTable? {
         didSet{
@@ -31,17 +32,31 @@ class NoteTableViewCell: UITableViewCell {
         guard let items = table?.calcItems else { return }
         removeAllItem()
         tableNameLabel.text = table?.tableName
-        subtotalLabel.text = table?.subtotal.totalCurrencyWithMyDigit
+        let subtotal = table?.subtotal.totalRounded ?? 0
+        subtotalIntLabel.text = subtotal.intPartCurrency
+        subtotalFractionalLabel.text = subtotal.afterDot
         for i in items {
             let view = Bundle.main.loadNibNamed("CalcItemView", owner: self, options: nil)?.first as! CalcItemView
             view.calcItemNameLabel.text = i.name
-            view.quantityLabel.text = i.quantity.quantityWithMyDigit + i.unit
+            
+            // unitPrice
+            view.unitPriceIntegerPartLabel.text = i.unitPrice.unitPriceRounded.intPartCurrency
+            view.unitPriceAfterDotLabel.text = i.unitPrice.unitPriceRounded.afterDot
             if i.unit == "" {
-                view.unitPriceLabel.text = i.unitPrice.unitCurrencyWithMyDigit
+                view.unitPriceUnitLabel.text = ""
             } else {
-                view.unitPriceLabel.text = i.unitPrice.unitCurrencyWithMyDigit + "／\(i.unit)"
+                view.unitPriceUnitLabel.text = "円／\(i.unit)"
             }
-            view.subTotalLabel.text = i.subtotal.totalCurrencyWithMyDigit
+            
+            // quantity
+            view.quantityIntegerPartLabel.text = i.quantity.quantityRounded.intPartCurrency
+            view.quantityAfterDotLabel.text = i.quantity.quantityRounded.afterDot
+            view.quantityUnitLabel.text = i.unit
+            
+            // subTotal
+            view.subTotalIntegerPartLabel.text = i.subtotal.totalRounded.intPartCurrency
+            view.subTotalAfterDotLabel.text = i.subtotal.totalRounded.afterDot
+            
             calcItemsStackView.addArrangedSubview(view)
             itemList.append(view)
         }

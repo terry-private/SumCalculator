@@ -119,6 +119,9 @@ class InputCalcItemViewController: UIViewController {
         subtotalLabel.text = "合計：\(calcItem.subtotal.totalCurrencyWithMyDigit)"
     }
     
+    // -------------------------------------------------
+    // 遷移
+    // -------------------------------------------------
     private func modalCalculator(type: AmountType, firstNumber: String){
         let storyboard = UIStoryboard.init(name: "InputCalculatorView", bundle: nil)
         let inputCalculatorViewController = storyboard.instantiateViewController(withIdentifier: "InputCalculatorViewController") as! InputCalculatorViewController

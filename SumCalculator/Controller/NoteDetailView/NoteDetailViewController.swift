@@ -18,11 +18,17 @@ class NoteDetailViewController: UIViewController {
     var noteId = "" // 親のノートID {リロードの時にこれを使って note<CalcNote> の値をrealmから取ってくる
     var calcNote: CalcNote?
     private var realm: Realm!
-
-    @IBOutlet weak var totalAmountLabel: UILabel!
+    
+    // -------------------------------------------------
+    // IBOutlet
+    // -------------------------------------------------
+    @IBOutlet weak var totalAmountIntegerPartLabel: UILabel!
+    @IBOutlet weak var totalAmountAfterDotLabel: UILabel!
     @IBOutlet weak var noteDetailTableView: UITableView!
 
-    
+    // -------------------------------------------------
+    // ライフサイクル
+    // -------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         // 各パーツのセットアップ
@@ -31,9 +37,16 @@ class NoteDetailViewController: UIViewController {
         setupSearchBar()
         //データベースの準備
         realm = try! Realm()
-        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reload()
+    }
+    
+    // -------------------------------------------------
+    // setUp系
+    // -------------------------------------------------
     func setupTableView() {
         noteDetailTableView.delegate = self
         noteDetailTableView.dataSource = self
@@ -43,7 +56,7 @@ class NoteDetailViewController: UIViewController {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "表を検索します。"
+        searchController.searchBar.placeholder = "リストを検索します。"
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
@@ -55,19 +68,22 @@ class NoteDetailViewController: UIViewController {
         view.addSubview(indicator)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        reload()
-    }
-    
+    // -------------------------------------------------
+    // reload
+    // -------------------------------------------------
     func reload() {
         calcNote = realm.object(ofType: CalcNote.self, forPrimaryKey: noteId)
         DispatchQueue.main.async {
             self.navigationItem.title = self.calcNote?.noteName
-            self.totalAmountLabel.text = self.calcNote?.total.currency
+            self.totalAmountIntegerPartLabel.text = self.calcNote?.total.totalRounded.intPartCurrency
+            self.totalAmountAfterDotLabel.text = self.calcNote?.total.totalRounded.afterDot
             self.noteDetailTableView.reloadData()
         }
     }
+    
+    // -------------------------------------------------
+    // IBAction
+    // -------------------------------------------------
     @IBAction func tappedNewButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
         let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
@@ -78,6 +94,7 @@ class NoteDetailViewController: UIViewController {
         
         self.present(nav,animated: true, completion: nil)
     }
+    
     @IBAction func tappedEditButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
         let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController

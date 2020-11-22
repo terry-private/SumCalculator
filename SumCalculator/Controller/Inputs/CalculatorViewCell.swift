@@ -24,7 +24,8 @@ class CalculatorViewCell: UICollectionViewCell {
         label.textColor = .white
         label.textAlignment = .center
         label.text = "1"
-        label.font = .boldSystemFont(ofSize: 32)
+        label.font = UIFont(name: "PingFangHK-Thin", size: 32)
+        
         label.clipsToBounds = true
         label.backgroundColor = .orange
         return label

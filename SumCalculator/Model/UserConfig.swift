@@ -25,7 +25,7 @@ class UserConfig: Config {
     }
     var totalCurrencyFractionalDigit: Int {
         get {
-            let digit = UserDefaults.standard.object(forKey: "totalCurrencyFractionalDigit") as? Int ?? 0
+            let digit = UserDefaults.standard.object(forKey: "totalCurrencyFractionalDigit") as? Int ?? 2
             return digit
         }
         set {

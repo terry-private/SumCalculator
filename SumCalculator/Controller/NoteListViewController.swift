@@ -74,6 +74,16 @@ class NoteListViewController: UIViewController {
         
         self.present(nav,animated: true, completion: nil)
     }
+    @IBAction func tappedTemplateEditButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "TemplateSelect", bundle: nil)
+        let inputNewNameViewController = storyboard.instantiateViewController(identifier: "TemplateSelectViewController") as! TemplateSelectViewController
+        //inputCalcItemViewController.recordViewControllerDelegate = self
+        inputNewNameViewController.navigationItem.title = "テンプレートの編集"
+        let nav = UINavigationController(rootViewController: inputNewNameViewController)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav,animated: true, completion: nil)
+    }
+    
 
 }
 

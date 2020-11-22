@@ -8,7 +8,7 @@
 import UIKit
 import BottomHalfModal
 
-protocol InputCalculatorViewControllerDelegate {
+protocol InputCalculatorViewControllerDelegate: class {
     func fixAmount(_ amount: Decimal, _ type: AmountType)
 }
 enum AmountType {
@@ -17,7 +17,7 @@ enum AmountType {
 }
 class InputCalculatorViewController: UIViewController, SheetContentHeightModifiable  {
     var sheetContentHeightToModify: CGFloat = 580
-    var inputCalculatorViewControllerDelegate : InputCalculatorViewControllerDelegate?
+    weak var inputCalculatorViewControllerDelegate : InputCalculatorViewControllerDelegate?
     
     enum CalculateStatus {
         case none, plus, minus, multiplication, division

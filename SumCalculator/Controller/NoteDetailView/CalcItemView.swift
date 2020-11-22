@@ -8,12 +8,31 @@
 import UIKit
 
 class CalcItemView: UIView {
+    
     @IBOutlet weak var calcItemNameLabel: UILabel!
-    @IBOutlet weak var unitPriceLabel: UILabel!
-    @IBOutlet weak var quantityLabel: UILabel!
+    // -------------------------------------------------
+    // IBOutlet unitPrice
+    // -------------------------------------------------
+    @IBOutlet weak var unitPriceIntegerPartLabel: UILabel!
+    @IBOutlet weak var unitPriceAfterDotLabel: UILabel!
+    @IBOutlet weak var unitPriceUnitLabel: UILabel!
     
-    @IBOutlet weak var subTotalLabel: UILabel!
+    // -------------------------------------------------
+    // IBOutlet quantity
+    // -------------------------------------------------
+    @IBOutlet weak var quantityIntegerPartLabel: UILabel!
+    @IBOutlet weak var quantityAfterDotLabel: UILabel!
+    @IBOutlet weak var quantityUnitLabel: UILabel!
     
+    // -------------------------------------------------
+    // IBOutlet subTotal
+    // -------------------------------------------------
+    @IBOutlet weak var subTotalIntegerPartLabel: UILabel!
+    @IBOutlet weak var subTotalAfterDotLabel: UILabel!
+    
+    // -------------------------------------------------
+    // ライフサイクル
+    // -------------------------------------------------
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
