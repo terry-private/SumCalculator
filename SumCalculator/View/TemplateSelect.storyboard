@@ -18,27 +18,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="1d3-3A-c2r">
-                                <rect key="frame" x="107" y="298" width="200" height="300"/>
+                                <rect key="frame" x="107" y="234" width="200" height="428"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="テンプレートを編集します" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nln-cz-ONl">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="28"/>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tcy-aR-CMJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
+                                        <rect key="frame" x="0.0" y="128" width="200" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="JmQ-Fj-UOq"/>
                                             <constraint firstAttribute="width" constant="200" id="geN-bY-teI"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="20"/>
-                                        <state key="normal" title="リストのテンプレート">
+                                        <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="18"/>
+                                        <state key="normal" title="リスト">
                                             <color key="titleColor" systemColor="labelColor"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Av-j2-6BC">
-                                        <rect key="frame" x="0.0" y="200" width="200" height="100"/>
+                                        <rect key="frame" x="0.0" y="328" width="200" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="WPe-4o-hTL"/>
                                             <constraint firstAttribute="height" constant="100" id="jIw-fh-L1h"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="20"/>
-                                        <state key="normal" title="項目のテンプレート">
+                                        <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="18"/>
+                                        <state key="normal" title="項目">
                                             <color key="titleColor" systemColor="labelColor"/>
                                         </state>
                                     </button>

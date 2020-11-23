@@ -19,7 +19,9 @@ class NoteListViewController: UIViewController {
     
     @IBOutlet weak var noteListTableView: UITableView!
     
-    
+    // -------------------------------------------------
+    // ライフサイクル
+    // -------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         // 各パーツのセットアップ
@@ -28,10 +30,16 @@ class NoteListViewController: UIViewController {
         setupIndicator()
         //データベースの準備
         realm = try! Realm()
-        //表示処理
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         reload()
     }
     
+    // -------------------------------------------------
+    // setup系
+    // -------------------------------------------------
     func setupTableView() {
         noteListTableView.delegate = self
         noteListTableView.dataSource = self
@@ -52,11 +60,10 @@ class NoteListViewController: UIViewController {
         view.addSubview(indicator)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        reload()
-    }
     
+    // -------------------------------------------------
+    // reload
+    // -------------------------------------------------
     func reload() {
         calcNotes = realm.objects(CalcNote.self)
         DispatchQueue.main.async {
@@ -64,6 +71,9 @@ class NoteListViewController: UIViewController {
         }
     }
     
+    // -------------------------------------------------
+    // IBAction
+    // -------------------------------------------------
     @IBAction func tappedNewButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
         let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
