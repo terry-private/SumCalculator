@@ -33,6 +33,20 @@ extension Realm {
             parentTable.calcItems.append(calcItem)
         }
     }
+    
+    func addNewTemplate(_ template: Template) {
+        try! self.write {
+            self.add(template)
+        }
+    }
+    func addNewTemplateList(_ name: String, template: Template) {
+        let tmp = template
+        let table = CalcTable()
+        table.tableName = name
+        try! self.write {
+            tmp.listTemplates.append(table)
+        }
+    }
     // --------------------------------------------------------------
     // updateメソッド
     // --------------------------------------------------------------

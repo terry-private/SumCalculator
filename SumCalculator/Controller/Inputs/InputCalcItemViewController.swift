@@ -29,6 +29,7 @@ class InputCalcItemViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var quantityStepper: UIStepper!
     @IBOutlet weak var subtotalLabel: UILabel!
+    @IBOutlet weak var quantityStackView: UIStackView!
     
     // -------------------------------------------------
     // IBAction

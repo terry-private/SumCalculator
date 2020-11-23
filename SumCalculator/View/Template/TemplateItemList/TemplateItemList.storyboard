@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Template Item List View Controller-->
+        <scene sceneID="W2G-9T-riv">
+            <objects>
+                <viewController storyboardIdentifier="TemplateItemListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SGq-Uk-plT" customClass="TemplateItemListViewController" customModule="SumCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dF4-bY-nFs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uwK-Yj-jdb">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellId" rowHeight="43.5" id="rfQ-4V-2hN" customClass="TemplateItemListTableViewCell" customModule="SumCalculator" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rfQ-4V-2hN" id="atx-24-NUd">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pd8-yz-Oim">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CalcItemName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L90-w0-BKs">
+                                                            <rect key="frame" x="0.0" y="9" width="118" height="25.5"/>
+                                                            <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="18"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <stackView opaque="NO" contentMode="left" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="I2c-6C-LUZ">
+                                                            <rect key="frame" x="267.5" y="10.5" width="106.5" height="22.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unitPrice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dM2-Ry-Wqa">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="63" height="22.5"/>
+                                                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="16"/>
+                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YbU-mP-3fr">
+                                                                    <rect key="frame" x="63" y="5.5" width="29.5" height="17"/>
+                                                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="12"/>
+                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pud-Xo-N25">
+                                                                    <rect key="frame" x="92.5" y="2.5" width="14" height="20"/>
+                                                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="14"/>
+                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="pd8-yz-Oim" secondAttribute="trailing" constant="20" id="A5a-lc-lC9"/>
+                                                <constraint firstAttribute="bottom" secondItem="pd8-yz-Oim" secondAttribute="bottom" id="djy-fd-A00"/>
+                                                <constraint firstItem="pd8-yz-Oim" firstAttribute="top" secondItem="atx-24-NUd" secondAttribute="top" id="iTG-Nv-lw9"/>
+                                                <constraint firstItem="pd8-yz-Oim" firstAttribute="leading" secondItem="atx-24-NUd" secondAttribute="leading" constant="20" id="o9W-1P-fxY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="calcItemNameLabel" destination="L90-w0-BKs" id="9I3-Gb-fiM"/>
+                                            <outlet property="unitPriceAfterDotLabel" destination="YbU-mP-3fr" id="rhm-ON-VFB"/>
+                                            <outlet property="unitPriceIntegerPartLabel" destination="dM2-Ry-Wqa" id="Myc-nk-k3R"/>
+                                            <outlet property="unitPriceUnitLabel" destination="pud-Xo-N25" id="ISQ-N8-ApB"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DkV-PK-hIn">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="oTp-cg-Y5w"/>
+                                    <barButtonItem title="Item" image="square.and.pencil" catalog="system" id="dcb-iU-C9t">
+                                        <connections>
+                                            <action selector="tappedNewButton:" destination="SGq-Uk-plT" id="RLI-3n-53T"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Grs-bJ-9Ff"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uwK-Yj-jdb" firstAttribute="top" secondItem="Grs-bJ-9Ff" secondAttribute="top" id="H8z-QA-wxe"/>
+                            <constraint firstItem="DkV-PK-hIn" firstAttribute="leading" secondItem="Grs-bJ-9Ff" secondAttribute="leading" id="KGz-pN-Bi7"/>
+                            <constraint firstAttribute="trailing" secondItem="DkV-PK-hIn" secondAttribute="trailing" id="RS1-6Y-zrM"/>
+                            <constraint firstItem="DkV-PK-hIn" firstAttribute="top" secondItem="uwK-Yj-jdb" secondAttribute="bottom" id="dVv-vk-kIZ"/>
+                            <constraint firstItem="DkV-PK-hIn" firstAttribute="leading" secondItem="Grs-bJ-9Ff" secondAttribute="leading" id="dcf-Fs-8bn"/>
+                            <constraint firstItem="uwK-Yj-jdb" firstAttribute="leading" secondItem="Grs-bJ-9Ff" secondAttribute="leading" id="nAF-GE-BM7"/>
+                            <constraint firstItem="Grs-bJ-9Ff" firstAttribute="bottom" secondItem="DkV-PK-hIn" secondAttribute="bottom" id="was-IV-d2P"/>
+                            <constraint firstItem="Grs-bJ-9Ff" firstAttribute="trailing" secondItem="uwK-Yj-jdb" secondAttribute="trailing" id="ytf-fe-gkq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="itemListTableView" destination="uwK-Yj-jdb" id="zKf-fM-0my"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GUL-Jf-0df" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="246" y="71"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

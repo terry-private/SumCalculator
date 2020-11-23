@@ -25,8 +25,16 @@ extension DateFormatter {
         return df
     }
 }
+
 extension Date {
     init() {
         self = Date(timeIntervalSinceNow: TimeInterval(TimeZone.japan.secondsFromGMT()))
+    }
+    func longDate() -> String{
+        let f = DateFormatter()
+        f.locale = .japan
+        f.timeZone = TimeZone.gmt
+        f.dateStyle = .long
+        return f.string(from: self)
     }
 }

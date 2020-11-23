@@ -51,8 +51,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="計算ノート①" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGy-9W-3D6">
-                                                    <rect key="frame" x="25" y="10" width="374" height="24"/>
-                                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="17"/>
+                                                    <rect key="frame" x="25" y="10" width="374" height="25.5"/>
+                                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

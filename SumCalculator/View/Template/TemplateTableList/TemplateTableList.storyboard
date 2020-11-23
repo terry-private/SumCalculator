@@ -17,16 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ufL-Y5-cFj">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ufL-Y5-cFj">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ShP-fx-P9D">
-                                <rect key="frame" x="0.0" y="852" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ShP-fx-P9D">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="xRX-gf-Rxw"/>
-                                    <barButtonItem title="Item" image="square.and.pencil" catalog="system" id="MOo-th-EjN"/>
+                                    <barButtonItem title="Item" image="square.and.pencil" catalog="system" id="MOo-th-EjN">
+                                        <connections>
+                                            <action selector="tappedNewButton:" destination="hTg-J1-uUm" id="FxQ-ad-Qwi"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -37,6 +40,9 @@
                             <constraint firstItem="bjc-uT-My2" firstAttribute="trailing" secondItem="ufL-Y5-cFj" secondAttribute="trailing" id="B6E-i9-JUA"/>
                             <constraint firstItem="ufL-Y5-cFj" firstAttribute="top" secondItem="vM7-aF-kCN" secondAttribute="top" id="Ckt-IO-1qX"/>
                             <constraint firstItem="ufL-Y5-cFj" firstAttribute="leading" secondItem="bjc-uT-My2" secondAttribute="leading" id="PvN-q5-RX9"/>
+                            <constraint firstItem="bjc-uT-My2" firstAttribute="bottom" secondItem="ShP-fx-P9D" secondAttribute="bottom" id="V1u-ZL-x9T"/>
+                            <constraint firstItem="ShP-fx-P9D" firstAttribute="leading" secondItem="bjc-uT-My2" secondAttribute="leading" id="hVB-Hu-kUE"/>
+                            <constraint firstItem="ShP-fx-P9D" firstAttribute="trailing" secondItem="bjc-uT-My2" secondAttribute="trailing" id="q1F-xK-RFZ"/>
                         </constraints>
                     </view>
                     <connections>

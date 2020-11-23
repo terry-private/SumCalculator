@@ -11,8 +11,8 @@ import RealmSwift
 class TableDetailViewController: UIViewController {
 
     let cellId = "cellId"
-    var searchController: UISearchController!
-    var indicator = UIActivityIndicatorView()
+//    var searchController: UISearchController!
+//    var indicator = UIActivityIndicatorView()
     var currentIndex = 0
     
     // ドメイン系のプロパティ
@@ -33,8 +33,8 @@ class TableDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        setupIndicator()
-        setupSearchBar()
+//        setupIndicator()
+//        setupSearchBar()
         //データベースの準備
         realm = try! Realm()
     }
@@ -50,21 +50,21 @@ class TableDetailViewController: UIViewController {
         itemsTableView.delegate = self
         itemsTableView.dataSource = self
     }
-    func setupSearchBar() {
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "項目を検索します。"
-        searchController.searchBar.delegate = self
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = true
-    }
+//    func setupSearchBar() {
+//        searchController = UISearchController(searchResultsController: nil)
+//        searchController.searchResultsUpdater = self
+//        searchController.obscuresBackgroundDuringPresentation = false
+//        searchController.searchBar.placeholder = "項目を検索します。"
+//        searchController.searchBar.delegate = self
+//        navigationItem.searchController = searchController
+//        navigationItem.hidesSearchBarWhenScrolling = true
+//    }
     // クルクルインジゲーター設定
-    func setupIndicator() {
-        indicator.center = view.center
-        indicator.style = UIActivityIndicatorView.Style.large
-        view.addSubview(indicator)
-    }
+//    func setupIndicator() {
+//        indicator.center = view.center
+//        indicator.style = UIActivityIndicatorView.Style.large
+//        view.addSubview(indicator)
+//    }
     
     // -------------------------------------------------
     // reload
@@ -119,24 +119,24 @@ extension TableDetailViewController: InputCalcItemViewControllerDelegate{
     }
 }
 
-/// UISearchBarDelegateのロジック周りをextensionとして分けます。
-extension TableDetailViewController: UISearchResultsUpdating, UISearchBarDelegate {
-    
-    // 編集だけでなくキーボードを開く時も
-    // Apiのタスクとクルクルが止まる仕様(taskがrunningの場合のみ)
-    func updateSearchResults(for searchController: UISearchController) {
-        DispatchQueue.main.async {
-            //self.repositoryListModel.cancel()
-            self.indicator.stopAnimating()
-        }
-    }
-    // 検索ボタン押下時処理　クルクルスタート
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        // guard let searchWord = searchBar.text else { return }
-        self.view.endEditing(true)
-        indicator.startAnimating()
-    }
-}
+///// UISearchBarDelegateのロジック周りをextensionとして分けます。
+//extension TableDetailViewController: UISearchResultsUpdating, UISearchBarDelegate {
+//
+//    // 編集だけでなくキーボードを開く時も
+//    // Apiのタスクとクルクルが止まる仕様(taskがrunningの場合のみ)
+//    func updateSearchResults(for searchController: UISearchController) {
+//        DispatchQueue.main.async {
+//            //self.repositoryListModel.cancel()
+//            self.indicator.stopAnimating()
+//        }
+//    }
+//    // 検索ボタン押下時処理　クルクルスタート
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        // guard let searchWord = searchBar.text else { return }
+//        self.view.endEditing(true)
+//        indicator.startAnimating()
+//    }
+//}
 
 
 extension TableDetailViewController: UITableViewDelegate, UITableViewDataSource {

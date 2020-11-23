@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellId" rowHeight="371" id="IRM-0j-MmP" customClass="TemplateTableListCell">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellId" rowHeight="371" id="IRM-0j-MmP" customClass="TemplateTableListCell" customModule="SumCalculator" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="398" height="371"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IRM-0j-MmP" id="HmW-BX-iXe">
@@ -71,6 +71,11 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="calcItemsStackView" destination="wg4-ii-2qB" id="aII-uS-hBT"/>
+                <outlet property="cellBackgroundView" destination="bNt-NQ-F35" id="j3O-Z0-8bz"/>
+                <outlet property="tableNameLabel" destination="LHj-TC-AUx" id="Pvp-ZB-Z9p"/>
+            </connections>
             <point key="canvasLocation" x="252" y="-5"/>
         </tableViewCell>
     </objects>

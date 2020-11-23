@@ -16,25 +16,15 @@ class Template: Object {
             editedAt = Date()
         }
     }
-    var calcTables: List<CalcTable> = List<CalcTable>(){
+    var listTemplates: List<CalcTable> = List<CalcTable>(){
         didSet {
             editedAt = Date()
         }
     }
     
-    var calcItems: List<CalcItem> = List<CalcItem>() {
+    var itemTemplates: List<CalcTable> = List<CalcTable>() {
         didSet {
             editedAt = Date()
-        }
-    }
-    
-    var total: Decimal {
-        get {
-            var sum = Decimal()
-            for calcTable in calcTables {
-                sum += calcTable.subtotal
-            }
-            return sum
         }
     }
     
@@ -42,7 +32,7 @@ class Template: Object {
     /// 末端にCalcItemが無いもの容認しているのでnilの場合もあり得る。
     var latestEditedAt: Date? {
         var latestDate = editedAt
-        for calcTable in calcTables {
+        for calcTable in listTemplates {
             let tableLatestDate = calcTable.latestEditedAt
             if latestDate > tableLatestDate {
                 latestDate = tableLatestDate

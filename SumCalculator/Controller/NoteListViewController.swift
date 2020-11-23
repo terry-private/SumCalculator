@@ -10,8 +10,8 @@ import RealmSwift
 
 class NoteListViewController: UIViewController {
     let cellId = "cellId"
-    var searchController: UISearchController!
-    var indicator = UIActivityIndicatorView()
+//    var searchController: UISearchController!
+//    var indicator = UIActivityIndicatorView()
     var currentIndexPath: IndexPath?
     
     var calcNotes: Results<CalcNote>?
@@ -26,8 +26,8 @@ class NoteListViewController: UIViewController {
         super.viewDidLoad()
         // 各パーツのセットアップ
         setupTableView()
-        setupSearchBar()
-        setupIndicator()
+//        setupSearchBar()
+//        setupIndicator()
         //データベースの準備
         realm = try! Realm()
     }
@@ -44,21 +44,21 @@ class NoteListViewController: UIViewController {
         noteListTableView.delegate = self
         noteListTableView.dataSource = self
     }
-    func setupSearchBar() {
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "ノートを検索します。"
-        searchController.searchBar.delegate = self
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = true
-    }
-    // クルクルインジゲーター設定
-    func setupIndicator() {
-        indicator.center = view.center
-        indicator.style = UIActivityIndicatorView.Style.large
-        view.addSubview(indicator)
-    }
+//    func setupSearchBar() {
+//        searchController = UISearchController(searchResultsController: nil)
+//        searchController.searchResultsUpdater = self
+//        searchController.obscuresBackgroundDuringPresentation = false
+//        searchController.searchBar.placeholder = "ノートを検索します。"
+//        searchController.searchBar.delegate = self
+//        navigationItem.searchController = searchController
+//        navigationItem.hidesSearchBarWhenScrolling = true
+//    }
+//    // クルクルインジゲーター設定
+//    func setupIndicator() {
+//        indicator.center = view.center
+//        indicator.style = UIActivityIndicatorView.Style.large
+//        view.addSubview(indicator)
+//    }
     
     
     // -------------------------------------------------
@@ -86,9 +86,16 @@ class NoteListViewController: UIViewController {
     }
     @IBAction func tappedTemplateEditButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "TemplateSelect", bundle: nil)
-        let inputNewNameViewController = storyboard.instantiateViewController(identifier: "TemplateSelectViewController") as! TemplateSelectViewController
+        let templateSelectViewController = storyboard.instantiateViewController(identifier: "TemplateSelectViewController") as! TemplateSelectViewController
+        templateSelectViewController.navigationItem.largeTitleDisplayMode = .automatic
+        //templateSelectViewController.navigationItem.title = "テンプレートの編集"
+        
         //inputCalcItemViewController.recordViewControllerDelegate = self
-        let nav = UINavigationController(rootViewController: inputNewNameViewController)
+        let nav = UINavigationController(rootViewController: templateSelectViewController)
+        nav.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label, .font:UIFont(name: "PingFangHK-Thin", size: 18)!]
+        //nav.navigationBar.prefersLargeTitles = true
+        //nav.navigationBar.barTintColor = .cyan
+        //nav.navigationBar.backgroundColor = .systemTeal
         nav.modalPresentationStyle = .fullScreen
         self.present(nav,animated: true, completion: nil)
     }
@@ -107,25 +114,25 @@ extension NoteListViewController: InputNewNameDelegate {
     }
 }
 
-//------------------------------------------------------------------------------
-// UISearchBarDelegateのロジック周りをextensionとして分けます。
-extension NoteListViewController: UISearchResultsUpdating, UISearchBarDelegate {
-    // 編集だけでなくキーボードを開く時も
-    // Apiのタスクとクルクルが止まる仕様(taskがrunningの場合のみ)
-    func updateSearchResults(for searchController: UISearchController) {
-        DispatchQueue.main.async {
-            //self.repositoryListModel.cancel()
-            self.indicator.stopAnimating()
-        }
-    }
-    
-    // 検索ボタン押下時処理　クルクルスタート
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        // guard let searchWord = searchBar.text else { return }
-        self.view.endEditing(true)
-        indicator.startAnimating()
-    }
-}
+////------------------------------------------------------------------------------
+//// UISearchBarDelegateのロジック周りをextensionとして分けます。
+//extension NoteListViewController: UISearchResultsUpdating, UISearchBarDelegate {
+//    // 編集だけでなくキーボードを開く時も
+//    // Apiのタスクとクルクルが止まる仕様(taskがrunningの場合のみ)
+//    func updateSearchResults(for searchController: UISearchController) {
+//        DispatchQueue.main.async {
+//            //self.repositoryListModel.cancel()
+//            self.indicator.stopAnimating()
+//        }
+//    }
+//
+//    // 検索ボタン押下時処理　クルクルスタート
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        // guard let searchWord = searchBar.text else { return }
+//        self.view.endEditing(true)
+//        indicator.startAnimating()
+//    }
+//}
 
 //------------------------------------------------------------------------------
 // UITableViewDelegate, UITableViewDataSourceのロジック周りをextensionとして分けます。
@@ -137,7 +144,7 @@ extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = noteListTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteListTableViewCell
         cell.noteNameLabel.text = calcNotes?[indexPath.row].noteName ?? ""
-        cell.latestEditedTimeLabel.text = calcNotes?[indexPath.row].latestEditedAt?.description
+        cell.latestEditedTimeLabel.text = calcNotes?[indexPath.row].latestEditedAt?.longDate()
         return cell
     }
     

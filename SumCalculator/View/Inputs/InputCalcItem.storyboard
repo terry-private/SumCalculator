@@ -155,6 +155,7 @@
                         <outlet property="confirmButton" destination="rCd-Uw-ogQ" id="GEW-vz-RNp"/>
                         <outlet property="itemNameTextField" destination="SoU-8g-dZ9" id="3cW-Zq-box"/>
                         <outlet property="quantityButton" destination="UxO-cO-hcG" id="Q99-X9-aFW"/>
+                        <outlet property="quantityStackView" destination="tKi-4J-5C2" id="2NX-vN-psG"/>
                         <outlet property="quantityStepper" destination="H5U-y2-nAV" id="reY-qr-xb0"/>
                         <outlet property="subtotalLabel" destination="kel-Jo-57U" id="LEw-dx-uDm"/>
                         <outlet property="unitPriceButton" destination="aUT-4z-LIy" id="Zu1-Ha-ow9"/>

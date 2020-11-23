@@ -40,11 +40,15 @@
 		094A89B4256B900400F40B17 /* TemplateCalcItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094A89B3256B900400F40B17 /* TemplateCalcItemView.xib */; };
 		094A89BE256B934B00F40B17 /* TemplateTableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A89BD256B934B00F40B17 /* TemplateTableListViewController.swift */; };
 		094A89C6256B9A3800F40B17 /* Date - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A89C5256B9A3800F40B17 /* Date - Extension.swift */; };
+		094A89CB256B9B0700F40B17 /* TemplateTableListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A89CA256B9B0700F40B17 /* TemplateTableListCell.swift */; };
+		094A89D0256B9C8600F40B17 /* TemplateCalcItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A89CF256B9C8600F40B17 /* TemplateCalcItemView.swift */; };
 		095186F1256562BE00EAA820 /* InputCalculatorView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095186F0256562BE00EAA820 /* InputCalculatorView.storyboard */; };
 		095186F6256563D500EAA820 /* InputCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095186F5256563D500EAA820 /* InputCalculatorViewController.swift */; };
 		0951870A256566ED00EAA820 /* CalculatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09518709256566ED00EAA820 /* CalculatorViewCell.swift */; };
 		0951870F2565683B00EAA820 /* String - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951870E2565683B00EAA820 /* String - Extension.swift */; };
 		09703B7825595AD400375604 /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09703B7725595AD400375604 /* NoteListViewController.swift */; };
+		09866529256BCB3500F1A6A9 /* TemplateItemList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09866528256BCB3500F1A6A9 /* TemplateItemList.storyboard */; };
+		0986652F256BE21300F1A6A9 /* TemplateItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0986652E256BE21300F1A6A9 /* TemplateItemListViewController.swift */; };
 		09E43EE6255FC56300B8624A /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E43EE5255FC56300B8624A /* NoteTableViewCell.swift */; };
 		09E43EEE255FD87900B8624A /* CalcItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E43EED255FD87900B8624A /* CalcItemView.xib */; };
 		09E43EF3256015C800B8624A /* CalcItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E43EF2256015C800B8624A /* CalcItemView.swift */; };
@@ -110,11 +114,15 @@
 		094A89B3256B900400F40B17 /* TemplateCalcItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateCalcItemView.xib; sourceTree = "<group>"; };
 		094A89BD256B934B00F40B17 /* TemplateTableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTableListViewController.swift; sourceTree = "<group>"; };
 		094A89C5256B9A3800F40B17 /* Date - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date - Extension.swift"; sourceTree = "<group>"; };
+		094A89CA256B9B0700F40B17 /* TemplateTableListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTableListCell.swift; sourceTree = "<group>"; };
+		094A89CF256B9C8600F40B17 /* TemplateCalcItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateCalcItemView.swift; sourceTree = "<group>"; };
 		095186F0256562BE00EAA820 /* InputCalculatorView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputCalculatorView.storyboard; sourceTree = "<group>"; };
 		095186F5256563D500EAA820 /* InputCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputCalculatorViewController.swift; sourceTree = "<group>"; };
 		09518709256566ED00EAA820 /* CalculatorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewCell.swift; sourceTree = "<group>"; };
 		0951870E2565683B00EAA820 /* String - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String - Extension.swift"; sourceTree = "<group>"; };
 		09703B7725595AD400375604 /* NoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
+		09866528256BCB3500F1A6A9 /* TemplateItemList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TemplateItemList.storyboard; sourceTree = "<group>"; };
+		0986652E256BE21300F1A6A9 /* TemplateItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateItemListViewController.swift; sourceTree = "<group>"; };
 		09E43EE5255FC56300B8624A /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		09E43EED255FD87900B8624A /* CalcItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalcItemView.xib; sourceTree = "<group>"; };
 		09E43EF2256015C800B8624A /* CalcItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcItemView.swift; sourceTree = "<group>"; };
@@ -295,6 +303,7 @@
 			children = (
 				09486864256A53CF000191C0 /* TemplateSelect.storyboard */,
 				094A89B8256B917500F40B17 /* TemplateTableList */,
+				09866527256BCAF100F1A6A9 /* TemplateItemList */,
 			);
 			path = Template;
 			sourceTree = "<group>";
@@ -304,6 +313,7 @@
 			children = (
 				09486869256A5CFB000191C0 /* TemplateSelectViewController.swift */,
 				094A89BC256B931100F40B17 /* TemplateTableList */,
+				0986652D256BE1CE00F1A6A9 /* TemplateItemList */,
 			);
 			path = Template;
 			sourceTree = "<group>";
@@ -322,6 +332,8 @@
 			isa = PBXGroup;
 			children = (
 				094A89BD256B934B00F40B17 /* TemplateTableListViewController.swift */,
+				094A89CA256B9B0700F40B17 /* TemplateTableListCell.swift */,
+				094A89CF256B9C8600F40B17 /* TemplateCalcItemView.swift */,
 			);
 			path = TemplateTableList;
 			sourceTree = "<group>";
@@ -346,6 +358,22 @@
 				09518709256566ED00EAA820 /* CalculatorViewCell.swift */,
 			);
 			path = Inputs;
+			sourceTree = "<group>";
+		};
+		09866527256BCAF100F1A6A9 /* TemplateItemList */ = {
+			isa = PBXGroup;
+			children = (
+				09866528256BCB3500F1A6A9 /* TemplateItemList.storyboard */,
+			);
+			path = TemplateItemList;
+			sourceTree = "<group>";
+		};
+		0986652D256BE1CE00F1A6A9 /* TemplateItemList */ = {
+			isa = PBXGroup;
+			children = (
+				0986652E256BE21300F1A6A9 /* TemplateItemListViewController.swift */,
+			);
+			path = TemplateItemList;
 			sourceTree = "<group>";
 		};
 		5A2D661119DA76D87F2749A3 /* Frameworks */ = {
@@ -487,6 +515,7 @@
 				095186F1256562BE00EAA820 /* InputCalculatorView.storyboard in Resources */,
 				09E43EEE255FD87900B8624A /* CalcItemView.xib in Resources */,
 				0947F9412557D70B00CA3C2D /* Assets.xcassets in Resources */,
+				09866529256BCB3500F1A6A9 /* TemplateItemList.storyboard in Resources */,
 				0947F93F2557D70A00CA3C2D /* Main.storyboard in Resources */,
 				09472F8B256170C300D94ED5 /* InputNewName.storyboard in Resources */,
 				094A89B4256B900400F40B17 /* TemplateCalcItemView.xib in Resources */,
@@ -623,6 +652,7 @@
 				0947F98D255836A700CA3C2D /* CalcNote.swift in Sources */,
 				094A0223255D4C9A0024B45A /* NoteDetailViewController.swift in Sources */,
 				0947F97B2558173F00CA3C2D /* CalcTable.swift in Sources */,
+				0986652F256BE21300F1A6A9 /* TemplateItemListViewController.swift in Sources */,
 				094A89BE256B934B00F40B17 /* TemplateTableListViewController.swift in Sources */,
 				09486860256A52C6000191C0 /* Template.swift in Sources */,
 				09472F8625616B8A00D94ED5 /* Realm - Extension.swift in Sources */,
@@ -640,6 +670,8 @@
 				09486848256A15DB000191C0 /* Decimal - Extension.swift in Sources */,
 				0947F93A2557D70A00CA3C2D /* SceneDelegate.swift in Sources */,
 				09472F90256174C900D94ED5 /* InputNewNameViewController.swift in Sources */,
+				094A89D0256B9C8600F40B17 /* TemplateCalcItemView.swift in Sources */,
+				094A89CB256B9B0700F40B17 /* TemplateTableListCell.swift in Sources */,
 				0947F96E2557F1A600CA3C2D /* CalcItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
