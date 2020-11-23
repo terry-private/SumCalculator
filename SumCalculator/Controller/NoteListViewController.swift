@@ -72,7 +72,7 @@ class NoteListViewController: UIViewController {
     }
     
     // -------------------------------------------------
-    // IBAction
+    // IBAction　遷移系
     // -------------------------------------------------
     @IBAction func tappedNewButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
@@ -88,7 +88,6 @@ class NoteListViewController: UIViewController {
         let storyboard = UIStoryboard(name: "TemplateSelect", bundle: nil)
         let inputNewNameViewController = storyboard.instantiateViewController(identifier: "TemplateSelectViewController") as! TemplateSelectViewController
         //inputCalcItemViewController.recordViewControllerDelegate = self
-        inputNewNameViewController.navigationItem.title = "テンプレートの編集"
         let nav = UINavigationController(rootViewController: inputNewNameViewController)
         nav.modalPresentationStyle = .fullScreen
         self.present(nav,animated: true, completion: nil)
@@ -138,6 +137,7 @@ extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = noteListTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteListTableViewCell
         cell.noteNameLabel.text = calcNotes?[indexPath.row].noteName ?? ""
+        cell.latestEditedTimeLabel.text = calcNotes?[indexPath.row].latestEditedAt?.description
         return cell
     }
     

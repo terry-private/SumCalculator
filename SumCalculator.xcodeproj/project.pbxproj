@@ -35,6 +35,11 @@
 		0949711C25696DB600A96DA8 /* InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0949711B25696DB600A96DA8 /* InputType.swift */; };
 		094A0223255D4C9A0024B45A /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */; };
 		094A0228255E9E360024B45A /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094A0227255E9E360024B45A /* NoteTableViewCell.xib */; };
+		094A89AA256B897900F40B17 /* TemplateTableList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 094A89A9256B897900F40B17 /* TemplateTableList.storyboard */; };
+		094A89AF256B8E4300F40B17 /* TemplateTableListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094A89AE256B8E4300F40B17 /* TemplateTableListCell.xib */; };
+		094A89B4256B900400F40B17 /* TemplateCalcItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094A89B3256B900400F40B17 /* TemplateCalcItemView.xib */; };
+		094A89BE256B934B00F40B17 /* TemplateTableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A89BD256B934B00F40B17 /* TemplateTableListViewController.swift */; };
+		094A89C6256B9A3800F40B17 /* Date - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A89C5256B9A3800F40B17 /* Date - Extension.swift */; };
 		095186F1256562BE00EAA820 /* InputCalculatorView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095186F0256562BE00EAA820 /* InputCalculatorView.storyboard */; };
 		095186F6256563D500EAA820 /* InputCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095186F5256563D500EAA820 /* InputCalculatorViewController.swift */; };
 		0951870A256566ED00EAA820 /* CalculatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09518709256566ED00EAA820 /* CalculatorViewCell.swift */; };
@@ -100,6 +105,11 @@
 		0949711B25696DB600A96DA8 /* InputType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputType.swift; sourceTree = "<group>"; };
 		094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 		094A0227255E9E360024B45A /* NoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
+		094A89A9256B897900F40B17 /* TemplateTableList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TemplateTableList.storyboard; sourceTree = "<group>"; };
+		094A89AE256B8E4300F40B17 /* TemplateTableListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateTableListCell.xib; sourceTree = "<group>"; };
+		094A89B3256B900400F40B17 /* TemplateCalcItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateCalcItemView.xib; sourceTree = "<group>"; };
+		094A89BD256B934B00F40B17 /* TemplateTableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTableListViewController.swift; sourceTree = "<group>"; };
+		094A89C5256B9A3800F40B17 /* Date - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date - Extension.swift"; sourceTree = "<group>"; };
 		095186F0256562BE00EAA820 /* InputCalculatorView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputCalculatorView.storyboard; sourceTree = "<group>"; };
 		095186F5256563D500EAA820 /* InputCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputCalculatorViewController.swift; sourceTree = "<group>"; };
 		09518709256566ED00EAA820 /* CalculatorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewCell.swift; sourceTree = "<group>"; };
@@ -170,6 +180,7 @@
 				09472F8525616B8A00D94ED5 /* Realm - Extension.swift */,
 				0951870E2565683B00EAA820 /* String - Extension.swift */,
 				09486847256A15DB000191C0 /* Decimal - Extension.swift */,
+				094A89C5256B9A3800F40B17 /* Date - Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -248,9 +259,9 @@
 			children = (
 				0947F93D2557D70A00CA3C2D /* Main.storyboard */,
 				0947F9422557D70B00CA3C2D /* LaunchScreen.storyboard */,
-				09486864256A53CF000191C0 /* TemplateSelect.storyboard */,
 				09472F412560A0BD00D94ED5 /* NoteDetailView */,
 				095186EE2565620000EAA820 /* Inputs */,
+				094A89A1256B85FB00F40B17 /* Template */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -261,10 +272,10 @@
 				0947F9372557D70A00CA3C2D /* AppDelegate.swift */,
 				0947F9392557D70A00CA3C2D /* SceneDelegate.swift */,
 				09703B7725595AD400375604 /* NoteListViewController.swift */,
-				09486869256A5CFB000191C0 /* TemplateSelectViewController.swift */,
 				094A022C255EA1200024B45A /* NoteDetailView */,
 				09472F452560BDC500D94ED5 /* TableDetailView */,
 				095186EF2565626100EAA820 /* Inputs */,
+				094A89A5256B88AB00F40B17 /* Template */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -277,6 +288,42 @@
 				09E43EF2256015C800B8624A /* CalcItemView.swift */,
 			);
 			path = NoteDetailView;
+			sourceTree = "<group>";
+		};
+		094A89A1256B85FB00F40B17 /* Template */ = {
+			isa = PBXGroup;
+			children = (
+				09486864256A53CF000191C0 /* TemplateSelect.storyboard */,
+				094A89B8256B917500F40B17 /* TemplateTableList */,
+			);
+			path = Template;
+			sourceTree = "<group>";
+		};
+		094A89A5256B88AB00F40B17 /* Template */ = {
+			isa = PBXGroup;
+			children = (
+				09486869256A5CFB000191C0 /* TemplateSelectViewController.swift */,
+				094A89BC256B931100F40B17 /* TemplateTableList */,
+			);
+			path = Template;
+			sourceTree = "<group>";
+		};
+		094A89B8256B917500F40B17 /* TemplateTableList */ = {
+			isa = PBXGroup;
+			children = (
+				094A89A9256B897900F40B17 /* TemplateTableList.storyboard */,
+				094A89AE256B8E4300F40B17 /* TemplateTableListCell.xib */,
+				094A89B3256B900400F40B17 /* TemplateCalcItemView.xib */,
+			);
+			path = TemplateTableList;
+			sourceTree = "<group>";
+		};
+		094A89BC256B931100F40B17 /* TemplateTableList */ = {
+			isa = PBXGroup;
+			children = (
+				094A89BD256B934B00F40B17 /* TemplateTableListViewController.swift */,
+			);
+			path = TemplateTableList;
 			sourceTree = "<group>";
 		};
 		095186EE2565620000EAA820 /* Inputs */ = {
@@ -433,13 +480,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				0947F9442557D70B00CA3C2D /* LaunchScreen.storyboard in Resources */,
+				094A89AA256B897900F40B17 /* TemplateTableList.storyboard in Resources */,
 				09472F582560F18300D94ED5 /* InputCalcItem.storyboard in Resources */,
+				094A89AF256B8E4300F40B17 /* TemplateTableListCell.xib in Resources */,
 				09486865256A53CF000191C0 /* TemplateSelect.storyboard in Resources */,
 				095186F1256562BE00EAA820 /* InputCalculatorView.storyboard in Resources */,
 				09E43EEE255FD87900B8624A /* CalcItemView.xib in Resources */,
 				0947F9412557D70B00CA3C2D /* Assets.xcassets in Resources */,
 				0947F93F2557D70A00CA3C2D /* Main.storyboard in Resources */,
 				09472F8B256170C300D94ED5 /* InputNewName.storyboard in Resources */,
+				094A89B4256B900400F40B17 /* TemplateCalcItemView.xib in Resources */,
 				094A0228255E9E360024B45A /* NoteTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -573,6 +623,7 @@
 				0947F98D255836A700CA3C2D /* CalcNote.swift in Sources */,
 				094A0223255D4C9A0024B45A /* NoteDetailViewController.swift in Sources */,
 				0947F97B2558173F00CA3C2D /* CalcTable.swift in Sources */,
+				094A89BE256B934B00F40B17 /* TemplateTableListViewController.swift in Sources */,
 				09486860256A52C6000191C0 /* Template.swift in Sources */,
 				09472F8625616B8A00D94ED5 /* Realm - Extension.swift in Sources */,
 				09472F69256109AD00D94ED5 /* InputCalcItemViewController.swift in Sources */,
@@ -582,6 +633,7 @@
 				0947F9382557D70A00CA3C2D /* AppDelegate.swift in Sources */,
 				095186F6256563D500EAA820 /* InputCalculatorViewController.swift in Sources */,
 				09472F472560BE2400D94ED5 /* TableDetailViewController.swift in Sources */,
+				094A89C6256B9A3800F40B17 /* Date - Extension.swift in Sources */,
 				09E43EF3256015C800B8624A /* CalcItemView.swift in Sources */,
 				0948686A256A5CFB000191C0 /* TemplateSelectViewController.swift in Sources */,
 				0948685B256A3F7F000191C0 /* UserConfig.swift in Sources */,

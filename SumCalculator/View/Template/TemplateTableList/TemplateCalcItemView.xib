@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="A3Z-gI-5Do" customClass="CalcItemView" customModule="SumCalculator" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="373" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EQd-1j-srw">
+                    <rect key="frame" x="0.0" y="0.0" width="373" height="0.5"/>
+                    <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="DL8-ID-Wz8"/>
+                    </constraints>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="r2g-03-2Nb">
+                    <rect key="frame" x="20" y="0.5" width="333" height="43.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CalcItemName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Dk-y9-8LD">
+                            <rect key="frame" x="0.0" y="9" width="118" height="25.5"/>
+                            <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="left" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="pgw-nD-7Lt">
+                            <rect key="frame" x="226.5" y="10.5" width="106.5" height="22.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unitPrice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yfs-Sy-dCJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="63" height="22.5"/>
+                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="16"/>
+                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZc-E4-w5D">
+                                    <rect key="frame" x="63" y="5.5" width="29.5" height="17"/>
+                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="12"/>
+                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crN-dY-yXZ">
+                                    <rect key="frame" x="92.5" y="2.5" width="14" height="20"/>
+                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="14"/>
+                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="o1U-T8-ycB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="EQd-1j-srw" firstAttribute="top" secondItem="A3Z-gI-5Do" secondAttribute="top" id="75a-zN-PO5"/>
+                <constraint firstItem="EQd-1j-srw" firstAttribute="leading" secondItem="A3Z-gI-5Do" secondAttribute="leading" id="9Rc-8G-S7U"/>
+                <constraint firstItem="r2g-03-2Nb" firstAttribute="leading" secondItem="A3Z-gI-5Do" secondAttribute="leading" constant="20" id="GtO-BN-nyn"/>
+                <constraint firstAttribute="bottom" secondItem="r2g-03-2Nb" secondAttribute="bottom" id="P8J-Xy-Ib7"/>
+                <constraint firstAttribute="trailing" secondItem="EQd-1j-srw" secondAttribute="trailing" id="bJO-m6-GQM"/>
+                <constraint firstAttribute="trailing" secondItem="r2g-03-2Nb" secondAttribute="trailing" constant="20" id="qRE-xZ-yOB"/>
+                <constraint firstItem="r2g-03-2Nb" firstAttribute="top" secondItem="EQd-1j-srw" secondAttribute="bottom" id="xa1-x2-EgQ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="calcItemNameLabel" destination="1Dk-y9-8LD" id="bsH-9o-HdB"/>
+            </connections>
+            <point key="canvasLocation" x="157" y="-46"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
