@@ -21,12 +21,35 @@ class TemplateItemListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupBackButton()
+        try! realm = Realm()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reload()
     }
     func setupTableView() {
         itemListTableView.delegate = self
         itemListTableView.dataSource = self
-        itemListTableView.register(UINib(nibName: "TemplateItemListTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
+        //itemListTableView.register(UINib(nibName: "TemplateItemListTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
     }
+    func setupBackButton() {
+        let backBarButtonItem = UIBarButtonItem(title: "戻る", style: .plain, target: self, action: #selector(tappedBackButton))
+        backBarButtonItem.tintColor = .white
+        //backBarButtonItem.setTitleTextAttributes([.font: UIFont(name: "PingFangHK-Thin", size: 17)!], for: .normal)
+        navigationItem.setLeftBarButton(backBarButtonItem, animated: true)
+    }
+    
+    @objc private func tappedBackButton() {
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.type = .push
+        transition.subtype = .fromLeft
+        view.window!.layer.add(transition, forKey: kCATransition)
+        dismiss(animated: false, completion: nil)
+    }
+    
+    
     func reload() {
         calcTable = realm.object(ofType: CalcTable.self, forPrimaryKey: tableId)
         DispatchQueue.main.async {
@@ -37,13 +60,12 @@ class TemplateItemListViewController: UIViewController {
     
     @IBAction func tappedNewButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "InputCalcItem", bundle: nil)
-        let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputCalcItemViewController") as! InputCalcItemViewController
+        let inputCalcItemViewController = storyboard.instantiateViewController(identifier: "InputCalcItemViewController") as! InputCalcItemViewController
         //inputCalcItemViewController.recordViewControllerDelegate = self
-        inputNewNameViewController.delegate = self
-        inputNewNameViewController.navigationItem.title = "新規項目の作成"
-        inputNewNameViewController.quantityStackView.isHidden = true
-        inputNewNameViewController.subtotalLabel.isHidden = true
-        let nav = UINavigationController(rootViewController: inputNewNameViewController)
+        inputCalcItemViewController.delegate = self
+        inputCalcItemViewController.navigationItem.title = "新規項目の作成"
+        inputCalcItemViewController.isTemplate = true
+        let nav = UINavigationController(rootViewController: inputCalcItemViewController)
         
         self.present(nav,animated: true, completion: nil)
     }
@@ -59,6 +81,7 @@ extension TemplateItemListViewController: UITableViewDelegate, UITableViewDataSo
         let cell = itemListTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! TemplateItemListTableViewCell
         let item = calcTable?.calcItems[indexPath.row]
         let unit = item?.unit ?? ""
+
         cell.calcItemNameLabel.text = item?.name
         
         // unitPrice
@@ -76,6 +99,7 @@ extension TemplateItemListViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "InputCalcItem", bundle: nil)
         let inputCalcItemViewController = storyboard.instantiateViewController(identifier: "InputCalcItemViewController") as! InputCalcItemViewController
+        inputCalcItemViewController.isTemplate = true
         inputCalcItemViewController.delegate = self
         inputCalcItemViewController.before = calcTable?.calcItems[indexPath.row]
         let nav = UINavigationController(rootViewController: inputCalcItemViewController)
@@ -107,4 +131,8 @@ class TemplateItemListTableViewCell: UITableViewCell {
     @IBOutlet weak var unitPriceIntegerPartLabel: UILabel!
     @IBOutlet weak var unitPriceAfterDotLabel: UILabel!
     @IBOutlet weak var unitPriceUnitLabel: UILabel!
+    
+    override class func awakeFromNib() {
+        super.awakeFromNib()
+    }
 }

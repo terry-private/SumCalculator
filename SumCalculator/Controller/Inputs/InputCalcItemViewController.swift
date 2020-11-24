@@ -18,6 +18,7 @@ class InputCalcItemViewController: UIViewController {
     var calcItem = CalcItem()
     var inputType:InputType = .AddNew
     var before: CalcItem?
+    var isTemplate = false
     
     // -------------------------------------------------
     // IBOutlet
@@ -96,6 +97,10 @@ class InputCalcItemViewController: UIViewController {
             unitTextField.text = calcItem.unit
             itemNameTextField.text = calcItem.name
             navigationItem.title = "この項目修正します。"
+        }
+        if isTemplate {
+            quantityStackView.isHidden = true
+            subtotalLabel.isHidden = true
         }
         reDisplay()
     }

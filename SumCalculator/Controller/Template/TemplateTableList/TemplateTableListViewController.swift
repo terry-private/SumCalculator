@@ -13,8 +13,19 @@ class TemplateTableListViewController: UIViewController{
     private var realm: Realm!
     var template: Template?
     var calcTables: List<CalcTable>?
+    enum TemplateType {
+        case Table
+        case Item
+    }
+    enum Mode {
+        case Edit
+        case Use
+    }
+    var templateType: TemplateType = .Table
+    var mode: Mode = .Edit
     
     @IBOutlet weak var listTableView: UITableView!
+    
     // -------------------------------------------------
     // ライフサイクル
     // -------------------------------------------------
@@ -59,17 +70,30 @@ class TemplateTableListViewController: UIViewController{
             template = templates[0]
         }
         
-        calcTables = template!.listTemplates
+        switch templateType {
+        case .Table:
+            calcTables = template!.listTemplates
+        case .Item:
+            calcTables = template!.itemTemplates
+        }
+        
         DispatchQueue.main.async {
             self.listTableView.reloadData()
         }
     }
+    
+    
     @IBAction func tappedNewButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
         let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
         //inputCalcItemViewController.recordViewControllerDelegate = self
         inputNewNameViewController.delegate = self
-        inputNewNameViewController.navigationItem.title = "新規リストのテンプレ作成"
+        switch templateType {
+        case .Table:
+            inputNewNameViewController.navigationItem.title = "リストテンプレート新規作成"
+        case .Item:
+            inputNewNameViewController.navigationItem.title = "項目テンプレートのフォルダ作成"
+        }
         let nav = UINavigationController(rootViewController: inputNewNameViewController)
         
         self.present(nav,animated: true, completion: nil)
@@ -78,14 +102,19 @@ class TemplateTableListViewController: UIViewController{
 
 extension TemplateTableListViewController: InputNewNameDelegate {
     func addNew(name: String) {
-        realm.addNewTemplateList(name, template: template!)
-                                 
+        switch templateType {
+        case .Table:
+            realm.addNewTemplateList(name, template: template!)
+        case .Item:
+            realm.addNewTemplateItemFolder(name, template: template!)
+        }
+        
+        reload()
     }
     
     func upDate(name: String) {
         
     }
-    
     
 }
 
@@ -95,12 +124,35 @@ extension TemplateTableListViewController: UITableViewDelegate, UITableViewDataS
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let itemsCount = calcTables?[indexPath.row].calcItems.count ?? 0
-        return CGFloat(120 + 44 * itemsCount)
+        return CGFloat(100 + 44 * itemsCount)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = listTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! TemplateTableListCell
         cell.table = calcTables?[indexPath.row] ?? CalcTable()
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "TemplateItemList", bundle: nil)
+        let templateItemListViewController = storyboard.instantiateViewController(identifier: "TemplateItemListViewController") as! TemplateItemListViewController
+        templateItemListViewController.tableId = calcTables?[indexPath.row].id ?? ""
+        let nav = UINavigationController(rootViewController: templateItemListViewController)
+        //nav.navigationBar.barTintColor = .cyan
+        nav.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label, .font:UIFont(name: "PingFangHK-Thin", size: 18)!]
+        nav.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.label, .font:UIFont(name: "PingFangHK-Thin", size: 22)!]
+        nav.navigationBar.prefersLargeTitles = true
+        nav.modalPresentationStyle = .fullScreen
+        
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.type = .push
+        transition.subtype = .fromRight
+        view.window!.layer.add(transition, forKey: kCATransition)
+        self.present(nav,animated: false, completion: nil)
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard let deleteItem = calcTables?[indexPath.row] else { return }
+        realm.deleteTable(calcTable: deleteItem)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
     

@@ -47,6 +47,14 @@ extension Realm {
             tmp.listTemplates.append(table)
         }
     }
+    func addNewTemplateItemFolder(_ name: String, template: Template) {
+        let tmp = template
+        let table = CalcTable()
+        table.tableName = name
+        try! self.write {
+            tmp.itemTemplates.append(table)
+        }
+    }
     // --------------------------------------------------------------
     // updateメソッド
     // --------------------------------------------------------------
