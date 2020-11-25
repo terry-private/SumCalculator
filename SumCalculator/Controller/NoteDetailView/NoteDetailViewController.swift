@@ -85,26 +85,95 @@ class NoteDetailViewController: UIViewController {
     // IBAction
     // -------------------------------------------------
     @IBAction func tappedNewButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
-        let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
-        //inputCalcItemViewController.recordViewControllerDelegate = self
-        inputNewNameViewController.delegate = self
-        inputNewNameViewController.navigationItem.title = "新規リストの作成"
-        let nav = UINavigationController(rootViewController: inputNewNameViewController)
+        // アラート画面で新規ノートのタイトルを入力させます。
+        var alertTextField: UITextField?
+        let alert = UIAlertController(title: "新しいリストを追加", message: "タイトルを入力", preferredStyle: UIAlertController.Style.alert)
         
-        self.present(nav,animated: true, completion: nil)
+        // テキストフィールド追加
+        alert.addTextField(configurationHandler: {(textField: UITextField!) in
+            alertTextField = textField
+            textField.text = ""
+            textField.placeholder = "タイトル"
+            // textField.isSecureTextEntry = true
+        })
+        
+        // キャンセルボタン追加
+        alert.addAction(
+            UIAlertAction(
+                title: "Cancel",
+                style: UIAlertAction.Style.cancel,
+                handler: nil))
+        
+        // OKボタン追加
+        alert.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: UIAlertAction.Style.default) { _ in
+                if let text = alertTextField?.text {
+                    if text != "" {
+                        self.realm.addNewTable(text, parentNote: self.calcNote!) // 強制アンラップ
+                        self.reload()
+                    }
+                }
+            }
+        )
+        self.present(alert, animated: true, completion: nil)
+        
+        
+//        let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
+//        let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
+//        //inputCalcItemViewController.recordViewControllerDelegate = self
+//        inputNewNameViewController.delegate = self
+//        inputNewNameViewController.navigationItem.title = "新規リストの作成"
+//        let nav = UINavigationController(rootViewController: inputNewNameViewController)
+//
+//        self.present(nav,animated: true, completion: nil)
     }
     
     @IBAction func tappedEditButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
-        let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
-        //inputCalcItemViewController.recordViewControllerDelegate = self
-        inputNewNameViewController.delegate = self
-        inputNewNameViewController.navigationItem.title = "タイトルの編集"
-        inputNewNameViewController.originName = calcNote?.noteName ?? ""
-        let nav = UINavigationController(rootViewController: inputNewNameViewController)
+        // アラート画面で新規ノートのタイトルを入力させます。
+        var alertTextField: UITextField?
+        let alert = UIAlertController(title: "ノートのタイトルを変更", message: "タイトルを入力", preferredStyle: UIAlertController.Style.alert)
         
-        self.present(nav,animated: true, completion: nil)
+        // テキストフィールド追加
+        alert.addTextField(configurationHandler: {(textField: UITextField!) in
+            alertTextField = textField
+            textField.text = self.calcNote?.noteName
+            textField.placeholder = "タイトル"
+            // textField.isSecureTextEntry = true
+        })
+        
+        // キャンセルボタン追加
+        alert.addAction(
+            UIAlertAction(
+                title: "Cancel",
+                style: UIAlertAction.Style.cancel,
+                handler: nil))
+        
+        // OKボタン追加
+        alert.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: UIAlertAction.Style.default) { _ in
+                if let text = alertTextField?.text {
+                    if text != "" {
+                        self.realm.updateNote(self.calcNote!, name: text) // 強制アンラップ
+                        self.reload()
+                    }
+                }
+            }
+        )
+        self.present(alert, animated: true, completion: nil)
+        
+//        let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
+//        let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
+//        //inputCalcItemViewController.recordViewControllerDelegate = self
+//        inputNewNameViewController.delegate = self
+//        inputNewNameViewController.navigationItem.title = "タイトルの編集"
+//        inputNewNameViewController.originName = calcNote?.noteName ?? ""
+//        let nav = UINavigationController(rootViewController: inputNewNameViewController)
+//
+//        self.present(nav,animated: true, completion: nil)
     }
     
     @IBAction func tappedTemplateButton(_ sender: Any) {
@@ -139,7 +208,7 @@ extension NoteDetailViewController: InputNewNameDelegate {
     }
     
     func addNew(name: String) {
-        realm.addNewTable(name, parentNote: calcNote!)
+        realm.addNewTable(name, parentNote: calcNote!)// 強制アンラップ
         reload()
     }
 }

@@ -82,6 +82,17 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DkV-PK-hIn">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
+                                    <barButtonItem style="plain" id="mUJ-Fa-hld">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="tKx-Bi-A8h">
+                                            <rect key="frame" x="20" y="15" width="61.5" height="24.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="17"/>
+                                            <state key="normal" image="t.bubble" catalog="system"/>
+                                            <connections>
+                                                <action selector="tappedTemplateButton:" destination="SGq-Uk-plT" eventType="touchUpInside" id="Pql-qV-m4z"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="oTp-cg-Y5w"/>
                                     <barButtonItem title="Item" image="square.and.pencil" catalog="system" id="dcb-iU-C9t">
                                         <connections>
@@ -106,6 +117,7 @@
                     </view>
                     <connections>
                         <outlet property="itemListTableView" destination="uwK-Yj-jdb" id="zKf-fM-0my"/>
+                        <outlet property="templateButton" destination="tKx-Bi-A8h" id="rAw-qK-ZSJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GUL-Jf-0df" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -115,6 +127,7 @@
     </scenes>
     <resources>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
+        <image name="t.bubble" catalog="system" width="128" height="110"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

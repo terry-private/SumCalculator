@@ -10,8 +10,8 @@ import RealmSwift
 
 class NoteListViewController: UIViewController {
     let cellId = "cellId"
-//    var searchController: UISearchController!
-//    var indicator = UIActivityIndicatorView()
+    //    var searchController: UISearchController!
+    //    var indicator = UIActivityIndicatorView()
     var currentIndexPath: IndexPath?
     
     var calcNotes: Results<CalcNote>?
@@ -26,8 +26,8 @@ class NoteListViewController: UIViewController {
         super.viewDidLoad()
         // 各パーツのセットアップ
         setupTableView()
-//        setupSearchBar()
-//        setupIndicator()
+        //        setupSearchBar()
+        //        setupIndicator()
         //データベースの準備
         realm = try! Realm()
     }
@@ -44,21 +44,21 @@ class NoteListViewController: UIViewController {
         noteListTableView.delegate = self
         noteListTableView.dataSource = self
     }
-//    func setupSearchBar() {
-//        searchController = UISearchController(searchResultsController: nil)
-//        searchController.searchResultsUpdater = self
-//        searchController.obscuresBackgroundDuringPresentation = false
-//        searchController.searchBar.placeholder = "ノートを検索します。"
-//        searchController.searchBar.delegate = self
-//        navigationItem.searchController = searchController
-//        navigationItem.hidesSearchBarWhenScrolling = true
-//    }
-//    // クルクルインジゲーター設定
-//    func setupIndicator() {
-//        indicator.center = view.center
-//        indicator.style = UIActivityIndicatorView.Style.large
-//        view.addSubview(indicator)
-//    }
+    //    func setupSearchBar() {
+    //        searchController = UISearchController(searchResultsController: nil)
+    //        searchController.searchResultsUpdater = self
+    //        searchController.obscuresBackgroundDuringPresentation = false
+    //        searchController.searchBar.placeholder = "ノートを検索します。"
+    //        searchController.searchBar.delegate = self
+    //        navigationItem.searchController = searchController
+    //        navigationItem.hidesSearchBarWhenScrolling = true
+    //    }
+    //    // クルクルインジゲーター設定
+    //    func setupIndicator() {
+    //        indicator.center = view.center
+    //        indicator.style = UIActivityIndicatorView.Style.large
+    //        view.addSubview(indicator)
+    //    }
     
     
     // -------------------------------------------------
@@ -75,14 +75,50 @@ class NoteListViewController: UIViewController {
     // IBAction　遷移系
     // -------------------------------------------------
     @IBAction func tappedNewButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
-        let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
-        //inputCalcItemViewController.recordViewControllerDelegate = self
-        inputNewNameViewController.delegate = self
-        inputNewNameViewController.navigationItem.title = "新規ノートの作成"
-        let nav = UINavigationController(rootViewController: inputNewNameViewController)
         
-        self.present(nav,animated: true, completion: nil)
+        // アラート画面で新規ノートのタイトルを入力させます。
+        var alertTextField: UITextField?
+        let alert = UIAlertController(title: "新しいノートを追加", message: "タイトルを入力", preferredStyle: UIAlertController.Style.alert)
+        
+        // テキストフィールド追加
+        alert.addTextField(configurationHandler: {(textField: UITextField!) in
+            alertTextField = textField
+            textField.text = ""
+            textField.placeholder = "タイトル"
+            // textField.isSecureTextEntry = true
+        })
+        
+        // キャンセルボタン追加
+        alert.addAction(
+            UIAlertAction(
+                title: "Cancel",
+                style: UIAlertAction.Style.cancel,
+                handler: nil))
+        
+        // OKボタン追加
+        alert.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: UIAlertAction.Style.default) { _ in
+                if let text = alertTextField?.text {
+                    if text != "" {
+                        self.realm.addNewNote(text)
+                        self.reload()
+                    }
+                }
+            }
+        )
+        
+        self.present(alert, animated: true, completion: nil)
+        
+        //        let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
+        //        let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
+        //        //inputCalcItemViewController.recordViewControllerDelegate = self
+        //        inputNewNameViewController.delegate = self
+        //        inputNewNameViewController.navigationItem.title = "新規ノートの作成"
+        //        let nav = UINavigationController(rootViewController: inputNewNameViewController)
+        //
+        //        self.present(nav,animated: true, completion: nil)
     }
     @IBAction func tappedTemplateEditButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "TemplateSelect", bundle: nil)
@@ -100,19 +136,19 @@ class NoteListViewController: UIViewController {
         self.present(nav,animated: true, completion: nil)
     }
     
-
+    
 }
 
 //------------------------------------------------------------------------------
-extension NoteListViewController: InputNewNameDelegate {
-    func upDate(name: String) {
-    }
-    
-    func addNew(name: String) {
-        realm.addNewNote(name)
-        reload()
-    }
-}
+//extension NoteListViewController: InputNewNameDelegate {
+//    func upDate(name: String) {
+//    }
+//
+//    func addNew(name: String) {
+//        realm.addNewNote(name)
+//        reload()
+//    }
+//}
 
 ////------------------------------------------------------------------------------
 //// UISearchBarDelegateのロジック周りをextensionとして分けます。
@@ -169,7 +205,7 @@ extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
             
         }
     }
-
+    
 }
 
 

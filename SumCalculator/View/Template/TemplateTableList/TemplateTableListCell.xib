@@ -21,19 +21,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="398" height="371"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNt-NQ-F35">
-                                <rect key="frame" x="20" y="10" width="358" height="351"/>
+                                <rect key="frame" x="60" y="10" width="278" height="351"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TableName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHj-TC-AUx">
-                                        <rect key="frame" x="128" y="6" width="102" height="28"/>
+                                        <rect key="frame" x="88" y="6" width="102" height="28"/>
                                         <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wg4-ii-2qB">
-                                        <rect key="frame" x="0.0" y="40" width="358" height="271"/>
+                                        <rect key="frame" x="0.0" y="40" width="278" height="271"/>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t4t-d5-8qB">
-                                        <rect key="frame" x="0.0" y="311" width="358" height="0.5"/>
+                                        <rect key="frame" x="0.0" y="311" width="278" height="0.5"/>
                                         <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="eNt-yB-24y"/>
@@ -57,9 +57,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bNt-NQ-F35" firstAttribute="top" secondItem="3WH-3T-36t" secondAttribute="top" constant="10" id="VJ0-Gk-ykI"/>
-                            <constraint firstItem="bNt-NQ-F35" firstAttribute="leading" secondItem="3WH-3T-36t" secondAttribute="leading" constant="20" id="wMo-7U-Kho"/>
+                            <constraint firstItem="bNt-NQ-F35" firstAttribute="leading" secondItem="3WH-3T-36t" secondAttribute="leading" constant="60" id="wMo-7U-Kho"/>
                             <constraint firstAttribute="bottom" secondItem="bNt-NQ-F35" secondAttribute="bottom" constant="10" id="x7P-Ps-nno"/>
-                            <constraint firstAttribute="trailing" secondItem="bNt-NQ-F35" secondAttribute="trailing" constant="20" id="yhX-ah-K0X"/>
+                            <constraint firstAttribute="trailing" secondItem="bNt-NQ-F35" secondAttribute="trailing" constant="60" id="yhX-ah-K0X"/>
                         </constraints>
                     </view>
                 </subviews>

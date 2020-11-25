@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Template Item Folder List View Controller-->
+        <scene sceneID="Ejf-E4-jQX">
+            <objects>
+                <viewController storyboardIdentifier="TemplateItemFolderListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PlD-kd-bBf" customClass="TemplateItemFolderListViewController" customModule="SumCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0ok-Zg-ZXh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kho-FD-XCE">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellId" id="hm5-tb-AQw" customClass="TemplateItemFolderListTableCell" customModule="SumCalculator" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hm5-tb-AQw" id="o7J-iy-o2T">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eHO-of-kOT">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="44"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="i83-HZ-TNP">
+                                                            <rect key="frame" x="0.0" y="9.5" width="146" height="25.5"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folder" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Y0v-3t-8c2">
+                                                                    <rect key="frame" x="0.0" y="1" width="23" height="23"/>
+                                                                    <color key="tintColor" systemColor="systemYellowColor"/>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CalcItemName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OdK-wD-v6t">
+                                                                    <rect key="frame" x="28" y="0.0" width="118" height="25.5"/>
+                                                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="18"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="l10-2A-EmD">
+                                                            <rect key="frame" x="314.5" y="10" width="59.5" height="24"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hl6-YY-9ef">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="42" height="24"/>
+                                                                    <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="17"/>
+                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="2Ld-pY-5OJ">
+                                                                    <rect key="frame" x="47" y="2" width="12.5" height="20.5"/>
+                                                                    <color key="tintColor" systemColor="systemYellowColor"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="eHO-of-kOT" secondAttribute="trailing" constant="20" id="TFW-lt-h2w"/>
+                                                <constraint firstItem="eHO-of-kOT" firstAttribute="top" secondItem="o7J-iy-o2T" secondAttribute="top" id="kao-Ov-Fuu"/>
+                                                <constraint firstItem="eHO-of-kOT" firstAttribute="leading" secondItem="o7J-iy-o2T" secondAttribute="leading" constant="20" id="o23-LM-ZFA"/>
+                                                <constraint firstAttribute="bottom" secondItem="eHO-of-kOT" secondAttribute="bottom" id="pBq-sK-Ihr"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="calcItemCountLabel" destination="Hl6-YY-9ef" id="AIF-2J-p4h"/>
+                                            <outlet property="calcTableNameLabel" destination="OdK-wD-v6t" id="ktp-WF-Prw"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HDe-4Q-odY">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="XDr-K8-0GR"/>
+                                    <barButtonItem title="Item" image="square.and.pencil" catalog="system" id="pma-PC-gdc">
+                                        <connections>
+                                            <action selector="tappedNewButton:" destination="PlD-kd-bBf" id="2cq-Mg-GPd"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XTz-lM-lo8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="XTz-lM-lo8" firstAttribute="trailing" secondItem="kho-FD-XCE" secondAttribute="trailing" id="7BT-rM-t6x"/>
+                            <constraint firstItem="kho-FD-XCE" firstAttribute="leading" secondItem="XTz-lM-lo8" secondAttribute="leading" id="A5w-ln-Vxe"/>
+                            <constraint firstItem="HDe-4Q-odY" firstAttribute="leading" secondItem="XTz-lM-lo8" secondAttribute="leading" id="M74-rb-GuY"/>
+                            <constraint firstItem="HDe-4Q-odY" firstAttribute="leading" secondItem="XTz-lM-lo8" secondAttribute="leading" id="RPi-X1-jdg"/>
+                            <constraint firstItem="HDe-4Q-odY" firstAttribute="top" secondItem="kho-FD-XCE" secondAttribute="bottom" id="XIT-Gh-lkg"/>
+                            <constraint firstItem="kho-FD-XCE" firstAttribute="top" secondItem="XTz-lM-lo8" secondAttribute="top" id="awU-to-AXU"/>
+                            <constraint firstItem="XTz-lM-lo8" firstAttribute="bottom" secondItem="HDe-4Q-odY" secondAttribute="bottom" id="mbM-jJ-mrW"/>
+                            <constraint firstAttribute="trailing" secondItem="HDe-4Q-odY" secondAttribute="trailing" id="qX3-1s-SgS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="templateItemFolderListTableView" destination="kho-FD-XCE" id="pbC-Rs-bj1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ro-d6-2xN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="172" y="75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="folder" catalog="system" width="128" height="97"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -94,22 +94,55 @@ class TableDetailViewController: UIViewController {
     }
     
     @IBAction func tappedEditButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
-        let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
-        //inputCalcItemViewController.recordViewControllerDelegate = self
-        inputNewNameViewController.delegate = self
-        inputNewNameViewController.navigationItem.title = "タイトルの編集"
-        inputNewNameViewController.originName = calcTable?.tableName ?? ""
-        let nav = UINavigationController(rootViewController: inputNewNameViewController)
+        // アラート画面で新規ノートのタイトルを入力させます。
+        var alertTextField: UITextField?
+        let alert = UIAlertController(title: "リストのタイトルを変更", message: "タイトルを入力", preferredStyle: UIAlertController.Style.alert)
         
-        self.present(nav,animated: true, completion: nil)
+        // テキストフィールド追加
+        alert.addTextField(configurationHandler: {(textField: UITextField!) in
+            alertTextField = textField
+            textField.text = self.calcTable?.tableName
+            textField.placeholder = "タイトル"
+            // textField.isSecureTextEntry = true
+        })
+        
+        // キャンセルボタン追加
+        alert.addAction(
+            UIAlertAction(
+                title: "Cancel",
+                style: UIAlertAction.Style.cancel,
+                handler: nil))
+        
+        // OKボタン追加
+        alert.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: UIAlertAction.Style.default) { _ in
+                if let text = alertTextField?.text {
+                    if text != "" {
+                        self.realm.updateTable(self.calcTable!, name: text) // 強制アンラップ
+                        self.reload()
+                    }
+                }
+            }
+        )
+        self.present(alert, animated: true, completion: nil)
+        
+//        let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
+//        let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
+//        //inputCalcItemViewController.recordViewControllerDelegate = self
+//        inputNewNameViewController.delegate = self
+//        inputNewNameViewController.navigationItem.title = "タイトルの編集"
+//        inputNewNameViewController.originName = calcTable?.tableName ?? ""
+//        let nav = UINavigationController(rootViewController: inputNewNameViewController)
+//
+//        self.present(nav,animated: true, completion: nil)
     }
     @IBAction func tappedTemplateButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "TemplateTableList", bundle: nil)
-        let templateTableListViewController = storyboard.instantiateViewController(identifier: "TemplateTableListViewController") as! TemplateTableListViewController
+        let storyboard = UIStoryboard(name: "TemplateItemFolderList", bundle: nil)
+        let templateTableListViewController = storyboard.instantiateViewController(identifier: "TemplateItemFolderListViewController") as! TemplateItemFolderListViewController
         //inputCalcItemViewController.recordViewControllerDelegate = self
         templateTableListViewController.mode = .Use
-        templateTableListViewController.templateType = .Item
         templateTableListViewController.itemDelegate = self
         templateTableListViewController.navigationItem.title = "テンプレから項目を作成"
         let nav = UINavigationController(rootViewController: templateTableListViewController)
@@ -204,17 +237,17 @@ extension TableDetailViewController: UITableViewDelegate, UITableViewDataSource 
     }
 }
 
-extension TableDetailViewController: InputNewNameDelegate {
-    func addNew(name: String) {
-        
-    }
-    func upDate(name: String) {
-        func upDate(name: String) {
-            realm.updateTable(calcTable!, name: name)// 強制アンラップを使ってます
-            reload()
-        }
-    }
-}
+//extension TableDetailViewController: InputNewNameDelegate {
+//    func addNew(name: String) {
+//
+//    }
+//    func upDate(name: String) {
+//        func upDate(name: String) {
+//            realm.updateTable(calcTable!, name: name)// 強制アンラップを使ってます
+//            reload()
+//        }
+//    }
+//}
 
 class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var calcItemNameLabel: UILabel!

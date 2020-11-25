@@ -61,10 +61,9 @@ class TemplateSelectViewController: UIViewController {
         self.present(nav,animated: false, completion: nil)
     }
     @IBAction func tappedTemplateItemButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "TemplateTableList", bundle: nil)
-        let templateTableListViewController = storyboard.instantiateViewController(identifier: "TemplateTableListViewController") as! TemplateTableListViewController
+        let storyboard = UIStoryboard(name: "TemplateItemFolderList", bundle: nil)
+        let templateTableListViewController = storyboard.instantiateViewController(identifier: "TemplateItemFolderListViewController") as! TemplateItemFolderListViewController
         templateTableListViewController.navigationItem.title = "項目テンプレートのフォルダ"
-        templateTableListViewController.templateType = .Item
         let nav = UINavigationController(rootViewController: templateTableListViewController)
         //nav.navigationBar.barTintColor = .cyan
         nav.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label, .font:UIFont(name: "PingFangHK-Thin", size: 18)!]

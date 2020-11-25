@@ -32,6 +32,8 @@
 		09486860256A52C6000191C0 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0948685F256A52C6000191C0 /* Template.swift */; };
 		09486865256A53CF000191C0 /* TemplateSelect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09486864256A53CF000191C0 /* TemplateSelect.storyboard */; };
 		0948686A256A5CFB000191C0 /* TemplateSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09486869256A5CFB000191C0 /* TemplateSelectViewController.swift */; };
+		09492C06256E704F0088029A /* TemplateItemFolderList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09492C05256E704F0088029A /* TemplateItemFolderList.storyboard */; };
+		09492C0E256E72090088029A /* TemplateItemFolderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09492C0D256E72090088029A /* TemplateItemFolderListViewController.swift */; };
 		0949711C25696DB600A96DA8 /* InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0949711B25696DB600A96DA8 /* InputType.swift */; };
 		094A0223255D4C9A0024B45A /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */; };
 		094A0228255E9E360024B45A /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094A0227255E9E360024B45A /* NoteTableViewCell.xib */; };
@@ -106,6 +108,8 @@
 		0948685F256A52C6000191C0 /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		09486864256A53CF000191C0 /* TemplateSelect.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TemplateSelect.storyboard; sourceTree = "<group>"; };
 		09486869256A5CFB000191C0 /* TemplateSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateSelectViewController.swift; sourceTree = "<group>"; };
+		09492C05256E704F0088029A /* TemplateItemFolderList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TemplateItemFolderList.storyboard; sourceTree = "<group>"; };
+		09492C0D256E72090088029A /* TemplateItemFolderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateItemFolderListViewController.swift; sourceTree = "<group>"; };
 		0949711B25696DB600A96DA8 /* InputType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputType.swift; sourceTree = "<group>"; };
 		094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 		094A0227255E9E360024B45A /* NoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
@@ -363,6 +367,7 @@
 		09866527256BCAF100F1A6A9 /* TemplateItemList */ = {
 			isa = PBXGroup;
 			children = (
+				09492C05256E704F0088029A /* TemplateItemFolderList.storyboard */,
 				09866528256BCB3500F1A6A9 /* TemplateItemList.storyboard */,
 			);
 			path = TemplateItemList;
@@ -371,6 +376,7 @@
 		0986652D256BE1CE00F1A6A9 /* TemplateItemList */ = {
 			isa = PBXGroup;
 			children = (
+				09492C0D256E72090088029A /* TemplateItemFolderListViewController.swift */,
 				0986652E256BE21300F1A6A9 /* TemplateItemListViewController.swift */,
 			);
 			path = TemplateItemList;
@@ -512,6 +518,7 @@
 				09472F582560F18300D94ED5 /* InputCalcItem.storyboard in Resources */,
 				094A89AF256B8E4300F40B17 /* TemplateTableListCell.xib in Resources */,
 				09486865256A53CF000191C0 /* TemplateSelect.storyboard in Resources */,
+				09492C06256E704F0088029A /* TemplateItemFolderList.storyboard in Resources */,
 				095186F1256562BE00EAA820 /* InputCalculatorView.storyboard in Resources */,
 				09E43EEE255FD87900B8624A /* CalcItemView.xib in Resources */,
 				0947F9412557D70B00CA3C2D /* Assets.xcassets in Resources */,
@@ -667,6 +674,7 @@
 				09E43EF3256015C800B8624A /* CalcItemView.swift in Sources */,
 				0948686A256A5CFB000191C0 /* TemplateSelectViewController.swift in Sources */,
 				0948685B256A3F7F000191C0 /* UserConfig.swift in Sources */,
+				09492C0E256E72090088029A /* TemplateItemFolderListViewController.swift in Sources */,
 				09486848256A15DB000191C0 /* Decimal - Extension.swift in Sources */,
 				0947F93A2557D70A00CA3C2D /* SceneDelegate.swift in Sources */,
 				09472F90256174C900D94ED5 /* InputNewNameViewController.swift in Sources */,

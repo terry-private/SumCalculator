@@ -1,59 +1,51 @@
 //
-//  TemplateTableListViewController.swift
+//  TemplateItemFolderListViewController.swift
 //  SumCalculator
 //
-//  Created by 若江照仁 on 2020/11/23.
+//  Created by 若江照仁 on 2020/11/25.
 //
 
 import UIKit
 import RealmSwift
 
-protocol SetTableTemplateProtocol: class {
-    func setTableTemplate(calcTable: CalcTable)
-}
-
-class TemplateTableListViewController: UIViewController{
+class TemplateItemFolderListViewController: UIViewController {
     let cellId = "cellId"
     private var realm: Realm!
     var template: Template?
     var calcTables: List<CalcTable>?
-    weak var tableDelegate: SetTableTemplateProtocol?
     weak var itemDelegate: SetItemTemplateProtocol?
     
-    enum TemplateType {
-        case Table
-        case Item
-    }
     enum Mode {
         case Edit
         case Use
     }
-    var templateType: TemplateType = .Table
     var mode: Mode = .Edit
     
-    @IBOutlet weak var listTableView: UITableView!
+    @IBOutlet weak var templateItemFolderListTableView: UITableView!
+    
     
     // -------------------------------------------------
     // ライフサイクル
     // -------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        listTableView.delegate = self
-        listTableView.dataSource = self
+        templateItemFolderListTableView.delegate = self
+        templateItemFolderListTableView.dataSource = self
         setupBackButton()
-        listTableView.register(UINib(nibName: "TemplateTableListCell", bundle: nil), forCellReuseIdentifier: cellId)
         try! realm = Realm()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reload()
     }
+    
     func setupBackButton() {
         let backBarButtonItem = UIBarButtonItem(title: "戻る", style: .plain, target: self, action: #selector(tappedBackButton))
         backBarButtonItem.tintColor = .label
         //backBarButtonItem.setTitleTextAttributes([.font: UIFont(name: "PingFangHK-Thin", size: 17)!], for: .normal)
         navigationItem.setLeftBarButton(backBarButtonItem, animated: true)
     }
+    
     @objc private func tappedBackButton() {
         if mode == .Use {
             dismiss(animated: true, completion: nil)
@@ -81,22 +73,18 @@ class TemplateTableListViewController: UIViewController{
             template = templates[0]
         }
         
-        switch templateType {
-        case .Table:
-            calcTables = template!.listTemplates
-        case .Item:
-            calcTables = template!.itemTemplates
-        }
+        calcTables = template!.itemTemplates
         
         DispatchQueue.main.async {
-            self.listTableView.reloadData()
+            self.templateItemFolderListTableView.reloadData()
         }
     }
     
     
+    
     @IBAction func tappedNewButton(_ sender: Any) {
         var alertTextField: UITextField?
-        let alert = UIAlertController(title: "リストのテンプレを新規作成", message: "タイトルを入力", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "項目テンプレのフォルダを新規作成", message: "タイトルを入力", preferredStyle: UIAlertController.Style.alert)
         
         // テキストフィールド追加
         alert.addTextField(configurationHandler: {(textField: UITextField!) in
@@ -120,81 +108,31 @@ class TemplateTableListViewController: UIViewController{
                 style: UIAlertAction.Style.default) { _ in
                 if let text = alertTextField?.text {
                     if text != "" {
-                        self.realm.addNewTemplateList(text, template: self.template!)// 強制アンラップ
+                        self.realm.addNewTemplateItemFolder(text, template: self.template!) // 強制アンラップ
                         self.reload()
                     }
                 }
             }
         )
         self.present(alert, animated: true, completion: nil)
-//        let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
-//        let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
-//        //inputCalcItemViewController.recordViewControllerDelegate = self
-//        inputNewNameViewController.delegate = self
-//        switch templateType {
-//        case .Table:
-//            inputNewNameViewController.navigationItem.title = "リストテンプレート新規作成"
-//        case .Item:
-//            inputNewNameViewController.navigationItem.title = "項目テンプレートのフォルダ作成"
-//        }
-//        let nav = UINavigationController(rootViewController: inputNewNameViewController)
-//
-//        self.present(nav,animated: true, completion: nil)
     }
     
-    @IBAction func tappedTemplateButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "TemplateItemFolderList", bundle: nil)
-        let templateTableListViewController = storyboard.instantiateViewController(identifier: "TemplateItemFolderListViewController") as! TemplateItemFolderListViewController
-        //inputCalcItemViewController.recordViewControllerDelegate = self
-        templateTableListViewController.mode = .Use
-        templateTableListViewController.itemDelegate = self
-        templateTableListViewController.navigationItem.title = "テンプレから項目を作成"
-        let nav = UINavigationController(rootViewController: templateTableListViewController)
-        
-        self.present(nav,animated: true, completion: nil)
-    }
+
 }
 
-//extension TemplateTableListViewController: InputNewNameDelegate {
-//    func addNew(name: String) {
-//        switch templateType {
-//        case .Table:
-//            realm.addNewTemplateList(name, template: template!)
-//        case .Item:
-//            realm.addNewTemplateItemFolder(name, template: template!)
-//        }
-//        
-//        reload()
-//    }
-//    
-//    func upDate(name: String) {
-//        
-//    }
-//    
-//}
-
-extension TemplateTableListViewController: UITableViewDelegate, UITableViewDataSource {
+extension TemplateItemFolderListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return calcTables?.count ?? 0
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let itemsCount = calcTables?[indexPath.row].calcItems.count ?? 0
-        return CGFloat(100 + 44 * itemsCount)
-    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = listTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! TemplateTableListCell
-        cell.table = calcTables?[indexPath.row] ?? CalcTable()
+        let cell = templateItemFolderListTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! TemplateItemFolderListTableCell
+        cell.calcTableNameLabel.text = calcTables?[indexPath.row].tableName
+        cell.calcItemCountLabel.text = "\(String(calcTables?[indexPath.row].calcItems.count ?? 0))項目"
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // テンプレを使う時
-        if mode == .Use && templateType == .Table{
-            tableDelegate?.setTableTemplate(calcTable: calcTables![indexPath.row])
-            dismiss(animated: true, completion: nil)
-            return
-        }
         
-        // テンプレを編集する時
         let storyboard = UIStoryboard(name: "TemplateItemList", bundle: nil)
         let templateItemListViewController = storyboard.instantiateViewController(identifier: "TemplateItemListViewController") as! TemplateItemListViewController
         templateItemListViewController.tableId = calcTables?[indexPath.row].id ?? ""
@@ -202,7 +140,6 @@ extension TemplateTableListViewController: UITableViewDelegate, UITableViewDataS
             templateItemListViewController.delegate = self
             templateItemListViewController.mode = .Use
         }
-        templateItemListViewController.itemOf = .ListTemplate
         let nav = UINavigationController(rootViewController: templateItemListViewController)
         //nav.navigationBar.barTintColor = .cyan
         nav.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label, .font:UIFont(name: "PingFangHK-Thin", size: 18)!]
@@ -226,9 +163,15 @@ extension TemplateTableListViewController: UITableViewDelegate, UITableViewDataS
     
 }
 
-extension TemplateTableListViewController: SetItemTemplateProtocol {
+extension TemplateItemFolderListViewController: SetItemTemplateProtocol {
     func setItemTemplate(calcItem: CalcItem) {
         itemDelegate?.setItemTemplate(calcItem: calcItem)
 //        dismiss(animated: true, completion: nil)
     }
+}
+
+class TemplateItemFolderListTableCell: UITableViewCell {
+    @IBOutlet weak var calcTableNameLabel: UILabel!
+    @IBOutlet weak var calcItemCountLabel: UILabel!
+    
 }

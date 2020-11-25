@@ -17,7 +17,12 @@ class TemplateItemListViewController: UIViewController {
         case Edit
         case Use
     }
+    enum ItemOf {
+        case Template
+        case ListTemplate
+    }
     
+    var itemOf: ItemOf = .Template
     var mode: Mode = .Edit
     let cellId = "cellId"
     // ドメイン系のプロパティ
@@ -28,11 +33,16 @@ class TemplateItemListViewController: UIViewController {
     private var realm: Realm!
     
     @IBOutlet weak var itemListTableView: UITableView!
+    @IBOutlet weak var templateButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         setupBackButton()
+        setupEditButton()
+        
+        // リストテンプレの中の項目を追加するときだけ押せるようにしたいのでその他の場合にHiddenになるようにしてます。
+        templateButton.isHidden = mode != .Edit || itemOf != .ListTemplate
         try! realm = Realm()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +61,12 @@ class TemplateItemListViewController: UIViewController {
         navigationItem.setLeftBarButton(backBarButtonItem, animated: true)
     }
     
+    func setupEditButton() {
+        let editButtonItem = UIBarButtonItem(title: "編集", style: .plain, target: self, action: #selector(tappedEditButton))
+        editButtonItem.tintColor = .label
+        navigationItem.setRightBarButton(editButtonItem, animated: true)
+    }
+    
     @objc private func tappedBackButton() {
         let transition = CATransition()
         transition.duration = 0.3
@@ -58,6 +74,43 @@ class TemplateItemListViewController: UIViewController {
         transition.subtype = .fromLeft
         view.window!.layer.add(transition, forKey: kCATransition)
         dismiss(animated: false, completion: nil)
+    }
+    
+    @objc private func tappedEditButton() {
+        // アラート画面で新規ノートのタイトルを入力させます。
+        var alertTextField: UITextField?
+        let title = itemOf == .ListTemplate ? "リストのタイトル変更" : "フォルダのタイトル変更"
+        let alert = UIAlertController(title: title, message: "タイトルを入力", preferredStyle: UIAlertController.Style.alert)
+        
+        // テキストフィールド追加
+        alert.addTextField(configurationHandler: {(textField: UITextField!) in
+            alertTextField = textField
+            textField.text = self.calcTable?.tableName
+            textField.placeholder = "タイトル"
+            // textField.isSecureTextEntry = true
+        })
+        
+        // キャンセルボタン追加
+        alert.addAction(
+            UIAlertAction(
+                title: "Cancel",
+                style: UIAlertAction.Style.cancel,
+                handler: nil))
+        
+        // OKボタン追加
+        alert.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: UIAlertAction.Style.default) { _ in
+                if let text = alertTextField?.text {
+                    if text != "" {
+                        self.realm.updateTable(self.calcTable!, name: text) // 強制アンラップ
+                        self.reload()
+                    }
+                }
+            }
+        )
+        self.present(alert, animated: true, completion: nil)
     }
     
     
@@ -80,7 +133,27 @@ class TemplateItemListViewController: UIViewController {
         
         self.present(nav,animated: true, completion: nil)
     }
+    @IBAction func tappedTemplateButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "TemplateItemFolderList", bundle: nil)
+        let templateTableListViewController = storyboard.instantiateViewController(identifier: "TemplateItemFolderListViewController") as! TemplateItemFolderListViewController
+        //inputCalcItemViewController.recordViewControllerDelegate = self
+        templateTableListViewController.mode = .Use
+        templateTableListViewController.itemDelegate = self
+        templateTableListViewController.navigationItem.title = "テンプレから項目を作成"
+        let nav = UINavigationController(rootViewController: templateTableListViewController)
+        
+        self.present(nav,animated: true, completion: nil)
+    }
 
+}
+
+extension TemplateItemListViewController: SetItemTemplateProtocol {
+    func setItemTemplate(calcItem: CalcItem) {
+        let newCalcItem = Template.copyItem(calcItem: calcItem)
+        realm.addNewItem(newCalcItem, parentTable: calcTable!) // 強制アンラップ
+        reload()
+        
+    }
 }
 
 extension TemplateItemListViewController: UITableViewDelegate, UITableViewDataSource {
