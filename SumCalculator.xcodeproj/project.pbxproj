@@ -34,6 +34,7 @@
 		0948686A256A5CFB000191C0 /* TemplateSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09486869256A5CFB000191C0 /* TemplateSelectViewController.swift */; };
 		09492C06256E704F0088029A /* TemplateItemFolderList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09492C05256E704F0088029A /* TemplateItemFolderList.storyboard */; };
 		09492C0E256E72090088029A /* TemplateItemFolderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09492C0D256E72090088029A /* TemplateItemFolderListViewController.swift */; };
+		09492C17256E86B40088029A /* Config.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09492C16256E86B40088029A /* Config.storyboard */; };
 		0949711C25696DB600A96DA8 /* InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0949711B25696DB600A96DA8 /* InputType.swift */; };
 		094A0223255D4C9A0024B45A /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */; };
 		094A0228255E9E360024B45A /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094A0227255E9E360024B45A /* NoteTableViewCell.xib */; };
@@ -110,6 +111,7 @@
 		09486869256A5CFB000191C0 /* TemplateSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateSelectViewController.swift; sourceTree = "<group>"; };
 		09492C05256E704F0088029A /* TemplateItemFolderList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TemplateItemFolderList.storyboard; sourceTree = "<group>"; };
 		09492C0D256E72090088029A /* TemplateItemFolderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateItemFolderListViewController.swift; sourceTree = "<group>"; };
+		09492C16256E86B40088029A /* Config.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Config.storyboard; sourceTree = "<group>"; };
 		0949711B25696DB600A96DA8 /* InputType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputType.swift; sourceTree = "<group>"; };
 		094A0222255D4C9A0024B45A /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 		094A0227255E9E360024B45A /* NoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 		0947F96B2557F10E00CA3C2D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				09492C15256E868D0088029A /* ConfigView */,
 				0947F93D2557D70A00CA3C2D /* Main.storyboard */,
 				0947F9422557D70B00CA3C2D /* LaunchScreen.storyboard */,
 				09472F412560A0BD00D94ED5 /* NoteDetailView */,
@@ -290,6 +293,14 @@
 				094A89A5256B88AB00F40B17 /* Template */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		09492C15256E868D0088029A /* ConfigView */ = {
+			isa = PBXGroup;
+			children = (
+				09492C16256E86B40088029A /* Config.storyboard */,
+			);
+			path = ConfigView;
 			sourceTree = "<group>";
 		};
 		094A022C255EA1200024B45A /* NoteDetailView */ = {
@@ -518,6 +529,7 @@
 				09472F582560F18300D94ED5 /* InputCalcItem.storyboard in Resources */,
 				094A89AF256B8E4300F40B17 /* TemplateTableListCell.xib in Resources */,
 				09486865256A53CF000191C0 /* TemplateSelect.storyboard in Resources */,
+				09492C17256E86B40088029A /* Config.storyboard in Resources */,
 				09492C06256E704F0088029A /* TemplateItemFolderList.storyboard in Resources */,
 				095186F1256562BE00EAA820 /* InputCalculatorView.storyboard in Resources */,
 				09E43EEE255FD87900B8624A /* CalcItemView.xib in Resources */,
