@@ -128,7 +128,21 @@ class NoteListViewController: UIViewController {
         
         //inputCalcItemViewController.recordViewControllerDelegate = self
         let nav = UINavigationController(rootViewController: templateSelectViewController)
-        nav.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label, .font:UIFont(name: "PingFangHK-Thin", size: 18)!]
+        nav.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label, .font:UIFont.systemFont(ofSize: 18, weight: .thin)]
+        //nav.navigationBar.prefersLargeTitles = true
+        //nav.navigationBar.barTintColor = .cyan
+        //nav.navigationBar.backgroundColor = .systemTeal
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav,animated: true, completion: nil)
+    }
+    @IBAction func tappedConfigButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Config", bundle: nil)
+        let configViewController = storyboard.instantiateViewController(identifier: "ConfigViewController") as! ConfigViewController
+        configViewController.navigationItem.largeTitleDisplayMode = .automatic
+        configViewController.navigationItem.title = "設定"
+        
+        let nav = UINavigationController(rootViewController: configViewController)
+        nav.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label, .font:UIFont.systemFont(ofSize: 18, weight: .thin)]
         //nav.navigationBar.prefersLargeTitles = true
         //nav.navigationBar.barTintColor = .cyan
         //nav.navigationBar.backgroundColor = .systemTeal
@@ -181,6 +195,8 @@ extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = noteListTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteListTableViewCell
         cell.noteNameLabel.text = calcNotes?[indexPath.row].noteName ?? ""
         cell.latestEditedTimeLabel.text = calcNotes?[indexPath.row].latestEditedAt?.longDate()
+        cell.totalIntegerPartLabel.text = (calcNotes?[indexPath.row].total ?? 0).totalRounded.intPartCurrency
+        cell.totalAfterDotLabel.text = (calcNotes?[indexPath.row].total ?? 0).totalRounded.afterDot
         return cell
     }
     
@@ -213,6 +229,8 @@ extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
 class NoteListTableViewCell: UITableViewCell {
     @IBOutlet weak var noteNameLabel: UILabel!
     @IBOutlet weak var latestEditedTimeLabel: UILabel!
+    @IBOutlet weak var totalIntegerPartLabel: UILabel!
+    @IBOutlet weak var totalAfterDotLabel: UILabel!
     override class func awakeFromNib() {
         super.awakeFromNib()
     }

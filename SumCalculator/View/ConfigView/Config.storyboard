@@ -9,77 +9,86 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Config View Controller-->
         <scene sceneID="mPp-dr-LmX">
             <objects>
-                <viewController id="cgy-Tw-wDD" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConfigViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cgy-Tw-wDD" customClass="ConfigViewController" customModule="SumCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="znn-ql-vir">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1Qw-WV-wHh">
-                                <rect key="frame" x="0.0" y="44" width="414" height="144"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Qw-WV-wHh">
+                                <rect key="frame" x="20" y="64" width="374" height="154.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小数点以下の桁数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcQ-Wo-0MW">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="31.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="26"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="MS5-uQ-U9l">
-                                        <rect key="frame" x="0.0" y="41" width="414" height="31"/>
+                                        <rect key="frame" x="0.0" y="41.5" width="374" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    単価" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prW-LA-IYH">
-                                                <rect key="frame" x="0.0" y="0.0" width="52.5" height="31"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50.5" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RDm-j6-SGt">
-                                                <rect key="frame" x="331" y="0.0" width="83" height="32"/>
+                                                <rect key="frame" x="222" y="0.0" width="152" height="32"/>
                                                 <segments>
-                                                    <segment title="0"/>
-                                                    <segment title="1"/>
-                                                    <segment title="2"/>
+                                                    <segment title="0" width="50"/>
+                                                    <segment title="1" width="50"/>
+                                                    <segment title="2" width="50"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="tappedUnitPriceSegmentedControl:" destination="cgy-Tw-wDD" eventType="valueChanged" id="XAo-n6-K34"/>
+                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="oOn-7g-NgC">
-                                        <rect key="frame" x="0.0" y="77" width="414" height="31"/>
+                                        <rect key="frame" x="0.0" y="82.5" width="374" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    数量" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6g-a9-Zeb">
-                                                <rect key="frame" x="0.0" y="0.0" width="52.5" height="31"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50.5" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HDy-6a-SzE">
-                                                <rect key="frame" x="217" y="0.0" width="197" height="32"/>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Mcl-eg-WDw">
+                                                <rect key="frame" x="222" y="0.0" width="152" height="32"/>
                                                 <segments>
-                                                    <segment title="First"/>
-                                                    <segment title="Second"/>
-                                                    <segment title="ddd"/>
+                                                    <segment title="0" width="50"/>
+                                                    <segment title="1" width="50"/>
+                                                    <segment title="2" width="50"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="tappedQuantitySegmentedControl:" destination="cgy-Tw-wDD" eventType="valueChanged" id="lg7-z0-kqc"/>
+                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="lRs-SQ-zMu">
-                                        <rect key="frame" x="0.0" y="113" width="414" height="31"/>
+                                        <rect key="frame" x="0.0" y="123.5" width="374" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    合計" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGM-ez-bwe">
-                                                <rect key="frame" x="0.0" y="0.0" width="52.5" height="31"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50.5" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Jke-Bw-GOt">
-                                                <rect key="frame" x="217" y="0.0" width="197" height="32"/>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="A6m-cZ-GcX">
+                                                <rect key="frame" x="222" y="0.0" width="152" height="32"/>
                                                 <segments>
-                                                    <segment title="First"/>
-                                                    <segment title="Second"/>
-                                                    <segment title="ddd"/>
+                                                    <segment title="0" width="50"/>
+                                                    <segment title="1" width="50"/>
+                                                    <segment title="2" width="50"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="tappedTotalSegmentedControl:" destination="cgy-Tw-wDD" eventType="valueChanged" id="mEm-HX-MOJ"/>
+                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                     </stackView>
@@ -89,11 +98,16 @@
                         <viewLayoutGuide key="safeArea" id="MJt-X9-XtW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1Qw-WV-wHh" firstAttribute="leading" secondItem="MJt-X9-XtW" secondAttribute="leading" id="EJ0-Np-AIr"/>
-                            <constraint firstItem="1Qw-WV-wHh" firstAttribute="top" secondItem="MJt-X9-XtW" secondAttribute="top" id="VDb-AY-YEb"/>
-                            <constraint firstItem="MJt-X9-XtW" firstAttribute="trailing" secondItem="1Qw-WV-wHh" secondAttribute="trailing" id="qtG-Wm-MaK"/>
+                            <constraint firstItem="1Qw-WV-wHh" firstAttribute="leading" secondItem="MJt-X9-XtW" secondAttribute="leading" constant="20" id="EJ0-Np-AIr"/>
+                            <constraint firstItem="1Qw-WV-wHh" firstAttribute="top" secondItem="MJt-X9-XtW" secondAttribute="top" constant="20" id="VDb-AY-YEb"/>
+                            <constraint firstItem="MJt-X9-XtW" firstAttribute="trailing" secondItem="1Qw-WV-wHh" secondAttribute="trailing" constant="20" id="qtG-Wm-MaK"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="quantitySegmentedControl" destination="Mcl-eg-WDw" id="f82-V8-90a"/>
+                        <outlet property="totalSegmentedControl" destination="A6m-cZ-GcX" id="MQD-xe-3QA"/>
+                        <outlet property="unitPriceSegmentedControl" destination="RDm-j6-SGt" id="nXe-ok-Fte"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ha-Mp-17t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -24,8 +24,8 @@
                                 <rect key="frame" x="20" y="10" width="358" height="351"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TableName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gc6-ZY-FZK">
-                                        <rect key="frame" x="128" y="11" width="102" height="28"/>
-                                        <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="20"/>
+                                        <rect key="frame" x="131" y="13" width="96" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -40,27 +40,27 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="center" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="RwZ-84-bVU">
-                                        <rect key="frame" x="80.5" y="301" width="197" height="50"/>
+                                        <rect key="frame" x="81.5" y="301" width="195.5" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合計：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SdS-xr-UO1">
-                                                <rect key="frame" x="0.0" y="24.5" width="54" height="25.5"/>
-                                                <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="18"/>
+                                                <rect key="frame" x="0.0" y="28.5" width="55.5" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28,580円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CaW-Th-gCp">
-                                                <rect key="frame" x="54" y="24.5" width="77" height="25.5"/>
-                                                <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="18"/>
+                                                <rect key="frame" x="55.5" y="28.5" width="74" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRD-uf-D26">
-                                                <rect key="frame" x="131" y="0.0" width="50" height="50"/>
-                                                <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="13"/>
+                                                <rect key="frame" x="129.5" y="0.0" width="50" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebr-x8-AcE">
-                                                <rect key="frame" x="181" y="27.5" width="16" height="22.5"/>
+                                                <rect key="frame" x="179.5" y="27.5" width="16" height="22.5"/>
                                                 <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>

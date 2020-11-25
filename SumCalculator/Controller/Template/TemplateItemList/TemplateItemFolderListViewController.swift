@@ -84,7 +84,7 @@ class TemplateItemFolderListViewController: UIViewController {
     
     @IBAction func tappedNewButton(_ sender: Any) {
         var alertTextField: UITextField?
-        let alert = UIAlertController(title: "項目テンプレのフォルダを新規作成", message: "タイトルを入力", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "フォルダを新規作成", message: "タイトルを入力", preferredStyle: UIAlertController.Style.alert)
         
         // テキストフィールド追加
         alert.addTextField(configurationHandler: {(textField: UITextField!) in

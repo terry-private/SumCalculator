@@ -13,6 +13,7 @@
 		09472F8625616B8A00D94ED5 /* Realm - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09472F8525616B8A00D94ED5 /* Realm - Extension.swift */; };
 		09472F8B256170C300D94ED5 /* InputNewName.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09472F8A256170C300D94ED5 /* InputNewName.storyboard */; };
 		09472F90256174C900D94ED5 /* InputNewNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09472F8F256174C900D94ED5 /* InputNewNameViewController.swift */; };
+		0947CE24256E8E910067F683 /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947CE23256E8E910067F683 /* ConfigViewController.swift */; };
 		0947F9382557D70A00CA3C2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F9372557D70A00CA3C2D /* AppDelegate.swift */; };
 		0947F93A2557D70A00CA3C2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947F9392557D70A00CA3C2D /* SceneDelegate.swift */; };
 		0947F93F2557D70A00CA3C2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0947F93D2557D70A00CA3C2D /* Main.storyboard */; };
@@ -84,6 +85,7 @@
 		09472F8525616B8A00D94ED5 /* Realm - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm - Extension.swift"; sourceTree = "<group>"; };
 		09472F8A256170C300D94ED5 /* InputNewName.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputNewName.storyboard; sourceTree = "<group>"; };
 		09472F8F256174C900D94ED5 /* InputNewNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNewNameViewController.swift; sourceTree = "<group>"; };
+		0947CE23256E8E910067F683 /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		0947F9342557D70A00CA3C2D /* SumCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SumCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0947F9372557D70A00CA3C2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0947F9392557D70A00CA3C2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +201,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		0947CE22256E8E710067F683 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				0947CE23256E8E910067F683 /* ConfigViewController.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		0947F92B2557D70A00CA3C2D = {
 			isa = PBXGroup;
 			children = (
@@ -284,6 +294,7 @@
 		0947F96C2557F11800CA3C2D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0947CE22256E8E710067F683 /* Config */,
 				0947F9372557D70A00CA3C2D /* AppDelegate.swift */,
 				0947F9392557D70A00CA3C2D /* SceneDelegate.swift */,
 				09703B7725595AD400375604 /* NoteListViewController.swift */,
@@ -684,6 +695,7 @@
 				09472F472560BE2400D94ED5 /* TableDetailViewController.swift in Sources */,
 				094A89C6256B9A3800F40B17 /* Date - Extension.swift in Sources */,
 				09E43EF3256015C800B8624A /* CalcItemView.swift in Sources */,
+				0947CE24256E8E910067F683 /* ConfigViewController.swift in Sources */,
 				0948686A256A5CFB000191C0 /* TemplateSelectViewController.swift in Sources */,
 				0948685B256A3F7F000191C0 /* UserConfig.swift in Sources */,
 				09492C0E256E72090088029A /* TemplateItemFolderListViewController.swift in Sources */,
