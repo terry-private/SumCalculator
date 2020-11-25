@@ -106,6 +106,27 @@ class NoteDetailViewController: UIViewController {
         
         self.present(nav,animated: true, completion: nil)
     }
+    
+    @IBAction func tappedTemplateButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "TemplateTableList", bundle: nil)
+        let templateTableListViewController = storyboard.instantiateViewController(identifier: "TemplateTableListViewController") as! TemplateTableListViewController
+        //inputCalcItemViewController.recordViewControllerDelegate = self
+        templateTableListViewController.mode = .Use
+        templateTableListViewController.tableDelegate = self
+        templateTableListViewController.navigationItem.title = "テンプレからリストを作成"
+        let nav = UINavigationController(rootViewController: templateTableListViewController)
+        
+        self.present(nav,animated: true, completion: nil)
+    }
+    
+}
+
+extension NoteDetailViewController: SetTableTemplateProtocol {
+    func setTableTemplate(calcTable: CalcTable) {
+        let newCalcTable = Template.copyTable(calcTable: calcTable)
+        realm.addNewTableForTemplate(newCalcTable, parentNote: calcNote!) // 強制アンラップ
+        reload()
+    }
 }
 
 //------------------------------------------------------------------------------

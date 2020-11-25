@@ -28,6 +28,12 @@ extension Realm {
             note.calcTables.append(table)
         }
     }
+    func addNewTableForTemplate(_ newCalcTable: CalcTable, parentNote: CalcNote) {
+        try! self.write {
+            parentNote.calcTables.append(newCalcTable)
+        }
+    }
+    
     func addNewItem(_ calcItem: CalcItem, parentTable: CalcTable) {
         try! self.write {
             parentTable.calcItems.append(calcItem)

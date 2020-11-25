@@ -104,7 +104,28 @@ class TableDetailViewController: UIViewController {
         
         self.present(nav,animated: true, completion: nil)
     }
+    @IBAction func tappedTemplateButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "TemplateTableList", bundle: nil)
+        let templateTableListViewController = storyboard.instantiateViewController(identifier: "TemplateTableListViewController") as! TemplateTableListViewController
+        //inputCalcItemViewController.recordViewControllerDelegate = self
+        templateTableListViewController.mode = .Use
+        templateTableListViewController.templateType = .Item
+        templateTableListViewController.itemDelegate = self
+        templateTableListViewController.navigationItem.title = "テンプレから項目を作成"
+        let nav = UINavigationController(rootViewController: templateTableListViewController)
+        
+        self.present(nav,animated: true, completion: nil)
+    }
     
+}
+
+extension TableDetailViewController: SetItemTemplateProtocol {
+    func setItemTemplate(calcItem: CalcItem) {
+        let newCalcItem = Template.copyItem(calcItem: calcItem)
+        realm.addNewItem(newCalcItem, parentTable: calcTable!) // 強制アンラップ
+        reload()
+        
+    }
 }
 
 

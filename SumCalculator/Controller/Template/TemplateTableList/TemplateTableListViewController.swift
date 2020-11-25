@@ -8,11 +8,17 @@
 import UIKit
 import RealmSwift
 
+protocol SetTableTemplateProtocol: class {
+    func setTableTemplate(calcTable: CalcTable)
+}
+
 class TemplateTableListViewController: UIViewController{
     let cellId = "cellId"
     private var realm: Realm!
     var template: Template?
     var calcTables: List<CalcTable>?
+    weak var tableDelegate: SetTableTemplateProtocol?
+    weak var itemDelegate: SetItemTemplateProtocol?
     enum TemplateType {
         case Table
         case Item
@@ -43,11 +49,15 @@ class TemplateTableListViewController: UIViewController{
     }
     func setupBackButton() {
         let backBarButtonItem = UIBarButtonItem(title: "戻る", style: .plain, target: self, action: #selector(tappedBackButton))
-        backBarButtonItem.tintColor = .white
+        backBarButtonItem.tintColor = .label
         //backBarButtonItem.setTitleTextAttributes([.font: UIFont(name: "PingFangHK-Thin", size: 17)!], for: .normal)
         navigationItem.setLeftBarButton(backBarButtonItem, animated: true)
     }
     @objc private func tappedBackButton() {
+        if mode == .Use {
+            dismiss(animated: true, completion: nil)
+            return
+        }
         let transition = CATransition()
         transition.duration = 0.3
         transition.type = .push
@@ -132,9 +142,21 @@ extension TemplateTableListViewController: UITableViewDelegate, UITableViewDataS
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // テンプレを使う時
+        if mode == .Use && templateType == .Table{
+            tableDelegate?.setTableTemplate(calcTable: calcTables![indexPath.row])
+            dismiss(animated: true, completion: nil)
+            return
+        }
+        
+        // テンプレを編集する時
         let storyboard = UIStoryboard(name: "TemplateItemList", bundle: nil)
         let templateItemListViewController = storyboard.instantiateViewController(identifier: "TemplateItemListViewController") as! TemplateItemListViewController
         templateItemListViewController.tableId = calcTables?[indexPath.row].id ?? ""
+        if mode == .Use {
+            templateItemListViewController.delegate = self
+            templateItemListViewController.mode = .Use
+        }
         let nav = UINavigationController(rootViewController: templateItemListViewController)
         //nav.navigationBar.barTintColor = .cyan
         nav.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label, .font:UIFont(name: "PingFangHK-Thin", size: 18)!]
@@ -156,4 +178,11 @@ extension TemplateTableListViewController: UITableViewDelegate, UITableViewDataS
     }
     
     
+}
+
+extension TemplateTableListViewController: SetItemTemplateProtocol {
+    func setItemTemplate(calcItem: CalcItem) {
+        itemDelegate?.setItemTemplate(calcItem: calcItem)
+//        dismiss(animated: true, completion: nil)
+    }
 }

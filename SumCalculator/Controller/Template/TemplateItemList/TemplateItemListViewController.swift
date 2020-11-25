@@ -8,12 +8,23 @@
 import UIKit
 import RealmSwift
 
+protocol SetItemTemplateProtocol: class {
+    func setItemTemplate(calcItem: CalcItem)
+}
+
 class TemplateItemListViewController: UIViewController {
+    enum Mode {
+        case Edit
+        case Use
+    }
+    
+    var mode: Mode = .Edit
     let cellId = "cellId"
     // ドメイン系のプロパティ
     var tableId = "" // 親のノートID {リロードの時にこれを使って note<CalcNote> の値をrealmから取ってくる
     var calcTable: CalcTable?
     var currentIndex = 0
+    weak var delegate: SetItemTemplateProtocol?
     private var realm: Realm!
     
     @IBOutlet weak var itemListTableView: UITableView!
@@ -35,7 +46,7 @@ class TemplateItemListViewController: UIViewController {
     }
     func setupBackButton() {
         let backBarButtonItem = UIBarButtonItem(title: "戻る", style: .plain, target: self, action: #selector(tappedBackButton))
-        backBarButtonItem.tintColor = .white
+        backBarButtonItem.tintColor = .label
         //backBarButtonItem.setTitleTextAttributes([.font: UIFont(name: "PingFangHK-Thin", size: 17)!], for: .normal)
         navigationItem.setLeftBarButton(backBarButtonItem, animated: true)
     }
@@ -97,6 +108,15 @@ extension TemplateItemListViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if mode == .Use {
+
+            delegate?.setItemTemplate(calcItem: calcTable?.calcItems[indexPath.row] ?? CalcItem())
+//            dismiss(animated: true, completion: nil)
+            presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+            return
+        }
+        
         let storyboard = UIStoryboard(name: "InputCalcItem", bundle: nil)
         let inputCalcItemViewController = storyboard.instantiateViewController(identifier: "InputCalcItemViewController") as! InputCalcItemViewController
         inputCalcItemViewController.isTemplate = true

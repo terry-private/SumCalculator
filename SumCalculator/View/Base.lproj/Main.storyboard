@@ -142,6 +142,18 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niQ-6E-BVo">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
+                                    <barButtonItem style="plain" id="ne4-2c-OhB">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="guY-Pu-cEI">
+                                            <rect key="frame" x="20" y="15" width="61.5" height="24.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="17"/>
+                                            <state key="normal" image="t.bubble" catalog="system"/>
+                                            <connections>
+                                                <action selector="tappedTemplateButton:" destination="4Uw-An-Y2P" eventType="touchUpInside" id="tPj-nt-ZmP"/>
+                                                <action selector="tappedTemplateEditButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ibE-bY-Xdr"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="cde-yo-Gn1"/>
                                     <barButtonItem image="square.and.pencil" catalog="system" style="plain" id="frH-M1-8AN">
                                         <connections>
@@ -340,6 +352,17 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3G-xP-JSI">
                                 <rect key="frame" x="0.0" y="764" width="414" height="49"/>
                                 <items>
+                                    <barButtonItem style="plain" id="qXY-be-wZ2">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="JIs-fn-nXH">
+                                            <rect key="frame" x="20" y="15" width="61.5" height="24.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="17"/>
+                                            <state key="normal" image="t.bubble" catalog="system"/>
+                                            <connections>
+                                                <action selector="tappedTemplateButton:" destination="YQY-LP-1dW" eventType="touchUpInside" id="UBF-m7-vnh"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="3dZ-jW-2CF"/>
                                     <barButtonItem image="square.and.pencil" catalog="system" id="2VQ-mC-emf">
                                         <connections>
