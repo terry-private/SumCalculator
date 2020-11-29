@@ -56,7 +56,7 @@ class TemplateItemListViewController: UIViewController {
     
     func setupEditButton() {
         let editButtonItem = UIBarButtonItem(title: "編集", style: .plain, target: self, action: #selector(tappedEditButton))
-        editButtonItem.tintColor = .label
+//        editButtonItem.tintColor = .label
         navigationItem.setRightBarButton(editButtonItem, animated: true)
     }
     
