@@ -18,7 +18,6 @@ class ConfigViewController: UIViewController {
         super.viewDidLoad()
         setSegmentedControl()
         let closeButton = UIBarButtonItem(title: "戻る", style: .plain, target: self, action: #selector(close))
-        closeButton.tintColor = .label
         navigationItem.leftBarButtonItem = closeButton
         // Do any additional setup after loading the view.
     }

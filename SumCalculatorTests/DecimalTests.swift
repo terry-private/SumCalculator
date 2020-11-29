@@ -11,10 +11,10 @@ class DecimalTests: XCTestCase {
 
     func testDecimalCurrency() throws {
         var testDecimal: Decimal = Decimal(string: "-12345.6789")!
-        XCTAssertEqual(testDecimal.currency, "-12,345.6789円")
+        XCTAssertEqual(testDecimal.currency, "-12,345.6789")
         
         testDecimal = 0.1
-        XCTAssertNotEqual(testDecimal.currency, "0.10円")
+        XCTAssertNotEqual(testDecimal.currency, "0.10")
     }
     
 }
