@@ -1,0 +1,6 @@
+framework module Pods_SumCalculator {
+  umbrella header "Pods-SumCalculator-umbrella.h"
+
+  export *
+  module * { export * }
+}
