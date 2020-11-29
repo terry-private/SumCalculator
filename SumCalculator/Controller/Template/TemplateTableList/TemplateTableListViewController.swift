@@ -20,15 +20,10 @@ class TemplateTableListViewController: UIViewController{
     weak var tableDelegate: SetTableTemplateProtocol?
     weak var itemDelegate: SetItemTemplateProtocol?
     
-    enum TemplateType {
-        case Table
-        case Item
-    }
     enum Mode {
         case Edit
         case Use
     }
-    var templateType: TemplateType = .Table
     var mode: Mode = .Edit
     
     @IBOutlet weak var listTableView: UITableView!
@@ -61,14 +56,7 @@ class TemplateTableListViewController: UIViewController{
         } else {
             template = templates[0]
         }
-        
-        switch templateType {
-        case .Table:
-            calcTables = template!.listTemplates
-        case .Item:
-            calcTables = template!.itemTemplates
-        }
-        
+        calcTables = template!.listTemplates
         DispatchQueue.main.async {
             self.listTableView.reloadData()
         }
@@ -169,7 +157,7 @@ extension TemplateTableListViewController: UITableViewDelegate, UITableViewDataS
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // テンプレを使う時
-        if mode == .Use && templateType == .Table{
+        if mode == .Use {
             tableDelegate?.setTableTemplate(calcTable: calcTables![indexPath.row])
             dismiss(animated: true, completion: nil)
             return
@@ -179,10 +167,6 @@ extension TemplateTableListViewController: UITableViewDelegate, UITableViewDataS
         let storyboard = UIStoryboard(name: "TemplateItemList", bundle: nil)
         let templateItemListViewController = storyboard.instantiateViewController(identifier: "TemplateItemListViewController") as! TemplateItemListViewController
         templateItemListViewController.tableId = calcTables?[indexPath.row].id ?? ""
-        if mode == .Use {
-            templateItemListViewController.delegate = self
-            templateItemListViewController.mode = .Use
-        }
         templateItemListViewController.itemOf = .ListTemplate
         navigationController!.pushViewController(templateItemListViewController, animated: true)
     }

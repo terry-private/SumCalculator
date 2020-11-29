@@ -45,7 +45,6 @@ class TemplateSelectViewController: UIViewController {
         let storyboard = UIStoryboard(name: "TemplateTableList", bundle: nil)
         let templateTableListViewController = storyboard.instantiateViewController(identifier: "TemplateTableListViewController") as! TemplateTableListViewController
         templateTableListViewController.navigationItem.title = "リストテンプレート"
-        templateTableListViewController.templateType = .Table
         navigationController!.pushViewController(templateTableListViewController, animated: true)
     }
     @IBAction func tappedTemplateItemButton(_ sender: Any) {

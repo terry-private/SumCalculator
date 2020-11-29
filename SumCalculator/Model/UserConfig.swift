@@ -11,6 +11,7 @@ protocol Config {
     var quantityFractionalDigit: Int { get set }
     var totalCurrencyFractionalDigit: Int { get set }
     var unitCurrencyFractionalDigit: Int { get set }
+    var isFirst: Bool { get }
 }
 
 class UserConfig: Config {
@@ -39,6 +40,15 @@ class UserConfig: Config {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: "unitCurrencyFractionalDigit")
+        }
+    }
+    var isFirst: Bool {
+        get {
+            let isFirstOpen = UserDefaults.standard.object(forKey: "isFirst") as? Bool ?? true
+            if isFirstOpen {
+                UserDefaults.standard.set(false, forKey: "isFirst")
+            }
+            return isFirstOpen
         }
     }
 }

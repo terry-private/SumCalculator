@@ -8,6 +8,9 @@
 import UIKit
 import RealmSwift
 
+// Reloadable
+// popでこの画面に戻った時にlatestEditDateのsort順に並び替えたり総計値が反映させる必要があるが
+// 画面をreloadするタイミングがないため delegate & protocolでpopで戻ってきた時にreloadを呼べるようにしてます。
 class NoteListViewController: UIViewController, Reloadable {
     let cellId = "cellId"
     //    var searchController: UISearchController!
@@ -30,6 +33,7 @@ class NoteListViewController: UIViewController, Reloadable {
         //        setupIndicator()
         //データベースの準備
         realm = try! Realm()
+        if UserConfig().isFirst {realm.makeSample()}
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,7 +70,6 @@ class NoteListViewController: UIViewController, Reloadable {
     // -------------------------------------------------
     func reload() {
         calcNotes = realm.objects(CalcNote.self).sorted(by: {$0.latestEditedAt ?? Date() > $1.latestEditedAt ?? Date()})
-        print("reload")
         DispatchQueue.main.async {
             self.noteListTableView.reloadData()
         }
