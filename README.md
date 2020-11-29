@@ -30,9 +30,9 @@
 ### Light
 |リスト画面|フォルダ作成|電卓入力|
 |:--|:--|:--|
-| ![リスト画面_Light](README_IMAGES/CalcList - Light.png)|![フォルダ作成_Light](README_IMAGES/AddNewFolder - Light.png)|![電卓入力_Light](README_IMAGES/Calculator - Light.png)|
+| ![リスト画面_Light](README_IMAGES/CalcList -  Light.png)|![フォルダ作成_Light](README_IMAGES/AddNewFolder -  Light.png)|![電卓入力_Light](README_IMAGES/Calculator - Light.png)|
 
 ### Dark
 |リスト画面|フォルダ作成|電卓入力|
 |:--|:--|:--|
-| ![リスト画面_Dark](README_IMAGES/CalcList - Dark.png)|![フォルダ作成_Dark](README_IMAGES/AddNewFolder - Dark.png)|![電卓入力_Dark](README_IMAGES/Calculator - Dark.png)|
+| ![リスト画面_Dark](README_IMAGES/CalcList -  Dark.png)|![フォルダ作成_Dark](README_IMAGES/AddNewFolder -  Dark.png)|![電卓入力_Dark](README_IMAGES/Calculator - Dark.png)|
