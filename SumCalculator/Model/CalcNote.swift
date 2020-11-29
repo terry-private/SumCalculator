@@ -11,16 +11,8 @@ import RealmSwift
 class CalcNote: Object {
     @objc dynamic var id: String = NSUUID().uuidString
     @objc dynamic var editedAt = Date()
-    @objc dynamic var noteName: String = "" {
-        didSet {
-            editedAt = Date()
-        }
-    }
-    var calcTables: List<CalcTable> = List<CalcTable>(){
-        didSet {
-            editedAt = Date()
-        }
-    }
+    @objc dynamic var noteName: String = ""
+    var calcTables: List<CalcTable> = List<CalcTable>()
     var total: Decimal {
         get {
             var sum = Decimal()
@@ -37,7 +29,7 @@ class CalcNote: Object {
         var latestDate = editedAt
         for calcTable in calcTables {
             let tableLatestDate = calcTable.latestEditedAt
-            if latestDate > tableLatestDate {
+            if latestDate < tableLatestDate {
                 latestDate = tableLatestDate
             }
         }

@@ -70,18 +70,21 @@ extension Realm {
             before.quantity = after.quantity
             before.unit = after.unit
             before.unitPrice = after.unitPrice
+            before.editedAt = after.editedAt
         }
     }
     
     func updateTable(_ calcTable: CalcTable, name: String) {
         try! self.write {
             calcTable.tableName = name
+            calcTable.editedAt = Date()
         }
     }
     
     func updateNote(_ calcNote: CalcNote, name: String) {
         try! self.write {
             calcNote.noteName = name
+            calcNote.editedAt = Date()
         }
     }
     

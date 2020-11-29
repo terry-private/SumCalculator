@@ -21,9 +21,8 @@ class TemplateSelectViewController: UIViewController {
         super.viewDidLoad()
         setButton()
         let closeButton = UIBarButtonItem(title: "キャンセル", style: .plain, target: self, action: #selector(close))
-        closeButton.tintColor = .label
+//        closeButton.tintColor = .label
         navigationItem.leftBarButtonItem = closeButton
-        // Do any additional setup after loading the view.
     }
     
     func setButton() {

@@ -9,29 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="IbF-W2-iMI">
-            <objects>
-                <navigationController id="HCa-9e-jaf" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="CXg-8g-c7y">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                        </textAttributes>
-                        <textAttributes key="largeTitleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="ve5-LC-gWN" kind="relationship" relationship="rootViewController" id="3i0-R5-7pp"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="93h-Zr-TP0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-693" y="37"/>
-        </scene>
-        <!--テンプレートの編集-->
+        <!--テンプレート-->
         <scene sceneID="KOA-zS-qyd">
             <objects>
                 <viewController storyboardIdentifier="TemplateSelectViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ve5-LC-gWN" customClass="TemplateSelectViewController" customModule="SumCalculator" customModuleProvider="target" sceneMemberID="viewController">
@@ -81,7 +59,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="テンプレートの編集" id="BEj-c1-iIn"/>
+                    <navigationItem key="navigationItem" title="テンプレート" largeTitleDisplayMode="always" id="BEj-c1-iIn"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="itemTemplateButton" destination="1Av-j2-6BC" id="5JQ-uK-DWE"/>

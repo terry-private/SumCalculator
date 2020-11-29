@@ -10,27 +10,11 @@ import RealmSwift
 
 class CalcItem: Object {
     @objc dynamic var id: String = NSUUID().uuidString
-    @objc dynamic var name: String = "" {
-        didSet {
-            editedAt = Date()
-        }
-    }
-    @objc dynamic var _unitPrice: String = "0" {
-        didSet {
-            editedAt = Date()
-        }
-    }
-    @objc dynamic var _quantity: String = "0" {
-        didSet {
-            editedAt = Date()
-        }
-    }
+    @objc dynamic var name: String = ""
+    @objc dynamic var _unitPrice: String = "0"
+    @objc dynamic var _quantity: String = "0"
     
-    @objc dynamic var unit: String = "" {
-        didSet {
-            editedAt = Date()
-        }
-    }
+    @objc dynamic var unit: String = "" 
     
     @objc dynamic var editedAt = Date()
     

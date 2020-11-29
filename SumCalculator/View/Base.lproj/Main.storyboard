@@ -129,10 +129,10 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" id="Xzl-RJ-ftg">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="HcW-cw-yMn">
-                                            <rect key="frame" x="20" y="15" width="61.5" height="24.5"/>
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HcW-cw-yMn">
+                                            <rect key="frame" x="20" y="15" width="80.5" height="24.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <state key="normal" title="編集" image="t.bubble" catalog="system"/>
                                             <connections>
                                                 <action selector="tappedTemplateEditButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6ds-qF-NjU"/>

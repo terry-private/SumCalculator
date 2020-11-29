@@ -8,12 +8,16 @@
 import UIKit
 import RealmSwift
 
+protocol Reloadable: AnyObject{
+    func reload()
+}
+
 class NoteDetailViewController: UIViewController {
     let cellId = "cellId"
 //    var searchController: UISearchController!
 //    var indicator = UIActivityIndicatorView()
     var currentIndexPath: IndexPath?
-    
+    var delegate: Reloadable?
     // ドメイン系のプロパティ
     var noteId = "" // 親のノートID {リロードの時にこれを使って note<CalcNote> の値をrealmから取ってくる
     var calcNote: CalcNote?
@@ -33,10 +37,15 @@ class NoteDetailViewController: UIViewController {
         super.viewDidLoad()
         // 各パーツのセットアップ
         setupTableView()
+        navigationController?.navigationItem.backBarButtonItem?.action = #selector(back)
 //        setupIndicator()
 //        setupSearchBar()
         //データベースの準備
         realm = try! Realm()
+    }
+    @objc func back() {
+        delegate?.reload()
+        navigationController?.popToRootViewController(animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -198,20 +207,7 @@ extension NoteDetailViewController: SetTableTemplateProtocol {
     }
 }
 
-//------------------------------------------------------------------------------
-extension NoteDetailViewController: InputNewNameDelegate {
-    func upDate(name: String) {
-        func upDate(name: String) {
-            realm.updateNote(calcNote!, name: name) // 強制アンラップ
-            reload()
-        }
-    }
-    
-    func addNew(name: String) {
-        realm.addNewTable(name, parentNote: calcNote!)// 強制アンラップ
-        reload()
-    }
-}
+
 
 
 ////------------------------------------------------------------------------------

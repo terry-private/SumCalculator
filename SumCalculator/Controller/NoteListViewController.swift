@@ -8,13 +8,13 @@
 import UIKit
 import RealmSwift
 
-class NoteListViewController: UIViewController {
+class NoteListViewController: UIViewController, Reloadable {
     let cellId = "cellId"
     //    var searchController: UISearchController!
     //    var indicator = UIActivityIndicatorView()
     var currentIndexPath: IndexPath?
     
-    var calcNotes: Results<CalcNote>?
+    var calcNotes: [CalcNote]?
     private var realm: Realm!
     
     @IBOutlet weak var noteListTableView: UITableView!
@@ -65,7 +65,8 @@ class NoteListViewController: UIViewController {
     // reload
     // -------------------------------------------------
     func reload() {
-        calcNotes = realm.objects(CalcNote.self)
+        calcNotes = realm.objects(CalcNote.self).sorted(by: {$0.latestEditedAt ?? Date() > $1.latestEditedAt ?? Date()})
+        print("reload")
         DispatchQueue.main.async {
             self.noteListTableView.reloadData()
         }
@@ -124,12 +125,13 @@ class NoteListViewController: UIViewController {
         let storyboard = UIStoryboard(name: "TemplateSelect", bundle: nil)
         let templateSelectViewController = storyboard.instantiateViewController(identifier: "TemplateSelectViewController") as! TemplateSelectViewController
         templateSelectViewController.navigationItem.largeTitleDisplayMode = .automatic
-        //templateSelectViewController.navigationItem.title = "テンプレートの編集"
+        templateSelectViewController.navigationItem.title = "テンプレートの編集"
         
         //inputCalcItemViewController.recordViewControllerDelegate = self
         let nav = UINavigationController(rootViewController: templateSelectViewController)
         nav.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label, .font:UIFont.systemFont(ofSize: 18, weight: .thin)]
-        //nav.navigationBar.prefersLargeTitles = true
+        nav.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.label, .font:UIFont.systemFont(ofSize: 30, weight: .thin)]
+        nav.navigationBar.prefersLargeTitles = true
         //nav.navigationBar.barTintColor = .cyan
         //nav.navigationBar.backgroundColor = .systemTeal
         nav.modalPresentationStyle = .fullScreen
@@ -218,6 +220,7 @@ extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == "openNote"{
             let noteDetailVC = segue.destination as! NoteDetailViewController
             noteDetailVC.noteId = calcNotes?[indexPath.row].id ?? ""
+            noteDetailVC.delegate = self
             
         }
     }
