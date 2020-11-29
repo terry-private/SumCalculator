@@ -81,6 +81,7 @@
 		09472F572560F18300D94ED5 /* InputCalcItem.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputCalcItem.storyboard; sourceTree = "<group>"; };
 		09472F68256109AD00D94ED5 /* InputCalcItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputCalcItemViewController.swift; sourceTree = "<group>"; };
 		09472F8525616B8A00D94ED5 /* Realm - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm - Extension.swift"; sourceTree = "<group>"; };
+		09479A6C25736EC100CAC22B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0947CE23256E8E910067F683 /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		0947F9342557D70A00CA3C2D /* SumCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SumCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0947F9372557D70A00CA3C2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +209,7 @@
 		0947F92B2557D70A00CA3C2D = {
 			isa = PBXGroup;
 			children = (
+				09479A6C25736EC100CAC22B /* README.md */,
 				0947F9362557D70A00CA3C2D /* SumCalculator */,
 				0947F94D2557D70C00CA3C2D /* SumCalculatorTests */,
 				0947F9582557D70C00CA3C2D /* SumCalculatorUITests */,

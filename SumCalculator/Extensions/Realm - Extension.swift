@@ -212,7 +212,7 @@ extension Realm {
             template.listTemplates.append(sampleList1)
         }
         
-        let sampleList2 = Template.copyTable(calcTable: tmpCalcFolder1)
+        let sampleList2 = Template.copyTable(calcTable: tmpCalcFolder2)
         sampleList2.tableName = "ドリンクリスト"
         try! write {
             template.listTemplates.append(sampleList2)
