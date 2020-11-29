@@ -38,7 +38,6 @@ class TemplateItemListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        setupBackButton()
         setupEditButton()
         
         // リストテンプレの中の項目を追加するときだけ押せるようにしたいのでその他の場合にHiddenになるようにしてます。
@@ -54,26 +53,11 @@ class TemplateItemListViewController: UIViewController {
         itemListTableView.dataSource = self
         //itemListTableView.register(UINib(nibName: "TemplateItemListTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
     }
-    func setupBackButton() {
-        let backBarButtonItem = UIBarButtonItem(title: "戻る", style: .plain, target: self, action: #selector(tappedBackButton))
-        backBarButtonItem.tintColor = .label
-        //backBarButtonItem.setTitleTextAttributes([.font: UIFont(name: "PingFangHK-Thin", size: 17)!], for: .normal)
-        navigationItem.setLeftBarButton(backBarButtonItem, animated: true)
-    }
     
     func setupEditButton() {
         let editButtonItem = UIBarButtonItem(title: "編集", style: .plain, target: self, action: #selector(tappedEditButton))
         editButtonItem.tintColor = .label
         navigationItem.setRightBarButton(editButtonItem, animated: true)
-    }
-    
-    @objc private func tappedBackButton() {
-        let transition = CATransition()
-        transition.duration = 0.3
-        transition.type = .push
-        transition.subtype = .fromLeft
-        view.window!.layer.add(transition, forKey: kCATransition)
-        dismiss(animated: false, completion: nil)
     }
     
     @objc private func tappedEditButton() {
@@ -185,8 +169,8 @@ extension TemplateItemListViewController: UITableViewDelegate, UITableViewDataSo
         if mode == .Use {
 
             delegate?.setItemTemplate(calcItem: calcTable?.calcItems[indexPath.row] ?? CalcItem())
-//            dismiss(animated: true, completion: nil)
-            presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
+//            presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
             return
         }
         

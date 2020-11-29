@@ -40,31 +40,12 @@ class TemplateTableListViewController: UIViewController{
         super.viewDidLoad()
         listTableView.delegate = self
         listTableView.dataSource = self
-        setupBackButton()
         listTableView.register(UINib(nibName: "TemplateTableListCell", bundle: nil), forCellReuseIdentifier: cellId)
         try! realm = Realm()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reload()
-    }
-    func setupBackButton() {
-        let backBarButtonItem = UIBarButtonItem(title: "戻る", style: .plain, target: self, action: #selector(tappedBackButton))
-        backBarButtonItem.tintColor = .label
-        //backBarButtonItem.setTitleTextAttributes([.font: UIFont(name: "PingFangHK-Thin", size: 17)!], for: .normal)
-        navigationItem.setLeftBarButton(backBarButtonItem, animated: true)
-    }
-    @objc private func tappedBackButton() {
-        if mode == .Use {
-            dismiss(animated: true, completion: nil)
-            return
-        }
-        let transition = CATransition()
-        transition.duration = 0.3
-        transition.type = .push
-        transition.subtype = .fromLeft
-        view.window!.layer.add(transition, forKey: kCATransition)
-        dismiss(animated: false, completion: nil)
     }
     
     // -------------------------------------------------
@@ -203,19 +184,7 @@ extension TemplateTableListViewController: UITableViewDelegate, UITableViewDataS
             templateItemListViewController.mode = .Use
         }
         templateItemListViewController.itemOf = .ListTemplate
-        let nav = UINavigationController(rootViewController: templateItemListViewController)
-        //nav.navigationBar.barTintColor = .cyan
-        nav.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label, .font:UIFont(name: "PingFangHK-Thin", size: 18)!]
-        nav.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.label, .font:UIFont(name: "PingFangHK-Thin", size: 22)!]
-        nav.navigationBar.prefersLargeTitles = true
-        nav.modalPresentationStyle = .fullScreen
-        
-        let transition = CATransition()
-        transition.duration = 0.3
-        transition.type = .push
-        transition.subtype = .fromRight
-        view.window!.layer.add(transition, forKey: kCATransition)
-        self.present(nav,animated: false, completion: nil)
+        navigationController!.pushViewController(templateItemListViewController, animated: true)
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard let deleteItem = calcTables?[indexPath.row] else { return }

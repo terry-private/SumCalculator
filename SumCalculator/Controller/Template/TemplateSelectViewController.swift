@@ -47,35 +47,13 @@ class TemplateSelectViewController: UIViewController {
         let templateTableListViewController = storyboard.instantiateViewController(identifier: "TemplateTableListViewController") as! TemplateTableListViewController
         templateTableListViewController.navigationItem.title = "リストテンプレート"
         templateTableListViewController.templateType = .Table
-        let nav = UINavigationController(rootViewController: templateTableListViewController)
-        //nav.navigationBar.barTintColor = .cyan
-        nav.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label, .font:UIFont(name: "PingFangHK-Thin", size: 18)!]
-        nav.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.label, .font:UIFont(name: "PingFangHK-Thin", size: 22)!]
-        nav.navigationBar.prefersLargeTitles = true
-        nav.modalPresentationStyle = .fullScreen
-        let transition = CATransition()
-        transition.duration = 0.3
-        transition.type = .push
-        transition.subtype = .fromRight
-        view.window!.layer.add(transition, forKey: kCATransition)
-        self.present(nav,animated: false, completion: nil)
+        navigationController!.pushViewController(templateTableListViewController, animated: true)
     }
     @IBAction func tappedTemplateItemButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "TemplateItemFolderList", bundle: nil)
         let templateTableListViewController = storyboard.instantiateViewController(identifier: "TemplateItemFolderListViewController") as! TemplateItemFolderListViewController
         templateTableListViewController.navigationItem.title = "項目テンプレートのフォルダ"
-        let nav = UINavigationController(rootViewController: templateTableListViewController)
-        //nav.navigationBar.barTintColor = .cyan
-        nav.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label, .font:UIFont(name: "PingFangHK-Thin", size: 18)!]
-        nav.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.label, .font:UIFont(name: "PingFangHK-Thin", size: 22)!]
-        nav.navigationBar.prefersLargeTitles = true
-        nav.modalPresentationStyle = .fullScreen
-        let transition = CATransition()
-        transition.duration = 0.3
-        transition.type = .push
-        transition.subtype = .fromRight
-        view.window!.layer.add(transition, forKey: kCATransition)
-        self.present(nav,animated: false, completion: nil)
+        navigationController!.pushViewController(templateTableListViewController, animated: true)
     }
     
 

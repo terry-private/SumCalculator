@@ -9,7 +9,29 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Template Select View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="IbF-W2-iMI">
+            <objects>
+                <navigationController id="HCa-9e-jaf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="CXg-8g-c7y">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ve5-LC-gWN" kind="relationship" relationship="rootViewController" id="3i0-R5-7pp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="93h-Zr-TP0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-693" y="37"/>
+        </scene>
+        <!--テンプレートの編集-->
         <scene sceneID="KOA-zS-qyd">
             <objects>
                 <viewController storyboardIdentifier="TemplateSelectViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ve5-LC-gWN" customClass="TemplateSelectViewController" customModule="SumCalculator" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,16 +40,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="1d3-3A-c2r">
-                                <rect key="frame" x="107" y="235.5" width="200" height="425.5"/>
+                                <rect key="frame" x="107" y="298" width="200" height="300"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="テンプレートの編集" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nln-cz-ONl">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="25.5"/>
-                                        <fontDescription key="fontDescription" name="PingFangHK-Thin" family="PingFang HK" pointSize="18"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tcy-aR-CMJ">
-                                        <rect key="frame" x="0.0" y="125.5" width="200" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="JmQ-Fj-UOq"/>
                                             <constraint firstAttribute="width" constant="200" id="geN-bY-teI"/>
@@ -41,7 +57,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Av-j2-6BC">
-                                        <rect key="frame" x="0.0" y="325.5" width="200" height="100"/>
+                                        <rect key="frame" x="0.0" y="200" width="200" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="WPe-4o-hTL"/>
                                             <constraint firstAttribute="height" constant="100" id="jIw-fh-L1h"/>
@@ -65,7 +81,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="BEj-c1-iIn"/>
+                    <navigationItem key="navigationItem" title="テンプレートの編集" id="BEj-c1-iIn"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="itemTemplateButton" destination="1Av-j2-6BC" id="5JQ-uK-DWE"/>
