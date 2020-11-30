@@ -17,7 +17,7 @@ class NoteDetailViewController: UIViewController {
 //    var searchController: UISearchController!
 //    var indicator = UIActivityIndicatorView()
     var currentIndexPath: IndexPath?
-    var delegate: Reloadable?
+    weak var delegate: Reloadable?
     // ドメイン系のプロパティ
     var noteId = "" // 親のノートID {リロードの時にこれを使って note<CalcNote> の値をrealmから取ってくる
     var calcNote: CalcNote?
