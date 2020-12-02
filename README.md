@@ -1,5 +1,5 @@
 # DE OIKURA?
-
+[リリース ver1.0](https://apps.apple.com/jp/app/de-oikura/id1542597617)
   「これとこれとこれと・・・」
 「  で、おいくら？」
 
