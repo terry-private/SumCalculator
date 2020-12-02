@@ -1,6 +1,7 @@
 # DE OIKURA?
+[リリース ver1.0](https://apps.apple.com/jp/app/de-oikura/id1542597617)
 
-  「これとこれとこれと・・・」
+「これとこれとこれと・・・」
 「  で、おいくら？」
 
 「じゃこれは3つ追加」
