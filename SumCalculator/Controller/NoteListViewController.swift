@@ -213,7 +213,9 @@ extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard let deleteItem = calcNotes?[indexPath.row] else { return }
         realm.deleteNote(calcNote: deleteItem)
+        calcNotes = realm.objects(CalcNote.self).sorted(by: {$0.latestEditedAt ?? Date() > $1.latestEditedAt ?? Date()})
         tableView.deleteRows(at: [indexPath], with: .automatic)
+        print("delete end")
     }
     
     // 遷移前に遷移先Viewにモデルとそのデリゲートをセットします。

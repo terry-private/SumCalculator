@@ -34,11 +34,13 @@ class TemplateItemListViewController: UIViewController {
     
     @IBOutlet weak var itemListTableView: UITableView!
     @IBOutlet weak var templateButton: UIButton!
+    @IBOutlet weak var newButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         setupEditButton()
+        newButton.isEnabled = mode == .Edit
         
         // リストテンプレの中の項目を追加するときだけ押せるようにしたいのでその他の場合にHiddenになるようにしてます。
         templateButton.isHidden = mode != .Edit || itemOf != .ListTemplate

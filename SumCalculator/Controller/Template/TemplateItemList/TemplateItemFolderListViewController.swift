@@ -22,6 +22,7 @@ class TemplateItemFolderListViewController: UIViewController {
     var mode: Mode = .Edit
     
     @IBOutlet weak var templateItemFolderListTableView: UITableView!
+    @IBOutlet weak var newButton: UIBarButtonItem!
     
     
     // -------------------------------------------------
@@ -31,6 +32,7 @@ class TemplateItemFolderListViewController: UIViewController {
         super.viewDidLoad()
         templateItemFolderListTableView.delegate = self
         templateItemFolderListTableView.dataSource = self
+        newButton.isEnabled = mode == .Edit
         try! realm = Realm()
     }
     override func viewWillAppear(_ animated: Bool) {
