@@ -48,6 +48,7 @@
 		095186F6256563D500EAA820 /* InputCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095186F5256563D500EAA820 /* InputCalculatorViewController.swift */; };
 		0951870A256566ED00EAA820 /* CalculatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09518709256566ED00EAA820 /* CalculatorViewCell.swift */; };
 		0951870F2565683B00EAA820 /* String - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951870E2565683B00EAA820 /* String - Extension.swift */; };
+		0956F6FC257A6DC30086D805 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0956F6FB257A6DC30086D805 /* ListCell.xib */; };
 		09703B7825595AD400375604 /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09703B7725595AD400375604 /* NoteListViewController.swift */; };
 		09866529256BCB3500F1A6A9 /* TemplateItemList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09866528256BCB3500F1A6A9 /* TemplateItemList.storyboard */; };
 		0986652F256BE21300F1A6A9 /* TemplateItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0986652E256BE21300F1A6A9 /* TemplateItemListViewController.swift */; };
@@ -131,6 +132,7 @@
 		095186F5256563D500EAA820 /* InputCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputCalculatorViewController.swift; sourceTree = "<group>"; };
 		09518709256566ED00EAA820 /* CalculatorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewCell.swift; sourceTree = "<group>"; };
 		0951870E2565683B00EAA820 /* String - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String - Extension.swift"; sourceTree = "<group>"; };
+		0956F6FB257A6DC30086D805 /* ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
 		09703B7725595AD400375604 /* NoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
 		09866528256BCB3500F1A6A9 /* TemplateItemList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TemplateItemList.storyboard; sourceTree = "<group>"; };
 		0986652E256BE21300F1A6A9 /* TemplateItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateItemListViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			children = (
 				094A0227255E9E360024B45A /* NoteTableViewCell.xib */,
 				09E43EED255FD87900B8624A /* CalcItemView.xib */,
+				0956F6FB257A6DC30086D805 /* ListCell.xib */,
 			);
 			path = NoteDetailView;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				094A89AA256B897900F40B17 /* TemplateTableList.storyboard in Resources */,
 				09472F582560F18300D94ED5 /* InputCalcItem.storyboard in Resources */,
 				094A89AF256B8E4300F40B17 /* TemplateTableListCell.xib in Resources */,
+				0956F6FC257A6DC30086D805 /* ListCell.xib in Resources */,
 				09486865256A53CF000191C0 /* TemplateSelect.storyboard in Resources */,
 				09492C17256E86B40088029A /* Config.storyboard in Resources */,
 				09492C06256E704F0088029A /* TemplateItemFolderList.storyboard in Resources */,

@@ -74,6 +74,17 @@ extension Realm {
         }
     }
     
+    func updateItem2(_ after: CalcItem) {
+        let before = object(ofType: CalcItem.self, forPrimaryKey: after.id)!
+        try! write {
+            before.name = after.name
+            before.quantity = after.quantity
+            before.unit = after.unit
+            before.unitPrice = after.unitPrice
+            before.editedAt = after.editedAt
+        }
+    }
+    
     func updateTable(_ calcTable: CalcTable, name: String) {
         try! write {
             calcTable.tableName = name

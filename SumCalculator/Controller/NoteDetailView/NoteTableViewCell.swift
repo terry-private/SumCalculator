@@ -14,6 +14,8 @@ class NoteTableViewCell: UITableViewCell {
     @IBOutlet weak var calcItemsStackView: UIStackView!
     @IBOutlet weak var subtotalFractionalLabel: UILabel!
     
+    weak var delegate: CalcItemViewDelegate?
+    
     var table: CalcTable? {
         didSet{
             loadCalcItems()
@@ -24,7 +26,7 @@ class NoteTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        cellBackgroundView.layer.cornerRadius = 20
+        cellBackgroundView.layer.cornerRadius = 10
         selectionStyle = .none
     }
     
@@ -57,6 +59,11 @@ class NoteTableViewCell: UITableViewCell {
             view.subTotalIntegerPartLabel.text = i.subtotal.totalRounded.intPartCurrency
             view.subTotalAfterDotLabel.text = i.subtotal.totalRounded.afterDot
             
+            view.setTarget()
+            view.calcItem = i
+            
+            view.delegate = self
+            
             calcItemsStackView.addArrangedSubview(view)
             itemList.append(view)
         }
@@ -67,4 +74,11 @@ class NoteTableViewCell: UITableViewCell {
             i.removeFromSuperview()
         }
     }
+}
+
+extension NoteTableViewCell: CalcItemViewDelegate {
+    func tappedCalcItem(calcItem: CalcItem) {
+        delegate?.tappedCalcItem(calcItem: calcItem)
+    }
+    
 }

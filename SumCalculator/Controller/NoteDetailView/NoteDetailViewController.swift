@@ -207,8 +207,22 @@ extension NoteDetailViewController: SetTableTemplateProtocol {
     }
 }
 
-
-
+extension NoteDetailViewController: CalcItemViewDelegate {
+    func tappedCalcItem(calcItem: CalcItem) {
+        let storyboard = UIStoryboard(name: "InputCalcItem", bundle: nil)
+        let inputCalcItemViewController = storyboard.instantiateViewController(identifier: "InputCalcItemViewController") as! InputCalcItemViewController
+        inputCalcItemViewController.delegate = self
+        inputCalcItemViewController.before = calcItem
+        let nav = UINavigationController(rootViewController: inputCalcItemViewController)
+        self.present(nav,animated: true, completion: nil)
+    }
+}
+extension NoteDetailViewController: InputCalcItemViewControllerDelegate{
+    func inputData(calcItem: CalcItem, inputType: InputType) {
+        realm.updateItem2(calcItem)
+        reload()
+    }
+}
 
 ////------------------------------------------------------------------------------
 ///// UISearchBarDelegateのロジック周りをextensionとして分けます。
@@ -239,6 +253,7 @@ extension NoteDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = noteDetailTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteTableViewCell
         cell.table = calcNote?.calcTables[indexPath.row]
+        cell.delegate = self
         return cell
     }
     
@@ -265,9 +280,9 @@ extension NoteDetailViewController: UITableViewDelegate, UITableViewDataSource {
             let tableDetailVC = segue.destination as! TableDetailViewController
             tableDetailVC.tableId = calcNote?.calcTables[indexPath.row].id ?? ""
             tableDetailVC.navigationItem.leftBarButtonItem?.title = calcNote?.noteName
+//            let s = UIStoryboardSegue(identifier: "openTable", source: self, destination: <#T##UIViewController#>)
         }
     }
-    
 }
 
 

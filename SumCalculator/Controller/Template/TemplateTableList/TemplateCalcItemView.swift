@@ -16,8 +16,7 @@ class TemplateCalcItemView: UIView {
     @IBOutlet weak var unitPriceIntegerPartLabel: UILabel!
     @IBOutlet weak var unitPriceAfterDotLabel: UILabel!
     @IBOutlet weak var unitPriceUnitLabel: UILabel!
-    
-    
+
     // -------------------------------------------------
     // ライフサイクル
     // -------------------------------------------------

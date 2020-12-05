@@ -178,7 +178,7 @@ extension TemplateTableListViewController: UITableViewDelegate, UITableViewDataS
         realm.deleteTable(calcTable: deleteItem)
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
-    
+
     
 }
 
