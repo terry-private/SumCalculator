@@ -12,8 +12,9 @@ protocol Reloadable: AnyObject{
     func reload()
 }
 
-class NoteDetailViewController: UIViewController {
+class NoteDetailViewController: UIViewController, Reloadable {
     let cellId = "cellId"
+    let addNewCellId = "addNewCellId"
 //    var searchController: UISearchController!
 //    var indicator = UIActivityIndicatorView()
     var currentIndexPath: IndexPath?
@@ -38,11 +39,10 @@ class NoteDetailViewController: UIViewController {
         // 各パーツのセットアップ
         setupTableView()
         navigationController?.navigationItem.backBarButtonItem?.action = #selector(back)
-//        setupIndicator()
-//        setupSearchBar()
         //データベースの準備
         realm = try! Realm()
     }
+    
     @objc func back() {
         delegate?.reload()
         navigationController?.popToRootViewController(animated: true)
@@ -61,22 +61,7 @@ class NoteDetailViewController: UIViewController {
         noteDetailTableView.dataSource = self
         noteDetailTableView.register(UINib(nibName: "NoteTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
     }
-//    func setupSearchBar() {
-//        searchController = UISearchController(searchResultsController: nil)
-//        searchController.searchResultsUpdater = self
-//        searchController.obscuresBackgroundDuringPresentation = false
-//        searchController.searchBar.placeholder = "リストを検索します。"
-//        searchController.searchBar.delegate = self
-//        navigationItem.searchController = searchController
-//        navigationItem.hidesSearchBarWhenScrolling = true
-//    }
-//    // クルクルインジゲーター設定
-//    func setupIndicator() {
-//        indicator.center = view.center
-//        indicator.style = UIActivityIndicatorView.Style.large
-//        view.addSubview(indicator)
-//    }
-//
+    
     // -------------------------------------------------
     // reload
     // -------------------------------------------------
@@ -94,51 +79,11 @@ class NoteDetailViewController: UIViewController {
     // IBAction
     // -------------------------------------------------
     @IBAction func tappedNewButton(_ sender: Any) {
-        // アラート画面で新規ノートのタイトルを入力させます。
-        var alertTextField: UITextField?
-        let alert = UIAlertController(title: "新しいリストを追加", message: "タイトルを入力", preferredStyle: UIAlertController.Style.alert)
-        
-        // テキストフィールド追加
-        alert.addTextField(configurationHandler: {(textField: UITextField!) in
-            alertTextField = textField
-            textField.text = ""
-            textField.placeholder = "タイトル"
-            // textField.isSecureTextEntry = true
-        })
-        
-        // キャンセルボタン追加
-        alert.addAction(
-            UIAlertAction(
-                title: "Cancel",
-                style: UIAlertAction.Style.cancel,
-                handler: nil))
-        
-        // OKボタン追加
-        alert.addAction(
-            UIAlertAction(
-                title: "OK",
-                style: UIAlertAction.Style.default) { _ in
-                if let text = alertTextField?.text {
-                    if text != "" {
-                        self.realm.addNewTable(text, parentNote: self.calcNote!) // 強制アンラップ
-                        self.reload()
-                    }
-                }
-            }
-        )
-        self.present(alert, animated: true, completion: nil)
-        
-        
-//        let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
-//        let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
-//        //inputCalcItemViewController.recordViewControllerDelegate = self
-//        inputNewNameViewController.delegate = self
-//        inputNewNameViewController.navigationItem.title = "新規リストの作成"
-//        let nav = UINavigationController(rootViewController: inputNewNameViewController)
-//
-//        self.present(nav,animated: true, completion: nil)
+        openAddListAlert()
     }
-    
+    @IBAction func tappedTemplateButton(_ sender: Any) {
+        openAddTemplateListSelector()
+    }
     @IBAction func tappedEditButton(_ sender: Any) {
         // アラート画面で新規ノートのタイトルを入力させます。
         var alertTextField: UITextField?
@@ -174,24 +119,54 @@ class NoteDetailViewController: UIViewController {
         )
         self.present(alert, animated: true, completion: nil)
         
-//        let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
-//        let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
-//        //inputCalcItemViewController.recordViewControllerDelegate = self
-//        inputNewNameViewController.delegate = self
-//        inputNewNameViewController.navigationItem.title = "タイトルの編集"
-//        inputNewNameViewController.originName = calcNote?.noteName ?? ""
-//        let nav = UINavigationController(rootViewController: inputNewNameViewController)
-//
-//        self.present(nav,animated: true, completion: nil)
     }
     
-    @IBAction func tappedTemplateButton(_ sender: Any) {
+    
+    // -------------------------------------------------
+    // 画面遷移系
+    // -------------------------------------------------
+    func openAddNewListAlert() {
+        // アラート画面で新規ノートのタイトルを入力させます。
+        var alertTextField: UITextField?
+        let alert = UIAlertController(title: "新規のリストを追加", message: "タイトルを入力", preferredStyle: UIAlertController.Style.alert)
+        
+        // テキストフィールド追加
+        alert.addTextField(configurationHandler: {(textField: UITextField!) in
+            alertTextField = textField
+            textField.text = ""
+            textField.placeholder = "タイトル"
+            // textField.isSecureTextEntry = true
+        })
+        
+        // キャンセルボタン追加
+        alert.addAction(
+            UIAlertAction(
+                title: "Cancel",
+                style: UIAlertAction.Style.cancel,
+                handler: nil))
+        
+        // OKボタン追加
+        alert.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: UIAlertAction.Style.default) { _ in
+                if let text = alertTextField?.text {
+                    if text != "" {
+                        self.realm.addNewTable(text, parentNote: self.calcNote!) // 強制アンラップ
+                        self.reload()
+                    }
+                }
+            }
+        )
+        present(alert, animated: true, completion: nil)
+    }
+    func openAddTemplateListSelector() {
         let storyboard = UIStoryboard(name: "TemplateTableList", bundle: nil)
         let templateTableListViewController = storyboard.instantiateViewController(identifier: "TemplateTableListViewController") as! TemplateTableListViewController
         //inputCalcItemViewController.recordViewControllerDelegate = self
         templateTableListViewController.mode = .Use
         templateTableListViewController.tableDelegate = self
-        templateTableListViewController.navigationItem.title = "テンプレからリストを作成"
+        templateTableListViewController.navigationItem.title = "テンプレからリストを追加"
         let nav = UINavigationController(rootViewController: templateTableListViewController)
         
         self.present(nav,animated: true, completion: nil)
@@ -217,6 +192,7 @@ extension NoteDetailViewController: CalcItemViewDelegate {
         self.present(nav,animated: true, completion: nil)
     }
 }
+
 extension NoteDetailViewController: InputCalcItemViewControllerDelegate{
     func inputData(calcItem: CalcItem, inputType: InputType) {
         realm.updateItem2(calcItem)
@@ -224,42 +200,46 @@ extension NoteDetailViewController: InputCalcItemViewControllerDelegate{
     }
 }
 
-////------------------------------------------------------------------------------
-///// UISearchBarDelegateのロジック周りをextensionとして分けます。
-//extension NoteDetailViewController: UISearchResultsUpdating, UISearchBarDelegate {
-//    
-//    // 編集だけでなくキーボードを開く時も
-//    // Apiのタスクとクルクルが止まる仕様(taskがrunningの場合のみ)
-//    func updateSearchResults(for searchController: UISearchController) {
-//        DispatchQueue.main.async {
-//            //self.repositoryListModel.cancel()
-//            self.indicator.stopAnimating()
-//        }
-//    }
-//    // 検索ボタン押下時処理　クルクルスタート
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        // guard let searchWord = searchBar.text else { return }
-//        self.view.endEditing(true)
-//        indicator.startAnimating()
-//    }
-//}
+extension NoteDetailViewController: AddNewTableProtocol {
+    // テンプレから追加か新規追加か選ばせるアラートを出します。
+    func openAddListAlert() {
+        let alert = UIAlertController(title: "リストを追加します", message: "追加するリストの選択", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "テンプレのリスト", style: .default) { _ in
+            self.openAddTemplateListSelector()
+        })
+        alert.addAction(UIAlertAction(title: "新規のリスト", style: .default) { _ in
+            self.openAddNewListAlert()
+        })
+        present(alert, animated: true, completion: nil)
+    }
+}
 
-//------------------------------------------------------------------------------
 extension NoteDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return calcNote?.calcTables.count ?? 0
+        return (calcNote?.calcTables.count ?? 0) + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == calcNote?.calcTables.count ?? 0 {
+            let cell = noteDetailTableView.dequeueReusableCell(withIdentifier: addNewCellId, for: indexPath) as! AddNewTableCell
+            cell.delegate = self
+            cell.itemOverView.layer.cornerRadius = 10
+            cell.setTarget()
+            return cell
+        }
         let cell = noteDetailTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteTableViewCell
         cell.table = calcNote?.calcTables[indexPath.row]
         cell.delegate = self
+        cell.reloadableDelegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == calcNote?.calcTables.count ?? 0 {
+            return 60
+        }
         let itemsCount = calcNote?.calcTables[indexPath.row].calcItems.count ?? 0
-        return CGFloat(120 + 64 * itemsCount)
+        return CGFloat(100 + 64 * itemsCount)
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // prepareの処理でindexを使いたいのでselfのindexに一旦保持します。
@@ -267,6 +247,9 @@ extension NoteDetailViewController: UITableViewDelegate, UITableViewDataSource {
         performSegue(withIdentifier: "openTable", sender: self)
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if indexPath.row == calcNote?.calcTables.count ?? 0 {
+            return
+        }
         guard let deleteItem = calcNote?.calcTables[indexPath.row] else { return }
         realm.deleteTable(calcTable: deleteItem)
         tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -287,3 +270,20 @@ extension NoteDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
 
 
+protocol AddNewTableProtocol: AnyObject {
+    func openAddListAlert()
+}
+
+class AddNewTableCell: UITableViewCell {
+    weak var delegate: AddNewTableProtocol?
+    @IBOutlet weak var itemOverView: ItemOverView!
+    override class func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    func setTarget() {
+        itemOverView.setTarget(self, selector: #selector(tappedItemOverView))
+    }
+    @objc func tappedItemOverView() {
+        delegate?.openAddListAlert()
+    }
+}

@@ -11,8 +11,9 @@ import RealmSwift
 // Reloadable
 // popでこの画面に戻った時にlatestEditDateのsort順に並び替えたり総計値が反映させる必要があるが
 // 画面をreloadするタイミングがないため delegate & protocolでpopで戻ってきた時にreloadを呼べるようにしてます。
-class NoteListViewController: UIViewController, Reloadable {
+class NoteListViewController: UIViewController, Reloadable, AddNewNoteProtocol {
     let cellId = "cellId"
+    let addNewCellId = "addNewCellId"
     //    var searchController: UISearchController!
     //    var indicator = UIActivityIndicatorView()
     var currentIndexPath: IndexPath?
@@ -78,8 +79,7 @@ class NoteListViewController: UIViewController, Reloadable {
     // -------------------------------------------------
     // IBAction　遷移系
     // -------------------------------------------------
-    @IBAction func tappedNewButton(_ sender: Any) {
-        
+    func openNewNoteAlert() {
         // アラート画面で新規ノートのタイトルを入力させます。
         var alertTextField: UITextField?
         let alert = UIAlertController(title: "新しいノートを追加", message: "タイトルを入力", preferredStyle: UIAlertController.Style.alert)
@@ -114,15 +114,10 @@ class NoteListViewController: UIViewController, Reloadable {
         )
         
         self.present(alert, animated: true, completion: nil)
-        
-        //        let storyboard = UIStoryboard(name: "InputNewName", bundle: nil)
-        //        let inputNewNameViewController = storyboard.instantiateViewController(identifier: "InputNewNameViewController") as! InputNewNameViewController
-        //        //inputCalcItemViewController.recordViewControllerDelegate = self
-        //        inputNewNameViewController.delegate = self
-        //        inputNewNameViewController.navigationItem.title = "新規ノートの作成"
-        //        let nav = UINavigationController(rootViewController: inputNewNameViewController)
-        //
-        //        self.present(nav,animated: true, completion: nil)
+        return
+    }
+    @IBAction func tappedNewButton(_ sender: Any) {
+        openNewNoteAlert()
     }
     @IBAction func tappedTemplateEditButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "TemplateSelect", bundle: nil)
@@ -193,10 +188,17 @@ class NoteListViewController: UIViewController, Reloadable {
 // UITableViewDelegate, UITableViewDataSourceのロジック周りをextensionとして分けます。
 extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return calcNotes?.count ?? 0
+        return (calcNotes?.count ?? 0) + 1
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == calcNotes?.count {
+            let cell = noteListTableView.dequeueReusableCell(withIdentifier: addNewCellId, for: indexPath) as! AddNewNoteCell
+            cell.delegate = self
+            cell.setTarget()
+            return cell
+        }
         let cell = noteListTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteListTableViewCell
         cell.noteNameLabel.text = calcNotes?[indexPath.row].noteName ?? ""
         cell.latestEditedTimeLabel.text = calcNotes?[indexPath.row].latestEditedAt?.longDate()
@@ -206,11 +208,15 @@ extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         // prepareの処理でindexを使いたいのでselfのindexに一旦保持します。
         currentIndexPath = indexPath
         performSegue(withIdentifier: "openNote", sender: self)
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if indexPath.row == calcNotes?.count {
+            return
+        }
         guard let deleteItem = calcNotes?[indexPath.row] else { return }
         realm.deleteNote(calcNote: deleteItem)
         calcNotes = realm.objects(CalcNote.self).sorted(by: {$0.latestEditedAt ?? Date() > $1.latestEditedAt ?? Date()})
@@ -241,5 +247,24 @@ class NoteListTableViewCell: UITableViewCell {
     @IBOutlet weak var totalAfterDotLabel: UILabel!
     override class func awakeFromNib() {
         super.awakeFromNib()
+    }
+}
+
+
+protocol AddNewNoteProtocol: AnyObject {
+    func openNewNoteAlert()
+}
+
+class AddNewNoteCell: UITableViewCell {
+    weak var delegate: AddNewNoteProtocol?
+    @IBOutlet weak var itemOverView: ItemOverView!
+    override class func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    func setTarget() {
+        itemOverView.setTarget(self, selector: #selector(tappedItemOverView))
+    }
+    @objc func tappedItemOverView() {
+        delegate?.openNewNoteAlert()
     }
 }

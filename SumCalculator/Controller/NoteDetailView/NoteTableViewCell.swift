@@ -7,14 +7,15 @@
 
 import UIKit
 
-class NoteTableViewCell: UITableViewCell {
+class NoteTableViewCell: UITableViewCell, Reloadable {
     @IBOutlet weak var cellBackgroundView: UIView!
-    @IBOutlet weak var tableNameLabel: UILabel!
     @IBOutlet weak var subtotalIntLabel: UILabel!
     @IBOutlet weak var calcItemsStackView: UIStackView!
     @IBOutlet weak var subtotalFractionalLabel: UILabel!
+    @IBOutlet weak var tableNameButton: UIButton!
     
     weak var delegate: CalcItemViewDelegate?
+    weak var reloadableDelegate: Reloadable?
     
     var table: CalcTable? {
         didSet{
@@ -29,11 +30,13 @@ class NoteTableViewCell: UITableViewCell {
         cellBackgroundView.layer.cornerRadius = 10
         selectionStyle = .none
     }
-    
+    func reload() {
+        reloadableDelegate?.reload()
+    }
     func loadCalcItems() {
         guard let items = table?.calcItems else { return }
         removeAllItem()
-        tableNameLabel.text = table?.tableName
+        tableNameButton.setTitle(table?.tableName, for: .normal)
         let subtotal = table?.subtotal.totalRounded ?? 0
         subtotalIntLabel.text = subtotal.intPartCurrency
         subtotalFractionalLabel.text = subtotal.afterDot
@@ -59,10 +62,11 @@ class NoteTableViewCell: UITableViewCell {
             view.subTotalIntegerPartLabel.text = i.subtotal.totalRounded.intPartCurrency
             view.subTotalAfterDotLabel.text = i.subtotal.totalRounded.afterDot
             
-            view.setTarget()
+
             view.calcItem = i
-            
             view.delegate = self
+            view.reloadableDelegate = self
+            view.setTarget()
             
             calcItemsStackView.addArrangedSubview(view)
             itemList.append(view)

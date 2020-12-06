@@ -13,9 +13,7 @@ class CalcItem: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var _unitPrice: String = "0"
     @objc dynamic var _quantity: String = "0"
-    
-    @objc dynamic var unit: String = "" 
-    
+    @objc dynamic var unit: String = ""
     @objc dynamic var editedAt = Date()
     
     override static func primaryKey() -> String? {
