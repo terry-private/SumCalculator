@@ -7,19 +7,38 @@
 
 import UIKit
 
+protocol NoteTableViewCellDelegate: AnyObject {
+    func changeTableTitle(currentTable: CalcTable)
+    func addItem(parentTable: CalcTable)
+    func deleteCalcItem(calcItem: CalcItem)
+    func deleteCalcTable(calcTable:CalcTable)
+}
+
 class NoteTableViewCell: UITableViewCell, Reloadable {
     @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var subtotalIntLabel: UILabel!
     @IBOutlet weak var calcItemsStackView: UIStackView!
     @IBOutlet weak var subtotalFractionalLabel: UILabel!
-    @IBOutlet weak var tableNameButton: UIButton!
+    @IBOutlet weak var tableTitleButton: UIButton!
+    @IBOutlet weak var deleteButtonWidth: NSLayoutConstraint!
     
-    weak var delegate: CalcItemViewDelegate?
+    weak var calcItemViewDelegate: CalcItemViewDelegate?
     weak var reloadableDelegate: Reloadable?
+    weak var noteTableViewCellDelegate: NoteTableViewCellDelegate?
     
-    var table: CalcTable? {
+    var calcTable: CalcTable? {
         didSet{
             loadCalcItems()
+        }
+    }
+    var isEditingMode = false {
+        didSet {
+            for i in itemList {
+                i.isEditingMode = isEditingMode
+            }
+            deleteButtonWidth.constant = isEditingMode ? 94 : 0
+//            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {self.layoutIfNeeded()})
+            layoutIfNeeded()
         }
     }
     
@@ -34,10 +53,10 @@ class NoteTableViewCell: UITableViewCell, Reloadable {
         reloadableDelegate?.reload()
     }
     func loadCalcItems() {
-        guard let items = table?.calcItems else { return }
+        guard let items = calcTable?.calcItems else { return }
         removeAllItem()
-        tableNameButton.setTitle(table?.tableName, for: .normal)
-        let subtotal = table?.subtotal.totalRounded ?? 0
+        tableTitleButton.setTitle(calcTable?.tableName, for: .normal)
+        let subtotal = calcTable?.subtotal.totalRounded ?? 0
         subtotalIntLabel.text = subtotal.intPartCurrency
         subtotalFractionalLabel.text = subtotal.afterDot
         for i in items {
@@ -78,11 +97,25 @@ class NoteTableViewCell: UITableViewCell, Reloadable {
             i.removeFromSuperview()
         }
     }
+    
+    
+    @IBAction func tappedTableTitleButton(_ sender: Any) {
+        noteTableViewCellDelegate?.changeTableTitle(currentTable: calcTable!) // 強制アンラップ
+    }
+    @IBAction func tappedAddItemButton(_ sender: Any) {
+        noteTableViewCellDelegate?.addItem(parentTable: calcTable!) // 強制アンラップ
+    }
+    @IBAction func tappedDeleteButton(_ sender: Any) {
+        noteTableViewCellDelegate?.deleteCalcTable(calcTable: calcTable!) // 強制アンラップ
+    }
+    
 }
 
 extension NoteTableViewCell: CalcItemViewDelegate {
     func tappedCalcItem(calcItem: CalcItem) {
-        delegate?.tappedCalcItem(calcItem: calcItem)
+        calcItemViewDelegate?.tappedCalcItem(calcItem: calcItem)
     }
-    
+    func deleteCalcItem(calcItem: CalcItem) {
+        noteTableViewCellDelegate?.deleteCalcItem(calcItem: calcItem)
+    }
 }

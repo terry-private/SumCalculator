@@ -30,8 +30,7 @@ class NoteListViewController: UIViewController, Reloadable, AddNewNoteProtocol {
         super.viewDidLoad()
         // 各パーツのセットアップ
         setupTableView()
-        //        setupSearchBar()
-        //        setupIndicator()
+        navigationItem.rightBarButtonItem = editButtonItem
         //データベースの準備
         realm = try! Realm()
         if UserConfig().isFirst {realm.makeSample()}
@@ -41,6 +40,12 @@ class NoteListViewController: UIViewController, Reloadable, AddNewNoteProtocol {
         super.viewWillAppear(animated)
         reload()
     }
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        noteListTableView.isEditing = editing
+        
+        print(editing)
+    }
     
     // -------------------------------------------------
     // setup系
@@ -48,6 +53,7 @@ class NoteListViewController: UIViewController, Reloadable, AddNewNoteProtocol {
     func setupTableView() {
         noteListTableView.delegate = self
         noteListTableView.dataSource = self
+        noteListTableView.allowsSelectionDuringEditing = true
     }
     //    func setupSearchBar() {
     //        searchController = UISearchController(searchResultsController: nil)

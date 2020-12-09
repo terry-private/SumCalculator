@@ -7,6 +7,7 @@
 
 import UIKit
 import BottomHalfModal
+import RealmSwift
 
 protocol InputCalcItemViewControllerDelegate: class {
     func inputData(calcItem: CalcItem, inputType: InputType)
@@ -15,6 +16,8 @@ protocol InputCalcItemViewControllerDelegate: class {
 class InputCalcItemViewController: UIViewController {
     
     weak var delegate: InputCalcItemViewControllerDelegate?
+    weak var reloadableDelegate: Reloadable?
+    var parentTable: CalcTable?
     var calcItem = CalcItem()
     var inputType:InputType = .AddNew
     var before: CalcItem?
@@ -59,7 +62,12 @@ class InputCalcItemViewController: UIViewController {
         calcItem.unit = unitTextField.text ?? ""
         calcItem.name = itemNameTextField.text ?? ""
         
+        if inputType == .AddNew {
+            let realm = try! Realm()
+            realm.addNewItem(calcItem, parentTable: parentTable!) // 強制アンラップ
+        }
         delegate?.inputData(calcItem: calcItem, inputType: inputType)
+        reloadableDelegate?.reload()
         dismiss(animated: true, completion: nil)
     }
     
@@ -82,7 +90,9 @@ class InputCalcItemViewController: UIViewController {
         unitPriceButton.layer.borderWidth = 0.5
         unitPriceButton.layer.borderColor = UIColor.systemGray3.cgColor
         if before == nil {
+            if parentTable == nil {fatalError("InputCalcItemViewController> AddNewですが、親テーブルがありません。")}
             navigationItem.title = "新しい項目を追加します"
+            
         } else {
             inputType = .Update
             guard let beforeItem = before else {

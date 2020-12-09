@@ -10,10 +10,17 @@ import RealmSwift
 
 protocol CalcItemViewDelegate: AnyObject {
     func tappedCalcItem(calcItem: CalcItem)
+    func deleteCalcItem(calcItem: CalcItem)
 }
 
 class CalcItemView: UIView {
     var calcItem: CalcItem?
+    var isEditingMode: Bool = false {
+        didSet {
+            deleteButtonWidth.constant = isEditingMode ? 94 : 0
+        }
+    }
+    @IBOutlet weak var deleteButtonWidth: NSLayoutConstraint!
     weak var delegate: CalcItemViewDelegate?
     weak var reloadableDelegate: Reloadable?
     @IBOutlet weak var calcItemNameLabel: UILabel!
@@ -45,6 +52,9 @@ class CalcItemView: UIView {
             calcItem?.quantity += Decimal(quantityStepper.value)
         }
         reloadableDelegate?.reload()
+    }
+    @IBAction func tappedDeleteButton(_ sender: Any) {
+        delegate?.deleteCalcItem(calcItem: calcItem!) // 強制アンラップ
     }
     
     // -------------------------------------------------

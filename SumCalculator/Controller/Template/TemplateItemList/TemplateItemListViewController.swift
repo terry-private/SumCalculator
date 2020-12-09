@@ -8,8 +8,12 @@
 import UIKit
 import RealmSwift
 
-protocol SetItemTemplateProtocol: class {
+protocol SetItemTemplateProtocol: AnyObject {
     func setItemTemplate(calcItem: CalcItem)
+}
+
+protocol ReloadSignal: AnyObject {
+    func sentReloadSignal()
 }
 
 class TemplateItemListViewController: UIViewController {
@@ -28,8 +32,10 @@ class TemplateItemListViewController: UIViewController {
     // ドメイン系のプロパティ
     var tableId = "" // 親のノートID {リロードの時にこれを使って note<CalcNote> の値をrealmから取ってくる
     var calcTable: CalcTable?
+    var parentTable: CalcTable? // Use時に直接parentTableに保存できるようにしてます。
     var currentIndex = 0
     weak var delegate: SetItemTemplateProtocol?
+    weak var useTemplateDelegate: ReloadSignal?
     private var realm: Realm!
     
     @IBOutlet weak var itemListTableView: UITableView!
@@ -169,8 +175,8 @@ extension TemplateItemListViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if mode == .Use {
-
-            delegate?.setItemTemplate(calcItem: calcTable?.calcItems[indexPath.row] ?? CalcItem())
+            realm.addNewItem(calcTable?.calcItems[indexPath.row] ?? CalcItem(), parentTable: parentTable!)// 強制アンラップ
+            useTemplateDelegate?.sentReloadSignal()
             dismiss(animated: true, completion: nil)
 //            presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
             return
@@ -181,6 +187,7 @@ extension TemplateItemListViewController: UITableViewDelegate, UITableViewDataSo
         inputCalcItemViewController.isTemplate = true
         inputCalcItemViewController.delegate = self
         inputCalcItemViewController.before = calcTable?.calcItems[indexPath.row]
+        inputCalcItemViewController.parentTable = calcTable
         let nav = UINavigationController(rootViewController: inputCalcItemViewController)
         currentIndex = indexPath.row
         self.present(nav,animated: true, completion: nil)

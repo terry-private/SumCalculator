@@ -15,9 +15,17 @@ protocol Reloadable: AnyObject{
 class NoteDetailViewController: UIViewController, Reloadable {
     let cellId = "cellId"
     let addNewCellId = "addNewCellId"
-//    var searchController: UISearchController!
-//    var indicator = UIActivityIndicatorView()
     var currentIndexPath: IndexPath?
+    var isEditingMode: Bool = false {
+        didSet {
+            for i in 0..<Int(calcNote?.calcTables.count ?? 0) {
+                
+                if let cell = noteDetailTableView.cellForRow(at: IndexPath(row:i ,section:0)) as? NoteTableViewCell {
+                    cell.isEditingMode = isEditingMode
+                }
+            }
+        }
+    }
     weak var delegate: Reloadable?
     // ドメイン系のプロパティ
     var noteId = "" // 親のノートID {リロードの時にこれを使って note<CalcNote> の値をrealmから取ってくる
@@ -60,6 +68,7 @@ class NoteDetailViewController: UIViewController, Reloadable {
         noteDetailTableView.delegate = self
         noteDetailTableView.dataSource = self
         noteDetailTableView.register(UINib(nibName: "NoteTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
+        
     }
     
     // -------------------------------------------------
@@ -85,6 +94,8 @@ class NoteDetailViewController: UIViewController, Reloadable {
         openAddTemplateListSelector()
     }
     @IBAction func tappedEditButton(_ sender: Any) {
+        isEditingMode = !isEditingMode
+        return
         // アラート画面で新規ノートのタイトルを入力させます。
         var alertTextField: UITextField?
         let alert = UIAlertController(title: "ノートのタイトルを変更", message: "タイトルを入力", preferredStyle: UIAlertController.Style.alert)
@@ -174,6 +185,9 @@ class NoteDetailViewController: UIViewController, Reloadable {
     
 }
 
+// -------------------------------------------------
+// テンプレートのテーブルを追加
+// -------------------------------------------------
 extension NoteDetailViewController: SetTableTemplateProtocol {
     func setTableTemplate(calcTable: CalcTable) {
         let newCalcTable = Template.copyTable(calcTable: calcTable)
@@ -200,6 +214,88 @@ extension NoteDetailViewController: InputCalcItemViewControllerDelegate{
     }
 }
 
+extension NoteDetailViewController: NoteTableViewCellDelegate {
+    
+    func changeTableTitle(currentTable: CalcTable) {
+        // アラート画面でノートのタイトルを入力させます。
+        var alertTextField: UITextField?
+        let alert = UIAlertController(title: "リストのタイトルを変更", message: "タイトルを入力", preferredStyle: UIAlertController.Style.alert)
+        
+        // テキストフィールド追加
+        alert.addTextField(configurationHandler: {(textField: UITextField!) in
+            alertTextField = textField
+            textField.text = currentTable.tableName
+            textField.placeholder = "タイトル"
+            // textField.isSecureTextEntry = true
+        })
+        
+        // キャンセルボタン追加
+        alert.addAction(
+            UIAlertAction(
+                title: "Cancel",
+                style: UIAlertAction.Style.cancel,
+                handler: nil))
+        
+        // OKボタン追加
+        alert.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: UIAlertAction.Style.default) { _ in
+                if let text = alertTextField?.text {
+                    if text != "" {
+                        self.realm.updateTable(currentTable, name: text)
+                        self.reload()
+                    }
+                }
+            }
+        )
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func addItem(parentTable: CalcTable) {
+        let alert = UIAlertController(title: "\(parentTable.tableName)に項目を追加します", message: "追加する項目の選択", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "テンプレの項目", style: .default) { _ in
+            self.openAddTemplateItem(parentTable: parentTable)
+        })
+        alert.addAction(UIAlertAction(title: "新規の項目", style: .default) { _ in
+            self.openAddNewItem(parentTable: parentTable)
+        })
+        alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    func openAddNewItem(parentTable: CalcTable) {
+        let storyboard = UIStoryboard(name: "InputCalcItem", bundle: nil)
+        let inputCalcItemViewController = storyboard.instantiateViewController(identifier: "InputCalcItemViewController") as! InputCalcItemViewController
+        
+        inputCalcItemViewController.parentTable = parentTable
+        inputCalcItemViewController.reloadableDelegate = self
+        inputCalcItemViewController.navigationItem.title = "新規項目の作成"
+        let nav = UINavigationController(rootViewController: inputCalcItemViewController)
+        
+        self.present(nav,animated: true, completion: nil)
+    }
+    func openAddTemplateItem(parentTable: CalcTable) {
+        let storyboard = UIStoryboard(name: "TemplateItemFolderList", bundle: nil)
+        let templateTableListViewController = storyboard.instantiateViewController(identifier: "TemplateItemFolderListViewController") as! TemplateItemFolderListViewController
+        //inputCalcItemViewController.recordViewControllerDelegate = self
+        templateTableListViewController.mode = .Use
+        templateTableListViewController.parentTable = parentTable
+        templateTableListViewController.useTemplateDelegate = self
+        templateTableListViewController.navigationItem.title = "テンプレから項目を作成"
+        let nav = UINavigationController(rootViewController: templateTableListViewController)
+        
+        self.present(nav,animated: true, completion: nil)
+    }
+    func deleteCalcItem(calcItem: CalcItem) {
+        realm.deleteItem(calcItem: calcItem)
+        reload()
+    }
+    func deleteCalcTable(calcTable: CalcTable) {
+        realm.deleteTable(calcTable: calcTable)
+        reload()
+    }
+}
+
 extension NoteDetailViewController: AddNewTableProtocol {
     // テンプレから追加か新規追加か選ばせるアラートを出します。
     func openAddListAlert() {
@@ -210,10 +306,14 @@ extension NoteDetailViewController: AddNewTableProtocol {
         alert.addAction(UIAlertAction(title: "新規のリスト", style: .default) { _ in
             self.openAddNewListAlert()
         })
+        alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
 }
 
+// -------------------------------------------------
+// TableView
+// -------------------------------------------------
 extension NoteDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (calcNote?.calcTables.count ?? 0) + 1
@@ -228,9 +328,11 @@ extension NoteDetailViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
         let cell = noteDetailTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NoteTableViewCell
-        cell.table = calcNote?.calcTables[indexPath.row]
-        cell.delegate = self
+        cell.calcTable = calcNote?.calcTables[indexPath.row]
+        cell.calcItemViewDelegate = self
         cell.reloadableDelegate = self
+        cell.noteTableViewCellDelegate = self
+        cell.isEditingMode = isEditingMode
         return cell
     }
     

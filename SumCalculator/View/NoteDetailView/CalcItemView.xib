@@ -139,25 +139,41 @@
                         <action selector="quantityStepperValueChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="ofP-bA-6zm"/>
                     </connections>
                 </stepper>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfZ-Uh-ttq">
+                    <rect key="frame" x="274" y="16.5" width="0.0" height="31.5"/>
+                    <color key="backgroundColor" systemColor="systemRedColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" id="PqL-L5-IIJ"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="削除"/>
+                    <connections>
+                        <action selector="tappedDeleteButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="wJ8-36-bdO"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="EcW-7u-9jg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="5ZU-hA-J3d"/>
                 <constraint firstItem="FV0-QY-rCF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Dta-zT-GQ1"/>
+                <constraint firstItem="gfZ-Uh-ttq" firstAttribute="top" secondItem="0hd-7f-ydA" secondAttribute="bottom" constant="16" id="H7f-O1-wda"/>
                 <constraint firstAttribute="trailing" secondItem="EcW-7u-9jg" secondAttribute="trailing" constant="5" id="JD9-yV-1ME"/>
                 <constraint firstAttribute="trailing" secondItem="Kqe-45-NNg" secondAttribute="trailing" id="Mo9-JG-U7g"/>
                 <constraint firstAttribute="trailing" secondItem="0hd-7f-ydA" secondAttribute="trailing" id="Ytv-CO-cTB"/>
                 <constraint firstItem="Kqe-45-NNg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aAD-7H-XQb"/>
                 <constraint firstItem="EcW-7u-9jg" firstAttribute="leading" secondItem="FV0-QY-rCF" secondAttribute="trailing" constant="5" id="h0F-dd-AbU"/>
+                <constraint firstItem="gfZ-Uh-ttq" firstAttribute="leading" secondItem="FV0-QY-rCF" secondAttribute="trailing" constant="5" id="lJV-EH-gz3"/>
                 <constraint firstItem="0hd-7f-ydA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="pk3-nz-RaS"/>
                 <constraint firstItem="FV0-QY-rCF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="qsA-te-v9c"/>
                 <constraint firstItem="0hd-7f-ydA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="s7y-hP-E23"/>
                 <constraint firstItem="Kqe-45-NNg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="szW-ay-qEn"/>
+                <constraint firstAttribute="bottom" secondItem="gfZ-Uh-ttq" secondAttribute="bottom" constant="16" id="v5H-eD-A0F"/>
                 <constraint firstAttribute="bottom" secondItem="Kqe-45-NNg" secondAttribute="bottom" id="xK3-OZ-c09"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="calcItemNameLabel" destination="il3-Zt-jXd" id="X25-4F-xsw"/>
+                <outlet property="deleteButtonWidth" destination="PqL-L5-IIJ" id="tOz-UI-8bV"/>
                 <outlet property="itemOverView" destination="Kqe-45-NNg" id="9jW-Dd-0TO"/>
                 <outlet property="quantityAfterDotLabel" destination="8WO-R9-asH" id="ZTP-9F-qsQ"/>
                 <outlet property="quantityIntegerPartLabel" destination="Uh0-Vj-PjX" id="Fn8-bG-KWo"/>
@@ -178,6 +194,9 @@
         </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
