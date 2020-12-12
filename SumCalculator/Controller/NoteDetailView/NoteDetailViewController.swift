@@ -344,6 +344,7 @@ extension NoteDetailViewController: UITableViewDelegate, UITableViewDataSource {
         return CGFloat(100 + 64 * itemsCount)
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == calcNote?.calcTables.count ?? 0 { return }
         // prepareの処理でindexを使いたいのでselfのindexに一旦保持します。
         currentIndexPath = indexPath
         performSegue(withIdentifier: "openTable", sender: self)

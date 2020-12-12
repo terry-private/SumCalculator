@@ -119,6 +119,7 @@ class TemplateItemListViewController: UIViewController {
         let inputCalcItemViewController = storyboard.instantiateViewController(identifier: "InputCalcItemViewController") as! InputCalcItemViewController
         //inputCalcItemViewController.recordViewControllerDelegate = self
         inputCalcItemViewController.delegate = self
+        inputCalcItemViewController.parentTable = calcTable
         inputCalcItemViewController.navigationItem.title = "新規項目の作成"
         inputCalcItemViewController.isTemplate = true
         let nav = UINavigationController(rootViewController: inputCalcItemViewController)
@@ -202,12 +203,8 @@ extension TemplateItemListViewController: UITableViewDelegate, UITableViewDataSo
 
 extension TemplateItemListViewController: InputCalcItemViewControllerDelegate {
     func inputData(calcItem: CalcItem, inputType: InputType) {
-        if inputType == .AddNew {
-            realm.addNewItem(calcItem, parentTable: calcTable!) // 強制アンラップ使ってます。
-        } else {
-            realm.updateItem(calcTable!.calcItems[currentIndex], after: calcItem) // 強制アンラップ使ってます。
-        }
         reload()
+        return
     }
 }
 
