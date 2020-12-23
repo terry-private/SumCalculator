@@ -7,16 +7,38 @@
 
 import UIKit
 
-class NoteTableViewCell: UITableViewCell {
+protocol NoteTableViewCellDelegate: AnyObject {
+    func changeTableTitle(currentTable: CalcTable)
+    func addItem(parentTable: CalcTable)
+    func deleteCalcItem(calcItem: CalcItem)
+    func deleteCalcTable(calcTable:CalcTable)
+}
+
+class NoteTableViewCell: UITableViewCell, Reloadable {
     @IBOutlet weak var cellBackgroundView: UIView!
-    @IBOutlet weak var tableNameLabel: UILabel!
     @IBOutlet weak var subtotalIntLabel: UILabel!
     @IBOutlet weak var calcItemsStackView: UIStackView!
     @IBOutlet weak var subtotalFractionalLabel: UILabel!
+    @IBOutlet weak var tableTitleButton: UIButton!
+    @IBOutlet weak var deleteButtonWidth: NSLayoutConstraint!
     
-    var table: CalcTable? {
+    weak var calcItemViewDelegate: CalcItemViewDelegate?
+    weak var reloadableDelegate: Reloadable?
+    weak var noteTableViewCellDelegate: NoteTableViewCellDelegate?
+    
+    var calcTable: CalcTable? {
         didSet{
             loadCalcItems()
+        }
+    }
+    var isEditingMode = false {
+        didSet {
+            for i in itemList {
+                i.isEditingMode = isEditingMode
+            }
+            deleteButtonWidth.constant = isEditingMode ? 94 : 0
+//            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {self.layoutIfNeeded()})
+            layoutIfNeeded()
         }
     }
     
@@ -24,15 +46,17 @@ class NoteTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        cellBackgroundView.layer.cornerRadius = 20
+        cellBackgroundView.layer.cornerRadius = 10
         selectionStyle = .none
     }
-    
+    func reload() {
+        reloadableDelegate?.reload()
+    }
     func loadCalcItems() {
-        guard let items = table?.calcItems else { return }
+        guard let items = calcTable?.calcItems else { return }
         removeAllItem()
-        tableNameLabel.text = table?.tableName
-        let subtotal = table?.subtotal.totalRounded ?? 0
+        tableTitleButton.setTitle(calcTable?.tableName, for: .normal)
+        let subtotal = calcTable?.subtotal.totalRounded ?? 0
         subtotalIntLabel.text = subtotal.intPartCurrency
         subtotalFractionalLabel.text = subtotal.afterDot
         for i in items {
@@ -57,6 +81,12 @@ class NoteTableViewCell: UITableViewCell {
             view.subTotalIntegerPartLabel.text = i.subtotal.totalRounded.intPartCurrency
             view.subTotalAfterDotLabel.text = i.subtotal.totalRounded.afterDot
             
+
+            view.calcItem = i
+            view.delegate = self
+            view.reloadableDelegate = self
+            view.setTarget()
+            
             calcItemsStackView.addArrangedSubview(view)
             itemList.append(view)
         }
@@ -66,5 +96,26 @@ class NoteTableViewCell: UITableViewCell {
         for i in itemList {
             i.removeFromSuperview()
         }
+    }
+    
+    
+    @IBAction func tappedTableTitleButton(_ sender: Any) {
+        noteTableViewCellDelegate?.changeTableTitle(currentTable: calcTable!) // 強制アンラップ
+    }
+    @IBAction func tappedAddItemButton(_ sender: Any) {
+        noteTableViewCellDelegate?.addItem(parentTable: calcTable!) // 強制アンラップ
+    }
+    @IBAction func tappedDeleteButton(_ sender: Any) {
+        noteTableViewCellDelegate?.deleteCalcTable(calcTable: calcTable!) // 強制アンラップ
+    }
+    
+}
+
+extension NoteTableViewCell: CalcItemViewDelegate {
+    func tappedCalcItem(calcItem: CalcItem) {
+        calcItemViewDelegate?.tappedCalcItem(calcItem: calcItem)
+    }
+    func deleteCalcItem(calcItem: CalcItem) {
+        noteTableViewCellDelegate?.deleteCalcItem(calcItem: calcItem)
     }
 }

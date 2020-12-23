@@ -13,7 +13,9 @@ class TemplateItemFolderListViewController: UIViewController {
     private var realm: Realm!
     var template: Template?
     var calcTables: List<CalcTable>?
+    var parentTable: CalcTable?
     weak var itemDelegate: SetItemTemplateProtocol?
+    weak var useTemplateDelegate: Reloadable?
     
     enum Mode {
         case Edit
@@ -22,6 +24,7 @@ class TemplateItemFolderListViewController: UIViewController {
     var mode: Mode = .Edit
     
     @IBOutlet weak var templateItemFolderListTableView: UITableView!
+    @IBOutlet weak var newButton: UIBarButtonItem!
     
     
     // -------------------------------------------------
@@ -31,6 +34,7 @@ class TemplateItemFolderListViewController: UIViewController {
         super.viewDidLoad()
         templateItemFolderListTableView.delegate = self
         templateItemFolderListTableView.dataSource = self
+        newButton.isEnabled = mode == .Edit
         try! realm = Realm()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -116,8 +120,9 @@ extension TemplateItemFolderListViewController: UITableViewDelegate, UITableView
         let templateItemListViewController = storyboard.instantiateViewController(identifier: "TemplateItemListViewController") as! TemplateItemListViewController
         templateItemListViewController.tableId = calcTables?[indexPath.row].id ?? ""
         if mode == .Use {
-            templateItemListViewController.delegate = self
+            templateItemListViewController.useTemplateDelegate = self
             templateItemListViewController.mode = .Use
+            templateItemListViewController.parentTable = parentTable
         }
         navigationController!.pushViewController(templateItemListViewController, animated: true)
     }
@@ -135,6 +140,13 @@ extension TemplateItemFolderListViewController: SetItemTemplateProtocol {
         itemDelegate?.setItemTemplate(calcItem: calcItem)
 //        dismiss(animated: true, completion: nil)
     }
+}
+
+extension TemplateItemFolderListViewController: ReloadSignal {
+    func sentReloadSignal() {
+        useTemplateDelegate?.reload()
+    }
+    
 }
 
 class TemplateItemFolderListTableCell: UITableViewCell {

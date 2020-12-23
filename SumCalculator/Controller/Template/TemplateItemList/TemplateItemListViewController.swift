@@ -8,8 +8,12 @@
 import UIKit
 import RealmSwift
 
-protocol SetItemTemplateProtocol: class {
+protocol SetItemTemplateProtocol: AnyObject {
     func setItemTemplate(calcItem: CalcItem)
+}
+
+protocol ReloadSignal: AnyObject {
+    func sentReloadSignal()
 }
 
 class TemplateItemListViewController: UIViewController {
@@ -28,17 +32,21 @@ class TemplateItemListViewController: UIViewController {
     // ドメイン系のプロパティ
     var tableId = "" // 親のノートID {リロードの時にこれを使って note<CalcNote> の値をrealmから取ってくる
     var calcTable: CalcTable?
+    var parentTable: CalcTable? // Use時に直接parentTableに保存できるようにしてます。
     var currentIndex = 0
     weak var delegate: SetItemTemplateProtocol?
+    weak var useTemplateDelegate: ReloadSignal?
     private var realm: Realm!
     
     @IBOutlet weak var itemListTableView: UITableView!
     @IBOutlet weak var templateButton: UIButton!
+    @IBOutlet weak var newButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         setupEditButton()
+        newButton.isEnabled = mode == .Edit
         
         // リストテンプレの中の項目を追加するときだけ押せるようにしたいのでその他の場合にHiddenになるようにしてます。
         templateButton.isHidden = mode != .Edit || itemOf != .ListTemplate
@@ -111,6 +119,7 @@ class TemplateItemListViewController: UIViewController {
         let inputCalcItemViewController = storyboard.instantiateViewController(identifier: "InputCalcItemViewController") as! InputCalcItemViewController
         //inputCalcItemViewController.recordViewControllerDelegate = self
         inputCalcItemViewController.delegate = self
+        inputCalcItemViewController.parentTable = calcTable
         inputCalcItemViewController.navigationItem.title = "新規項目の作成"
         inputCalcItemViewController.isTemplate = true
         let nav = UINavigationController(rootViewController: inputCalcItemViewController)
@@ -167,8 +176,8 @@ extension TemplateItemListViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if mode == .Use {
-
-            delegate?.setItemTemplate(calcItem: calcTable?.calcItems[indexPath.row] ?? CalcItem())
+            realm.addNewItem(calcTable?.calcItems[indexPath.row] ?? CalcItem(), parentTable: parentTable!)// 強制アンラップ
+            useTemplateDelegate?.sentReloadSignal()
             dismiss(animated: true, completion: nil)
 //            presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
             return
@@ -179,6 +188,7 @@ extension TemplateItemListViewController: UITableViewDelegate, UITableViewDataSo
         inputCalcItemViewController.isTemplate = true
         inputCalcItemViewController.delegate = self
         inputCalcItemViewController.before = calcTable?.calcItems[indexPath.row]
+        inputCalcItemViewController.parentTable = calcTable
         let nav = UINavigationController(rootViewController: inputCalcItemViewController)
         currentIndex = indexPath.row
         self.present(nav,animated: true, completion: nil)
@@ -193,12 +203,8 @@ extension TemplateItemListViewController: UITableViewDelegate, UITableViewDataSo
 
 extension TemplateItemListViewController: InputCalcItemViewControllerDelegate {
     func inputData(calcItem: CalcItem, inputType: InputType) {
-        if inputType == .AddNew {
-            realm.addNewItem(calcItem, parentTable: calcTable!) // 強制アンラップ使ってます。
-        } else {
-            realm.updateItem(calcTable!.calcItems[currentIndex], after: calcItem) // 強制アンラップ使ってます。
-        }
         reload()
+        return
     }
 }
 

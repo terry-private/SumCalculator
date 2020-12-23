@@ -27,6 +27,7 @@ class TemplateTableListViewController: UIViewController{
     var mode: Mode = .Edit
     
     @IBOutlet weak var listTableView: UITableView!
+    @IBOutlet weak var newButton: UIBarButtonItem!
     
     // -------------------------------------------------
     // ライフサイクル
@@ -36,7 +37,9 @@ class TemplateTableListViewController: UIViewController{
         listTableView.delegate = self
         listTableView.dataSource = self
         listTableView.register(UINib(nibName: "TemplateTableListCell", bundle: nil), forCellReuseIdentifier: cellId)
+        newButton.isEnabled = mode == .Edit
         try! realm = Realm()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -175,7 +178,7 @@ extension TemplateTableListViewController: UITableViewDelegate, UITableViewDataS
         realm.deleteTable(calcTable: deleteItem)
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
-    
+
     
 }
 
